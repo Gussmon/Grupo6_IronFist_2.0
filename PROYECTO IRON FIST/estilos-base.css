@@ -1,0 +1,83 @@
+/* =========================================================
+   IRON FIST — Base de diseño (tokens de color y tipografía)
+   Este archivo NO reemplaza a Estilos.css: se carga DESPUÉS
+   de él en el <head>, así sus reglas ganan y unifican el look
+   sin tener que reescribir todo el CSS existente.
+   ========================================================= */
+
+:root {
+  /* Colores */
+  --if-fondo:      #0B0E1F; /* azul-espacio oscuro, único fondo del juego */
+  --if-accion:     #9D4EDD; /* morado eléctrico: botones, elementos interactivos */
+  --if-peligro:    #FF4D5E; /* rojo-coral: límite, Game Over, alertas */
+  --if-exito:      #39FF88; /* verde-lima: victoria, puntaje positivo */
+  --if-texto:      #F2F0EA; /* blanco hueso: texto sobre fondo oscuro */
+  --if-texto-osc:  #10121C; /* texto oscuro sobre fondos claros (tarjetas de reglas) */
+
+  /* Tipografía */
+  --if-font-titulo: 'Press Start 2P', cursive;  /* títulos, HUD, botones cortos */
+  --if-font-texto:  'Inconsolata', monospace;   /* reglas, historia, párrafos largos */
+}
+
+/* ---------------------------------------------------------
+   Unifica cada color "suelto" que hoy varía por sección.
+   Cada selector es de baja especificidad para no chocar con
+   el CSS existente; si algo no se ve reflejado, revisa que
+   este archivo se cargue DESPUÉS de Estilos.css.
+   --------------------------------------------------------- */
+
+/* Botones de acción (JUGAR, ¿Estás listo?, ¿Estás preparado?) */
+.Boton,
+.Listo,
+.Boton_preparado,
+.Play {
+  background: var(--if-accion) !important;
+  font-family: var(--if-font-titulo);
+  color: var(--if-texto);
+}
+
+/* Botones de pausa: mismo color en los 3 niveles */
+.Pause,
+.Pauselvl2,
+.Pauselvl3 {
+  background: var(--if-accion) !important;
+}
+
+/* Elementos de peligro / límite: mismo rojo en todos los niveles */
+.Limite,
+.Limitelvl3 {
+  border-color: var(--if-peligro) !important;
+}
+
+/* Pantalla de victoria: mismo verde en todos los niveles */
+.GANASTE_PANTALLA {
+  background: rgba(57, 255, 136, 0.25) !important;
+}
+.GANASTE_PANTALLA h1 {
+  color: var(--if-exito) !important;
+}
+
+/* Cabeceras del juego: mismo estilo de borde en los 3 niveles
+   (hoy: morado en nivel 1, rojo en nivel 3, sin razón visual) */
+.Cabezera,
+.Cabezeralvl2,
+.Cabezeralvl3 {
+  border-color: var(--if-accion) !important;
+}
+
+/* Texto general legible sobre fondo oscuro */
+body, .Contenedor_Historia p, .Reglas_estilos p {
+  font-family: var(--if-font-texto);
+}
+
+.Texto_Principal, .Nombre, .Titulo_Reglas, .Titulo_historia,
+.Titulo-Jugar, .Tituloar_Juego_5 {
+  font-family: var(--if-font-titulo);
+  color: var(--if-texto);
+}
+
+/* Tamaños de texto con tope: no crecen sin límite en monitores anchos
+   ni se achican demasiado en celular (soluciona el problema de puro vw) */
+.Texto_Principal { font-size: clamp(1.4rem, 3.8vw, 3rem); }
+.Nombre          { font-size: clamp(1.1rem, 2.4vw, 2.2rem); }
+.Titulo_Reglas   { font-size: clamp(1rem, 2.4vw, 1.8rem); }
