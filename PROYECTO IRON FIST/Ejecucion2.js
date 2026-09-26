@@ -41,6 +41,7 @@ function JUEGOlvl2(){
         function Aumentar_Puntoslvl2(){
             Puntajelvl2++;
             document.getElementById("Puntajelvl2").innerHTML = Puntajelvl2 + " / 4"
+            document.getElementById("Barra_Progresolvl2").style.width = (Puntajelvl2/2*100) + "%"
             if(Puntajelvl2 == 2){
                 Puntajelvl2 = 0 
                 Tiempolvl2 = 61
