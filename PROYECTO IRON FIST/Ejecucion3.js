@@ -7,14 +7,23 @@ Puntajelvl3 = 0 //VARIABLE DE INICIO PUNTOS
 //PARA QUE EL JUEGO INICIE UNA VEZ SE PRESIONE JUGAR
 function JUEGOlvl3() {
 
-    //FUNCION QUE REDUCE EL TIEMPO Y RESETEAL EL RESULTADO UNA VEZ LLEGUE A 0
+        //FUNCION QUE REDUCE EL TIEMPO Y RESETEAL EL RESULTADO UNA VEZ LLEGUE A 0
     function Tiempo_Disminurlvl3() { 
         Tiempolvl3--;
         document.getElementById("Tiempolvl3").innerHTML = Tiempolvl3
         if (Tiempolvl3 == 0) {
             Tiempolvl3 = 51
             Puntajelvl3 = 0
-            alert("Lo lamento perdiste")
+            Swal.fire({
+                title: 'GAME OVER',
+                html: 'Se acabó el tiempo y los meteoritos llegaron a la Tierra. <br><br> ¡Inténtalo de nuevo!',
+                icon: 'error',
+                confirmButtonText: 'REINTENTAR',
+                background: '#1a1a2e',
+                color: '#fff',
+                confirmButtonColor: 'rgb(100, 21, 146)',
+                width: '40%'
+            });
         }
     }
     Restar_Tiempolvl3 = setInterval(Tiempo_Disminurlvl3, 1000)
