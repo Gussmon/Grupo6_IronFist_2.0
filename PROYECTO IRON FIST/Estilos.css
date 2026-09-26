@@ -233,6 +233,7 @@ html body{margin: 0; padding: 0; font-family: sans-serif;}/*RESTABLESCO LA PAGIN
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 12px;
 
     cursor: pointer;
     border: 1px solid rgba(200,170,255,0.65);
@@ -270,18 +271,20 @@ html body{margin: 0; padding: 0; font-family: sans-serif;}/*RESTABLESCO LA PAGIN
         inset 0 2px 4px rgba(255,255,255,0.4);
 }
 .Boton_Icono{
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     margin-left: 0;
+    flex-shrink: 0;
     fill: white;
     filter: drop-shadow(0 1px 1px rgba(0,0,0,0.4));
 }
 .Boton_Label{
     font-family: var(--if-font-titulo, 'Press Start 2P', cursive);
     color: var(--if-texto, white);
-    font-size: clamp(0.7rem, 1vw, 0.95rem);
-    letter-spacing: 2px;
+    font-size: clamp(0.65rem, 0.9vw, 0.82rem);
+    letter-spacing: 1.5px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    white-space: nowrap;
 }
 
 /*Escena de fondo: planeta girando + asteroides acercándose*/
