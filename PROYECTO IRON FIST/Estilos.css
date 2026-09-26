@@ -2,14 +2,47 @@ html body{margin: 0; padding: 0; font-family: sans-serif;}/*RESTABLESCO LA PAGIN
 
 #Fondo{ position: relative; color: white; }
 #Fondo::before, #Fondo::after{
-    content: ""; position: fixed; inset: 0;
-    background-repeat: no-repeat; background-size: 100% 120%;
-    transition: opacity 1s ease; z-index: -1;
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    transition: opacity 1s ease;
+    z-index: -1;
 }
-#Fondo::before{ background-image: url(IMG/Fondo_Espacio.gif); opacity: 1; }
-#Fondo::after{ background-image: url(IMG/Fondo_Espacio2.jpg); opacity: 0; }
-#Fondo.Modo_Oscuro::before{ opacity: 0; }
-#Fondo.Modo_Oscuro::after{ opacity: 1; }
+
+#Fondo::before{
+    background-image:
+        linear-gradient(
+            rgba(5, 8, 20, 0.25),
+            rgba(5, 8, 20, 0.42)
+        ),
+        url(IMG/Fondo_Portada_IronFist.png);
+
+    opacity: 1;
+}
+
+#Fondo::after{
+    background-image:
+        linear-gradient(
+            rgba(2, 4, 14, 0.52),
+            rgba(2, 4, 14, 0.72)
+        ),
+        url(IMG/Fondo_Portada_IronFist.png);
+
+    opacity: 0;
+}
+
+#Fondo.Modo_Oscuro::before{
+    opacity: 0;
+}
+
+#Fondo.Modo_Oscuro::after{
+    opacity: 1;
+}
 
 
 /*CONTENEDOR DE TODOS LOS CONTENEDORES*/
