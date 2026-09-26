@@ -42,6 +42,7 @@ function JUEGOlvl3() {
         if (Puntajelvl3 == 1) {
             Puntajelvl3 = 0
             Tiempolvl3 = 51
+            document.getElementById("Victoria_Final_Pantalla").style.display = "flex"
             function Contactos(){
             Swal.fire({
                 title : 'Felicitaciones por parte del <br> Grupo Omega<br><br><img src="IMG/Logo_Omega.png" width = "120px">',
