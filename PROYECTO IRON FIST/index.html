@@ -25,6 +25,14 @@
 <!--SECCION - 1 ------------------------------------------------------------------------------------------------------->
 
 <section class="Seccion_01" id="Seccion_01"  >
+<div class="Escena_Espacio" aria-hidden="true">
+  <div class="Planeta_Decor"></div>
+  <div class="Asteroide a1"></div>
+  <div class="Asteroide a2"></div>
+  <div class="Asteroide a3"></div>
+  <div class="Asteroide a4"></div>
+  <div class="Asteroide a5"></div>
+</div>
 <div class="Contenedor_RC" id="Contenedor_RC" onclick="Graficos_fondo()" title="Cambiar a modo claro/oscuro">
   <i class="fas fa-sun" id="Icono_Sol"></i>
   <i class="fas fa-moon" id="Icono_Luna"></i>
@@ -33,7 +41,12 @@
 <div class="Panel_Portada">
     <h1 class="Nombre"><i class="fas fa-fist-raised"></i> IRON FIST</h1>
     <h1 class="Texto_Principal">¿LISTO PARA DEFENDER<br> EL PLANETA?</h1>
-    <button class="Boton" id="Juego" onclick="Mover()">JUGAR</button>
+    <div class="Boton_Wrap">
+        <button class="Boton" id="Juego" onclick="Mover()" aria-label="Jugar">
+            <svg viewBox="0 0 24 24" class="Boton_Icono"><polygon points="6,4 20,12 6,20"></polygon></svg>
+        </button>
+        <span class="Boton_Label">JUGAR</span>
+    </div>
 </div>
 </section>
 <!--SECCION - 3 ------------------------------------------------------------------------------------------------------->

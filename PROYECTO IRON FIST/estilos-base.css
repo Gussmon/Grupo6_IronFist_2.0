@@ -9,6 +9,8 @@
   /* Colores */
   --if-fondo:      #0B0E1F; /* azul-espacio oscuro, único fondo del juego */
   --if-accion:     #9D4EDD; /* morado eléctrico: botones, elementos interactivos */
+  --if-accion-dark: #6E2FA0; /* sombra/relieve del botón circular */
+  --if-accion-light:#C792F2; /* brillo superior del botón circular */
   --if-peligro:    #FF4D5E; /* rojo-coral: límite, Game Over, alertas */
   --if-exito:      #39FF88; /* verde-lima: victoria, puntaje positivo */
   --if-texto:      #F2F0EA; /* blanco hueso: texto sobre fondo oscuro */
@@ -89,4 +91,6 @@ body, .Contenedor_Historia p, .Reglas_estilos p {
    --------------------------------------------------------- */
 #Fondo.Modo_Oscuro {
   --if-accion: #2DC8A0;
+  --if-accion-dark: #1B8F6E;
+  --if-accion-light: #7FEFC9;
 }
