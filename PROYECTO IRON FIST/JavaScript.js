@@ -81,21 +81,21 @@ function JUEGO(){
             Tiempo = 71
             Puntaje = 0
             document.getElementById("Perdiste_sound").play()
-            alert("Lo lamento perdiste")} }
+            alert("Lo lamento, perdiste.")} }
 
     
         Restar_Tiempo = setInterval(Tiempo_Disminur, 1000)
 
-        //AÑADIMOS LA FUNCION AUMENTAR PUNTOS AL PASAR EL CURSOR SOBRE LOS METIORITOS
-        document.getElementById("Meteiorito").addEventListener('mouseover', Aumentar_Puntos)
-        document.getElementById("Meteiorito2").addEventListener('mouseover', Aumentar_Puntos)
+        //AÑADIMOS LA FUNCION AUMENTAR PUNTOS AL PASAR EL CURSOR SOBRE LOS METEORITOS
+        document.getElementById("Meteorito").addEventListener('mouseover', Aumentar_Puntos)
+        document.getElementById("Meteorito2").addEventListener('mouseover', Aumentar_Puntos)
 
 
         //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
         function Aumentar_Puntos(){
             Puntaje++;
-            document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;5"
-            if(Puntaje == 5){
+            document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;27"
+            if(Puntaje == 27){
                 Puntaje = 0 
                 Tiempo = 71
 
@@ -118,16 +118,16 @@ function JUEGO(){
                     clearInterval(Reanudar_trayectoria2)
                     clearInterval(Restar_Tiempo)
 
-                    document.getElementById("Meteiorito").style.left = "-70%"
-                    document.getElementById("Meteiorito").style.transition = "0s"
+                    document.getElementById("Meteorito").style.left = "-70%"
+                    document.getElementById("Meteorito").style.transition = "0s"
 
-                    document.getElementById("Meteiorito2").style.left = "-70%"
-                    document.getElementById("Meteiorito2").style.transition = "0s"}
+                    document.getElementById("Meteorito2").style.left = "-70%"
+                    document.getElementById("Meteorito2").style.transition = "0s"}
                     
                 Desbloquear_Pantalla  =  setInterval(Ganaste_Pantalla, 1)
 
                 Swal.fire({
-                    title : 'FELICIDADES POR SUPERAR <br> EL NIVEL <br><br> <img src="IMG/Check.png" width = "120px"><br>',
+                    title : 'Felicidades por superar <br> el nivel <br><br> <img src="IMG/Check.png" width = "120px"><br>',
                     html: 'Al parecer nos salvamos, agradecemos tu ayuda y ezfuerzo al superar este nivel, esperamos seguir contando contigo, si algo mas sucede y por cierto, no olvides que te esperan grandes cosas al final del juego asi que no pares de intentar ',
                     icon: 'sucess',
                     confirmButtonText: 'QUIERO CONTINUAR',
@@ -149,83 +149,90 @@ function JUEGO(){
 
 
 
-        //ESTA FUNCION DIRIGE AL PRIMER METIORITO 1 A LA TIERRA 
-        function Metiorito_Direccion(){
+        //ESTA FUNCION DIRIGE AL PRIMER METEORITO 1 A LA TIERRA 
+        function Meteorito_Direccion(){
             Distancia1 = 80
             Altura1 = Math.round(Math.random()* 450)
 
-            document.getElementById("Meteiorito").style.left = Distancia1 + "%"
-            document.getElementById("Meteiorito").style.top = Altura1 + "px"}
+            document.getElementById("Meteorito").style.left = Distancia1 + "%"
+            document.getElementById("Meteorito").style.top = Altura1 + "px"}
 
-            setTimeout(Metiorito_Direccion, 2000)//PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
-            Reanudar_trayectoria = setInterval(Metiorito_Direccion, 2430)//LUEGO SE VA A LLAMAR A LOS METIORITOS CADA 2,4 SEGUNDOS
+            setTimeout(Meteorito_Direccion, 2000)//PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
+            Reanudar_trayectoria = setInterval(Meteorito_Direccion, 2430)//LUEGO SE VA A LLAMAR A LOS METEORITOS CADA 2,4 SEGUNDOS
 
 
-        //ESTA FUNCION DIRIGE AL PRIMER METIORITO 2 A LA TIERRA         
-        function Metiorito_Direccion2(){
+        //ESTA FUNCION DIRIGE AL SEGUNDO METEORITO A LA TIERRA         
+        function Meteorito_Direccion2(){
             Distancia2 = 80
             Altura2 = Math.round(Math.random()* 450)
 
-            document.getElementById("Meteiorito2").style.left = Distancia2 + "%"
-            document.getElementById("Meteiorito2").style.top = Altura2 + "px"}
+            document.getElementById("Meteorito2").style.left = Distancia2 + "%"
+            document.getElementById("Meteorito2").style.top = Altura2 + "px"}
 
-            setTimeout(Metiorito_Direccion2, 2600)//PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
-            Reanudar_trayectoria2 = setInterval(Metiorito_Direccion2, 2350)//LUEGO SE VA A LLAMAR A LOS METIORITOS CADA 2,3 SEGUNDOS
-
-
-        //AQUI ADJUNTAMOS LA ACCION DE LA FUNCION EXPULZAR AL PASAR SOBRE EL METIORITO
-        document.getElementById("Meteiorito").addEventListener('mouseover', Explulsar)
-        document.getElementById("Meteiorito2").addEventListener('mouseover', Explulsar2)
+            setTimeout(Meteorito_Direccion2, 2600)//PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
+            Reanudar_trayectoria2 = setInterval(Meteorito_Direccion2, 2350)//LUEGO SE VA A LLAMAR A LOS METEORITOS CADA 2,3 SEGUNDOS
 
 
-        //ESTA ES LA FUNCION QUE EXPULSA AL METIRITO 1 DE MANERA ALEATORIA FUERA DEL MAPA
-        function Explulsar (){
+        //AQUI ADJUNTAMOS LA ACCION DE LA FUNCION EXPULSAR AL PASAR SOBRE EL METEORITO
+        document.getElementById("Meteorito").addEventListener('mouseover', Expulsar)
+        document.getElementById("Meteorito2").addEventListener('mouseover', Expulsar2)
+
+
+        //ESTA ES LA FUNCION QUE EXPULSA AL METEORITO 1 DE MANERA ALEATORIA FUERA DEL MAPA
+        function Expulsar (){
             document.getElementById("Puntos_sound").play()
             Distancia = "-500"
             Altura = Math.round(Math.random()* 450)
 
-            document.getElementById("Meteiorito").style.left = Distancia + "px"
-            document.getElementById("Meteiorito").style.top = Altura + "px"
-            document.getElementById("Meteiorito").style.transition = "1.8s"}
+            document.getElementById("Meteorito").style.left = Distancia + "px"
+            document.getElementById("Meteorito").style.top = Altura + "px"
+            document.getElementById("Meteorito").style.transition = "1.8s"}
 
 
-        //ESTA ES LA FUNCION QUE EXPULSA AL METIRITO 2 DE MANERA ALEATORIA FUERA DEL MAPA
-        function Explulsar2 (){
+        //ESTA ES LA FUNCION QUE EXPULSA AL METEORITO 2 DE MANERA ALEATORIA FUERA DEL MAPA
+        function Expulsar2 (){
             document.getElementById("Punto2").play()
             Distancia = "-500"
             Altura = Math.round(Math.random()* 450)
     
-            document.getElementById("Meteiorito2").style.left = Distancia + "px"
-            document.getElementById("Meteiorito2").style.top = Altura + "px"
-            document.getElementById("Meteiorito2").style.transition = "1.8s"}
+            document.getElementById("Meteorito2").style.left = Distancia + "px"
+            document.getElementById("Meteorito2").style.top = Altura + "px"
+            document.getElementById("Meteorito2").style.transition = "1.8s"}
 
 
 
 
         
-        //ESTA FUNCION SE ENCARGA DE ALERTARTE UNA VEZ EL METIORITO CRUZE LA LINEA CON UN PERDISTE
-        //TAMBIEN RESETEA LOS VALORES Y LLEVA A LOS METIORITOS FUERA DEL MAPA DE MANERA INSTANTANEA
+        //ESTA FUNCION SE ENCARGA DE ALERTARTE UNA VEZ EL METEORITO CRUCE LA LINEA CON UN PERDISTE
+        //TAMBIEN RESETEA LOS VALORES Y LLEVA A LOS METEORITOS FUERA DEL MAPA DE MANERA INSTANTANEA
         function perdiste (){
-            if((document.getElementById("Meteiorito").offsetLeft > 630) ||
-            (document.getElementById("Meteiorito2").offsetLeft > 630)) {
+            //Antes esto comparaba contra un pixel fijo (630) pensado para
+            //un tablero de 900px. Ahora el tablero es responsivo, así que
+            //calculamos el 70% del ancho REAL del tablero en cada momento,
+            //para que coincida siempre con la línea roja (.Limitelvl1).
+            var anchoTablero = document.getElementById("Meteorito").offsetParent.offsetWidth
+            var limite = anchoTablero * 0.70
+
+            if((document.getElementById("Meteorito").offsetLeft > limite) ||
+            (document.getElementById("Meteorito2").offsetLeft > limite)) {
 
                 document.getElementById("Perdiste_sound").play()
-                alert("YA ES DEMASIADO TARDE, LOS METEORITOS DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR")
-                document.getElementById("Meteiorito").style.left = "-70%"
-                document.getElementById("Meteiorito").style.transition = "0s"
+                alert("Ya es demasiado tarde: los meteoritos destruyeron gran parte del continente.")
+                document.getElementById("Meteorito").style.left = "-70%"
+                document.getElementById("Meteorito").style.transition = "0s"
 
-                document.getElementById("Meteiorito2").style.left = "-70%"
-                document.getElementById("Meteiorito2").style.transition = "0s"
+                document.getElementById("Meteorito2").style.left = "-70%"
+                document.getElementById("Meteorito2").style.transition = "0s"
                 
                 Tiempo = 71
                 Puntaje = 0 }
         
             else {
-                document.getElementById("Meteiorito").style.transition = "2.4s"
-                document.getElementById("Meteiorito2").style.transition = "2.4s"} }
+                document.getElementById("Meteorito").style.transition = "2.4s"
+                document.getElementById("Meteorito2").style.transition = "2.4s"} }
 
         setInterval(perdiste, 1)//LE COLOCAMOS UNO PARA QUE SIEMPRE SE ESTE EJECUTANDO, DADO A 
-        //QUE NO SABEMOS CUANDO EL METIORITO VA A SUPERAR EL LIMITE
+        //QUE NO SABEMOS CUANDO EL METEORITO VA A SUPERAR EL LIMITE
         }
 
         
@@ -284,14 +291,14 @@ function JUEGO(){
                         clearInterval(Reanudar_trayectoria2)
                         clearInterval(Reanudar_trayectoria)
 
-                            function Metiorito_detener (){   
-                            document.getElementById("Meteiorito").style.left = document.getElementById("Meteiorito").offsetLeft + "px" 
-                            document.getElementById("Meteiorito2").style.left = document.getElementById("Meteiorito2").offsetLeft + "px" 
+                            function Meteorito_detener (){   
+                            document.getElementById("Meteorito").style.left = document.getElementById("Meteorito").offsetLeft + "px" 
+                            document.getElementById("Meteorito2").style.left = document.getElementById("Meteorito2").offsetLeft + "px" 
 
-                            document.getElementById("Meteiorito").style.top = document.getElementById("Meteiorito").offsetTop + "px" 
-                            document.getElementById("Meteiorito2").style.top = document.getElementById("Meteiorito2").offsetTop + "px" }
+                            document.getElementById("Meteorito").style.top = document.getElementById("Meteorito").offsetTop + "px" 
+                            document.getElementById("Meteorito2").style.top = document.getElementById("Meteorito2").offsetTop + "px" }
 
-                            Pusae_offf = setInterval(Metiorito_detener, 1) //LE ASEGNAMOS UNA ID, PARA BORRALO UNA VEZ SE DESPAUSEE
+                            Pusae_offf = setInterval(Meteorito_detener, 1) //LE ASEGNAMOS UNA ID, PARA BORRALO UNA VEZ SE DESPAUSEE
                             Activo = 2} //CAMBIAMOS EL VALOR PARA QUE AL VOLVER A DARLE CLICK EJECUTE LA CONDICIONAL DE REANUDAR
 
                         else { //LA FUNCION DE REANUDAR
@@ -305,49 +312,49 @@ function JUEGO(){
                                     Tiempo = 71
                                     Puntaje = 0
                                 document.getElementById("Perdiste_sound").play()    
-                                alert("Lo lamento perdiste")
-                                document.getElementById("Meteiorito").style.left = "-70%"
-                                document.getElementById("Meteiorito").style.transition = "0s" //CREAR UNA FUNCION EN BASE A ESTO Y PASAR COMO REANUDAR EN GANASTE
+                                alert("Lo lamento, perdiste.")
+                                document.getElementById("Meteorito").style.left = "-70%"
+                                document.getElementById("Meteorito").style.transition = "0s" //CREAR UNA FUNCION EN BASE A ESTO Y PASAR COMO REANUDAR EN GANASTE
                 
-                                document.getElementById("Meteiorito2").style.left = "-70%"
-                                document.getElementById("Meteiorito2").style.transition = "0s"}
+                                document.getElementById("Meteorito2").style.left = "-70%"
+                                document.getElementById("Meteorito2").style.transition = "0s"}
                                 
                                 else{
-                                    document.getElementById("Meteiorito").style.transition = "2.4s"
-                                    document.getElementById("Meteiorito2").style.transition = "2.4s"}}
+                                    document.getElementById("Meteorito").style.transition = "2.4s"
+                                    document.getElementById("Meteorito2").style.transition = "2.4s"}}
 
                         Restar_Tiempo = setInterval(Tiempo_Disminur, 1000)
         
-                        document.getElementById("Meteiorito").style.left = Distancia1 + "%"
-                        document.getElementById("Meteiorito").style.top = Altura1 + "px"
-                        document.getElementById("Meteiorito").style.transition = "2.4s"
+                        document.getElementById("Meteorito").style.left = Distancia1 + "%"
+                        document.getElementById("Meteorito").style.top = Altura1 + "px"
+                        document.getElementById("Meteorito").style.transition = "2.4s"
 
-                        document.getElementById("Meteiorito2").style.left = Distancia2 + "%"
-                        document.getElementById("Meteiorito2").style.top = Altura2 + "px"
-                        document.getElementById("Meteiorito2").style.transition = "2.4s"
+                        document.getElementById("Meteorito2").style.left = Distancia2 + "%"
+                        document.getElementById("Meteorito2").style.top = Altura2 + "px"
+                        document.getElementById("Meteorito2").style.transition = "2.4s"
 
                         
-                        function Metiorito_Direccion(){
+                        function Meteorito_Direccion(){
                             Distancia1 = 80
                             Altura1 = Math.round(Math.random()* 450)
                 
-                            document.getElementById("Meteiorito").style.left = Distancia1 + "%"
-                            document.getElementById("Meteiorito").style.top = Altura1 + "px"}
+                            document.getElementById("Meteorito").style.left = Distancia1 + "%"
+                            document.getElementById("Meteorito").style.top = Altura1 + "px"}
                 
-                            setTimeout(Metiorito_Direccion, 2000)//PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
-                            Reanudar_trayectoria = setInterval(Metiorito_Direccion, 2430)//LUEGO SE VA A LLAMAR A LOS METIORITOS CADA 2,4 SEGUNDOS
+                            setTimeout(Meteorito_Direccion, 2000)//PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
+                            Reanudar_trayectoria = setInterval(Meteorito_Direccion, 2430)//LUEGO SE VA A LLAMAR A LOS METEORITOS CADA 2,4 SEGUNDOS
                 
                 
-                        //ESTA FUNCION DIRIGE AL PRIMER METIORITO 2 A LA TIERRA         
-                        function Metiorito_Direccion2(){
+                        //ESTA FUNCION DIRIGE AL SEGUNDO METEORITO A LA TIERRA         
+                        function Meteorito_Direccion2(){
                             Distancia2 = 80
                             Altura2 = Math.round(Math.random()* 450)
                 
-                            document.getElementById("Meteiorito2").style.left = Distancia2 + "%"
-                            document.getElementById("Meteiorito2").style.top = Altura2 + "px"}
+                            document.getElementById("Meteorito2").style.left = Distancia2 + "%"
+                            document.getElementById("Meteorito2").style.top = Altura2 + "px"}
                 
-                            setTimeout(Metiorito_Direccion2, 2000)//PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
-                            Reanudar_trayectoria2 = setInterval(Metiorito_Direccion2, 2350)//LUEGO SE VA A LLAMAR A LOS METIORITOS CADA 2,3 SEGUNDOS
+                            setTimeout(Meteorito_Direccion2, 2000)//PRIMERO VA A SER EJECUTADO A LOS DOS PRIMEROS SEGUNDOS
+                            Reanudar_trayectoria2 = setInterval(Meteorito_Direccion2, 2350)//LUEGO SE VA A LLAMAR A LOS METEORITOS CADA 2,3 SEGUNDOS
 
 
 
@@ -357,8 +364,8 @@ function JUEGO(){
 
 
 
-    
 
+    
 
 
 
@@ -481,7 +488,7 @@ function Reloj_Tiempo(){
             var semana = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado']
             pDia_Semana.textContent = semana [diaSemana];
             pDia.textContent = dia
-            var Mes_Actual = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Nomviembre', 'Diciembre']
+            var Mes_Actual = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
             pMes.textContent = Mes_Actual[mes];
             pAño.textContent = Año
 
