@@ -180,14 +180,18 @@ html body{margin: 0; padding: 0; font-family: sans-serif;}/*RESTABLESCO LA PAGIN
     text-align: center;
     position: relative;
     top: 0;
+    margin: 0;
 
-    font-size: clamp(1rem, 2.2vw, 1.8rem);
-    line-height: 1.5;
-    letter-spacing: 1px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(0.95rem, 1.8vw, 1.45rem);
+    line-height: 1.55;
+    letter-spacing: 1.5px;
+
+    color: rgba(255,255,255,0.92);
 
     text-shadow:
-        0 2px 6px rgba(0,0,0,0.8),
-        0 0 12px rgba(0,0,0,0.6);
+        0 2px 8px rgba(0,0,0,0.9),
+        0 0 12px rgba(95,140,255,0.35);
 
     animation: fadeInUp 0.8s ease 0.2s both;
 }
@@ -195,16 +199,23 @@ html body{margin: 0; padding: 0; font-family: sans-serif;}/*RESTABLESCO LA PAGIN
 .Nombre{
     text-align: center;
     position: relative;
-    top: 0%;
-    padding-bottom: 0%;
-    text-shadow:
-        0 2px 6px rgba(0,0,0,0.8),
-        0 0 18px rgba(120,90,255,0.45);
-    animation: fadeInUp 0.8s ease both;
+    top: 0;
+    margin: 0;
+    padding: 0;
 
-    font-size: clamp(2rem, 5vw, 4.5rem);
-    letter-spacing: clamp(2px, 0.6vw, 8px);
-    line-height: 1.1;
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(2rem, 4.6vw, 4rem);
+    line-height: 1.15;
+    letter-spacing: clamp(3px, 0.55vw, 8px);
+
+    color: #ffffff;
+
+    text-shadow:
+        0 3px 8px rgba(0,0,0,0.9),
+        0 0 12px rgba(110,150,255,0.65),
+        0 0 28px rgba(155,90,255,0.35);
+
+    animation: fadeInUp 0.8s ease both;
 }
 
 .Boton_Wrap{
