@@ -252,9 +252,11 @@ html body{margin: 0; padding: 0; font-family: sans-serif;}/*RESTABLESCO LA PAGIN
         inset 0 1px 2px rgba(255,255,255,0.35);
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        filter 0.2s ease;
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+
+animation: Pulso_Boton 2.2s ease-in-out infinite;
 }
 .Boton:hover{
     transform: translateY(-3px) scale(1.03);
@@ -269,6 +271,31 @@ html body{margin: 0; padding: 0; font-family: sans-serif;}/*RESTABLESCO LA PAGIN
         0 2px 0 var(--if-accion-dark, #6e2fa0),
         0 4px 8px rgba(0,0,0,0.5),
         inset 0 2px 4px rgba(255,255,255,0.4);
+}
+@keyframes Pulso_Boton {
+    0% {
+        transform: scale(1);
+        box-shadow:
+            0 0 20px rgba(160,100,255,0.45),
+            0 8px 25px rgba(0,0,0,0.5),
+            inset 0 1px 2px rgba(255,255,255,0.35);
+    }
+
+    50% {
+        transform: scale(1.04);
+        box-shadow:
+            0 0 30px rgba(185,120,255,0.75),
+            0 10px 30px rgba(0,0,0,0.55),
+            inset 0 1px 3px rgba(255,255,255,0.42);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow:
+            0 0 20px rgba(160,100,255,0.45),
+            0 8px 25px rgba(0,0,0,0.5),
+            inset 0 1px 2px rgba(255,255,255,0.35);
+    }
 }
 .Boton_Icono{
     width: 22px;
