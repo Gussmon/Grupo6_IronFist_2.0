@@ -73,14 +73,15 @@ function Graficos_fondo(){
 //PARA QUE EL JUEGO INICIE UNA VEZ SE PRESIONE JUGAR
 function JUEGO(){
 
-    function Tiempo_Disminur(){ //FUNCION QUE REDUCE EL TIEMPO Y RESETEAL EL RESULTADO UNA VEZ LLEGUE A 0
-        Tiempo--;
-        document.getElementById("Tiempo").innerHTML = Tiempo
-        if(Tiempo == 0){
-            Tiempo = 71
-            Puntaje = 0
-            document.getElementById("Perdiste_sound").play()
-            alert("Lo lamento perdiste")} }
+    function Tiempo_Disminur(){//VOLVEMOS A CREAR LA FUNCION DE TIEMPO PARA QUE REANUEDE EL CONTEO
+    Tiempo--;
+    document.getElementById("Tiempo").innerHTML = Tiempo
+    if(Tiempo == 0){
+        Tiempo = 71
+        Puntaje = 0
+    document.getElementById("Perdiste_sound").play()    
+    alert("Lo lamento perdiste")
+    document.getElementById("Meteiorito").style.left = "-70%"
 
     
         Restar_Tiempo = setInterval(Tiempo_Disminur, 1000)
