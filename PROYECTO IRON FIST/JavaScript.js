@@ -79,8 +79,17 @@ function JUEGO(){
     if(Tiempo == 0){
         Tiempo = 71
         Puntaje = 0
-    document.getElementById("Perdiste_sound").play()    
-    alert("Lo lamento perdiste")
+                document.getElementById("Perdiste_sound").play()
+            Swal.fire({
+                title: 'GAME OVER',
+                html: 'Se acabó el tiempo y los meteoritos llegaron a la Tierra. <br><br> ¡Inténtalo de nuevo!',
+                icon: 'error',
+                confirmButtonText: 'REINTENTAR',
+                background: '#1a1a2e',
+                color: '#fff',
+                confirmButtonColor: 'rgb(100, 21, 146)',
+                width: '40%'
+            });} }
     document.getElementById("Meteiorito").style.left = "-70%"
 
     
@@ -209,8 +218,17 @@ function JUEGO(){
             if((document.getElementById("Meteiorito").offsetLeft > 630) ||
             (document.getElementById("Meteiorito2").offsetLeft > 630)) {
 
-                document.getElementById("Perdiste_sound").play()
-                alert("YA ES DEMASIADO TARDE, LOS METEORITOS DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR")
+                                document.getElementById("Perdiste_sound").play()
+                Swal.fire({
+                    title: 'GAME OVER',
+                    html: 'Un meteorito impactó la Tierra antes de tiempo. <br><br> Mantente más atento la próxima vez.',
+                    icon: 'error',
+                    confirmButtonText: 'REINTENTAR',
+                    background: '#1a1a2e',
+                    color: '#fff',
+                    confirmButtonColor: 'rgb(100, 21, 146)',
+                    width: '40%'
+                });
                 document.getElementById("Meteiorito").style.left = "-70%"
                 document.getElementById("Meteiorito").style.transition = "0s"
 
@@ -305,7 +323,16 @@ function JUEGO(){
                                     Tiempo = 71
                                     Puntaje = 0
                                 document.getElementById("Perdiste_sound").play()    
-                                alert("Lo lamento perdiste")
+                                Swal.fire({
+                                    title: 'GAME OVER',
+                                    html: 'Se acabó el tiempo y los meteoritos llegaron a la Tierra. <br><br> ¡Inténtalo de nuevo!',
+                                    icon: 'error',
+                                    confirmButtonText: 'REINTENTAR',
+                                    background: '#1a1a2e',
+                                    color: '#fff',
+                                    confirmButtonColor: 'rgb(100, 21, 146)',
+                                    width: '40%'
+                                });
                                 document.getElementById("Meteiorito").style.left = "-70%"
                                 document.getElementById("Meteiorito").style.transition = "0s" //CREAR UNA FUNCION EN BASE A ESTO Y PASAR COMO REANUDAR EN GANASTE
                 
