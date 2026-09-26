@@ -49,19 +49,18 @@ Graficos = 1 //Este es el medidor de graficos
 
 //En esta funcion cambio de fondo al presionar el CHEKBOX, para graurar los graficos dentro del juego
 function Graficos_fondo(){
-Contenedor_RQ = document.getElementById("Contenedor_RC")
-if(Graficos == 1){
-document.getElementById("Recursos").style.marginLeft = "60%"
-document.getElementById("Fondo").style.background = "url(IMG/Fondo_Espacio2.jpg)"
-document.getElementById("Fondo").style.backgroundAttachment = "fixed"
-document.getElementById("Fondo").style.backgroundRepeat = "no-repeat"
-document.getElementById("Fondo").style.backgroundSize = "100% 120%"
-Graficos = 2}
-else{
-document.getElementById("Recursos").style.marginLeft = "0%"
-document.getElementById("Fondo").style.backgroundImage = "url(IMG/Fondo_Espacio.gif) "
-Graficos = 1
-}
+    var fondo = document.getElementById("Fondo");
+    var circulo = document.getElementById("Recursos");
+
+    if(Graficos == 1){
+        circulo.style.marginLeft = "60%";
+        fondo.classList.add("Modo_Oscuro");
+        Graficos = 2;
+    } else {
+        circulo.style.marginLeft = "0%";
+        fondo.classList.remove("Modo_Oscuro");
+        Graficos = 1;
+    }
 }
 
 
@@ -368,21 +367,20 @@ function JUEGO(){
 
 
 function Mover() {//TRANSICION DE LA PRIMERA SECCION A LA SEGUNDA
-    var contenedor = document.getElementById("Seccion_01")
-    contenedor.style.top = "-100%"
-    contenedor.style.transition = "2s"
+    var contenedor = document.getElementById("Seccion_01");
+    contenedor.style.transition = "top 0.9s ease-in-out, opacity 0.9s ease-in-out";
+    contenedor.style.top = "-100%";
+    contenedor.style.opacity = "0";
+
     function Desaparecer(){
-    var contenedor = document.getElementById("Seccion_01")
-    var Reglas = document.getElementById("Reglas")
-
-    Reglas.style.top = "3%"
-    Reglas.style.transition = "1s"
-    contenedor.style.display = "none"
-
-
+        var contenedor = document.getElementById("Seccion_01");
+        var Reglas = document.getElementById("Reglas");
+        Reglas.style.transition = "top 0.8s ease-out, opacity 0.8s ease-out";
+        Reglas.style.top = "3%";
+        Reglas.style.opacity = "1";
+        contenedor.style.display = "none";
     }
-    setTimeout(Desaparecer,1090)
-
+    setTimeout(Desaparecer, 900);
 }
 
 

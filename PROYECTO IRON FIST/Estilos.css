@@ -1,9 +1,15 @@
 html body{margin: 0; padding: 0; font-family: sans-serif;}/*RESTABLESCO LA PAGINA, SI MARGEN EN LOS BORDES*/
 
-
-#Fondo {background-image: url(IMG/Fondo_Espacio.gif) ; color: white; background-attachment: fixed; background-repeat: no-repeat;
-background-size: 100% 120%;
- }
+#Fondo{ position: relative; color: white; }
+#Fondo::before, #Fondo::after{
+    content: ""; position: fixed; inset: 0;
+    background-repeat: no-repeat; background-size: 100% 120%;
+    transition: opacity 1s ease; z-index: -1;
+}
+#Fondo::before{ background-image: url(IMG/Fondo_Espacio.gif); opacity: 1; }
+#Fondo::after{ background-image: url(IMG/Fondo_Espacio2.jpg); opacity: 0; }
+#Fondo.Modo_Oscuro::before{ opacity: 0; }
+#Fondo.Modo_Oscuro::after{ opacity: 1; }
 
 
 /*CONTENEDOR DE TODOS LOS CONTENEDORES*/
@@ -14,9 +20,21 @@ background-size: 100% 120%;
 
 /*PRIMERA SECCION------------------------------------------------------------------------------------------------------*/
 
-.Contenedor_RC {width: 7vw; height: 3vw; border-radius: 3rem; background: transparent; border: 3px solid white; position: relative;
-left: 44%; top: 4%; cursor: pointer;}
-.Recursos {width: 40%; height: 100%; border-radius: 50%; background: white; margin-left: 0%; transition: 1s;}
+.Contenedor_RC {
+    width: 7vw; height: 3vw; border-radius: 3rem;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.6);
+    position: fixed; top: 3%; right: 3%;
+    cursor: pointer; z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+.Contenedor_RC i{
+    position: absolute; top: 50%; transform: translateY(-50%);
+    font-size: 1vw; color: white; pointer-events: none; z-index: 2;
+}
+#Icono_Sol{ left: 10%; }
+#Icono_Luna{ right: 10%; }
+.Recursos {width: 40%; height: 100%; border-radius: 50%; background: white; margin-left: 0%; transition: 1s; position: relative; z-index: 1;}
 
 
 
@@ -25,34 +43,75 @@ left: 44%; top: 4%; cursor: pointer;}
 .Seccion_01{width: 100%; height: 100vh; overflow: hidden; position: relative; top: 0px; display: flex; flex-direction: column; align-items: center; justify-content: center;}/*ESTE ES EL CONTENEDOR DE
                                                                                             LA SECCION 01*/
 
-.Texto_Principal { /*ESTE ES EL TITULO DE IRON FIST*/
-    font-family: 'Press Start 2P', cursive; text-align: center;
-    font-size: 3.8vw;
-    text-align: center;
-    position: relative;
-    top: -12%;
+.Seccion_01::before{
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 45%, rgba(0,0,0,0.15), rgba(0,0,0,0.55) 80%);
+    z-index: 0;
 }
 
-.Nombre{ /*ESTE ES LA PREGUNTA DEBAJO DEL NOMBRE*/
-    font-family: 'Press Start 2P', cursive; text-align: center;
-    font-size: 5.9vw;
+.Panel_Portada{
+    position: relative; z-index: 1;
+    background: rgba(10, 8, 30, 0.35);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 3vw 4vw;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 1.5vw;
+}
+
+@keyframes fadeInUp{
+    from{ opacity: 0; transform: translateY(20px); }
+    to{ opacity: 1; transform: translateY(0); }
+}
+
+.Texto_Principal { /*ESTE ES LA PREGUNTA DEBAJO DEL TITULO - fuente/tamaño los define estilos-base.css*/
+    text-align: center;
+    position: relative;
+    top: 0;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,0.6);
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.Nombre{ /*ESTE ES EL TITULO IRON FIST - fuente/tamaño los define estilos-base.css*/
     text-align: center;
     position: relative;
     top: 0%;
     padding-bottom: 0%;
-
+    text-shadow: 0 2px 6px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,0.6);
+    animation: fadeInUp 0.8s ease both;
 }
+.Nombre i{ font-size: 0.6em; margin-right: 0.3em; color: var(--if-accion); }
 
-.Boton {width: 20vw; height: 4vw; background: rgb(144, 90, 196); /*Este es el boton de JUGAR*/
-cursor: pointer;font-family: 'Press Start 2P', cursive;
-color: white; border-radius: 2px; border: none;
-margin-left: auto; margin-right: auto; margin: auto; margin-top: -3%; }
+.Boton {
+    /*El color/fuente del botón ya los fuerza estilos-base.css (--if-accion); aquí solo forma y comportamiento*/
+    width: 14vw; height: 4.5vw;
+    cursor: pointer;
+    border-radius: 14px;
+    border: 2px solid rgba(255,255,255,0.6);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    margin: auto;
+    position: relative; z-index: 1;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    animation: fadeInUp 0.8s ease 0.4s both;
+}
+.Boton:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+    filter: brightness(1.15);
+}
+.Boton:active{
+    transform: translateY(1px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    filter: brightness(0.92);
+}
 
 /*SECCION REGLAS ------------------------------------------------------------------------------------------------------*/
 
 
 
-#Reglas{position: relative; width: 100%; top: 120%;}
+#Reglas{position: relative; width: 100%; top: 120%; opacity: 0;}
 
 .Titulo_Reglas{font-size: 2.4VW; position: relative; top: -20%; left: 2%; font-family: 'Press Start 2P', cursive;}
 
