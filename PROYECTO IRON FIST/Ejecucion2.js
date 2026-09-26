@@ -17,6 +17,16 @@ function JUEGOlvl2(){
             Tiempolvl2 = 61
             Puntajelvl2 = 0
             alert("El tiempo se agotó, lo lamento, de seguro lo lograrás para la siguiente")} }
+            Swal.fire({
+                title: 'GAME OVER',
+                html: 'Se acabó el tiempo y los meteoritos llegaron a la Tierra. <br><br> ¡De seguro lo logras la próxima!',
+                icon: 'error',
+                confirmButtonText: 'REINTENTAR',
+                background: '#1a1a2e',
+                color: '#fff',
+                confirmButtonColor: 'rgb(0, 119, 255)',
+                width: '40%'
+            });} }
 
     
         Restar_Tiempolvl2 = setInterval(Tiempo_Disminurlvl2, 1000)
@@ -174,6 +184,16 @@ function JUEGOlvl2(){
                 document.getElementById("Perdiste_sound").play()
             
                 alert("YA ES DEMASIADO TARDE, LOS METEORITOS DESTRUYERON GRAN PARTE DEL CONTINENTE Y LO MEJOR ES ESPERAR LO PEOR")
+                Swal.fire({
+                    title: 'GAME OVER',
+                    html: 'Un meteorito impactó la Tierra antes de tiempo. <br><br> Mantente más atento la próxima vez.',
+                    icon: 'error',
+                    confirmButtonText: 'REINTENTAR',
+                    background: '#1a1a2e',
+                    color: '#fff',
+                    confirmButtonColor: 'rgb(0, 119, 255)',
+                    width: '40%'
+                });
 
 
                 document.getElementById("Meteioritolvl2").style.left = "-70%"
@@ -275,6 +295,16 @@ function JUEGOlvl2(){
                                     Tiempolvl2 = 61
                                     Puntajelvl2 = 0
                                 alert("Lo lamento perdiste") } }
+                                Swal.fire({
+                                    title: 'GAME OVER',
+                                    html: 'Se acabó el tiempo y los meteoritos llegaron a la Tierra. <br><br> ¡Inténtalo de nuevo!',
+                                    icon: 'error',
+                                    confirmButtonText: 'REINTENTAR',
+                                    background: '#1a1a2e',
+                                    color: '#fff',
+                                    confirmButtonColor: 'rgb(0, 119, 255)',
+                                    width: '40%'
+                                }); } }
 
                                 Restar_Tiempolvl2 = setInterval(Tiempo_Disminurlvl2, 1000)
         
