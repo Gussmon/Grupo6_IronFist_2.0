@@ -313,11 +313,12 @@ position: absolute; top: 20%; overflow: hidden; transition: 2.3s;}
     background-size: cover; position: relative; top: 4%; overflow: hidden;  }
 
     /*CABEZARA DENTRO DEL JUEGO*/
-    .Cabezera {height: 70px; 
-    border: 5px dashed purple; 
-    background: rgba(255, 255, 255, 0.363); 
+    .Cabezera {height: 90px; 
+    border: 3px solid rgb(100, 21, 146); 
+    background: rgba(15, 8, 25, 0.92); 
     border-bottom: none; display: flex; 
-    align-items: center; position: relative; }
+    align-items: center; justify-content: space-around; position: relative;
+    border-radius: 8px 8px 0 0; box-shadow: inset 0 0 18px rgba(100,21,146,0.35); }
     
     /*Pantalla start del inicio del juego*/
     .Start {width: 100%; height: 100%; background: rgba(0, 0, 0, 0.582);
@@ -401,16 +402,22 @@ position: absolute; top: 20%; overflow: hidden; transition: 2.3s;}
     position: absolute; top: 0%; left: 70%;}
     
     /*ESTILOS DEL SPAN Y DEL TEXTO DE TIEMPO*/
-    .Tiempo {display: flex; align-items: center;
-    flex-direction: column;
-    width: 14%; height: 70%; color: black; 
-    font-size: 13px; line-height: 1vh ;  }
+    .Tiempo, .Puntaje {display: flex; align-items: center;
+    flex-direction: column; justify-content: center;
+    width: 26%; height: 82%; color: #fff; line-height: normal; }
+
+    .Tiempo h3, .Puntaje h3{ font-size: 10px; font-family: 'Press Start 2P', cursive;
+    letter-spacing: 1px; margin: 0 0 6px 0; color: rgba(255,255,255,0.55); }
+
+    .Tiempo span, .Puntaje span{ font-family: 'Press Start 2P', cursive; font-size: 22px;
+    color: #d69bff; text-shadow: 0 0 6px #b967ff, 0 0 14px #b967ff; }
     
     /*ESTILOS DEL SPAN Y DEL TEXTO DE PUNTAJE*/
-    .Puntaje {display: flex; align-items: center; 
-    flex-direction: column; 
-    width: 14%; height: 70%; color: black; 
-    font-size: 13px; line-height: 1vh;  }
+    .Barra_Progreso_Contenedor{ width: 92%; height: 7px; background: rgba(255,255,255,0.15);
+    border-radius: 4px; margin-top: 6px; overflow: hidden; }
+    .Barra_Progreso{ height: 100%; width: 0%;
+    background: linear-gradient(90deg, #b967ff, #ff8ae2);
+    box-shadow: 0 0 8px #b967ff; transition: width 0.4s ease; }
     
     /*ESTILOS DEL BOTON DE PAUSE*/
     .Pause {width: 20%; height: 70%; font-size: 14px;
@@ -584,11 +591,13 @@ margin-left: 12%; }
     font-size: 13px; line-height: 7px;}
     
     /*ESTILOS DEL BOTON DE PAUSE*/
-    .Pauselvl2 {width: 20%; height: 70%; font-size: 14px;
-    background: rgb(0, 119, 255);; display: flex;
+    .Pauselvl2 {width: 20%; height: 62%; font-size: 11px;
+    background: rgb(0, 119, 255); display: flex;
     align-items: center; justify-content: center;
     color: white; cursor: pointer; position: relative;
-    left: 50%; }
+    border-radius: 6px; font-family: 'Press Start 2P', cursive;
+    transition: background 0.2s ease, transform 0.15s ease; }
+.Pauselvl2:hover{ background: rgb(40,150,255); transform: scale(1.05); }
     
     /*MENSAJE DENTRO DE PAUSE*/
     .Mensaje_Pauselvl2{font-size: 50px; color: white; display: table-cell; vertical-align: middle; font-family: 'Press Start 2P', cursive;}
@@ -764,32 +773,22 @@ margin-left: 12%; }
     }
     
     /*CABEZARA DENTRO DEL JUEGO*/
-    .Cabezeralvl3 {height: 70px; 
-        border: 5px dashed red; 
-        background: rgba(255, 255, 255, 0.363); 
-        border-bottom: none; display: flex; 
-        position: relative; }
-    
-    /*ESTILOS DEL SPAN Y DEL TEXTO DE TIEMPO*/
-    .Tiempolvl3 {
-        display: flex; align-items: center; justify-content: center;
-        flex-direction: column;
-        width: 14%; height: 86%; color: black; 
-        font-size: 13px; line-height: 1vh ;
-    }
-    
-    /*ESTILOS DEL SPAN Y DEL TEXTO DE PUNTAJE*/
-    .Puntajelvl3 {
-        display: flex;
-        align-items: center; 
-        justify-content: center;
-        flex-direction: column; 
-        width: 14%;
-        height: 86%;
-        color: black;
-        font-size: 13px;
-        line-height: 1vh;
-    }
+    .Cabezeralvl3 {height: 90px; 
+    border: 3px solid #ff3b3b; 
+    background: rgba(25, 8, 8, 0.92); 
+    border-bottom: none; display: flex; 
+    align-items: center; justify-content: space-around; position: relative;
+    border-radius: 8px 8px 0 0; box-shadow: inset 0 0 18px rgba(255,59,59,0.35); }
+
+    .Tiempolvl3, .Puntajelvl3 {display: flex; align-items: center;
+    flex-direction: column; justify-content: center;
+    width: 26%; height: 82%; color: #fff; line-height: normal; }
+
+    .Tiempolvl3 h3, .Puntajelvl3 h3{ font-size: 10px; font-family: 'Press Start 2P', cursive;
+    letter-spacing: 1px; margin: 0 0 6px 0; color: rgba(255,255,255,0.55); }
+
+    .Tiempolvl3 span, .Puntajelvl3 span{ font-family: 'Press Start 2P', cursive; font-size: 22px;
+    color: #ff8a8a; text-shadow: 0 0 6px #ff3b3b, 0 0 14px #ff3b3b; }
     
     /*ESTILOS DE LA SORPRESA*/
     .Pantalla_navelvl3 {
@@ -886,20 +885,12 @@ margin-left: 12%; }
     }
     
     /*ESTILOS DEL BOTON DE PAUSE*/
-    .Pauselvl3{
-        width: 20%;
-        height: 70%;
-        font-size: 14px;
-        background: red;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        cursor: pointer;
-        position: relative;
-        top: 15%;
-        left: 50%;
-    }
+    .Pauselvl3{ width: 20%; height: 62%; font-size: 11px;
+    background: #ff3b3b; display: flex; align-items: center; justify-content: center;
+    color: white; cursor: pointer; position: relative;
+    border-radius: 6px; font-family: 'Press Start 2P', cursive;
+    transition: background 0.2s ease, transform 0.15s ease; }
+    .Pauselvl3:hover{ background: #ff5c5c; transform: scale(1.05); }
     
     /*MENSAJE DENTRO DE PAUSE*/
     .Mensaje_Pauselvl3{
