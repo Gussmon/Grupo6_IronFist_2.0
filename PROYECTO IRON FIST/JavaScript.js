@@ -104,6 +104,7 @@ function JUEGO(){
         function Aumentar_Puntos(){
             Puntaje++;
             document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;5"
+            document.getElementById("Barra_Progreso").style.width = (Puntaje/5*100) + "%"
             if(Puntaje == 5){
                 Puntaje = 0 
                 Tiempo = 71
