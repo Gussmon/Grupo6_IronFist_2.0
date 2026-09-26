@@ -1,20 +1,28 @@
 Swal.fire({
     title : 'MISIÓN: DEFENDER LA TIERRA <br><br> <img src="IMG/planeta_tierra.png" width = "120px"><br>',
-   html: 'IRON FIST pondrá a prueba tus reflejos mientras avanzas por niveles cada vez más desafiantes. Supera cada misión, desbloquea logros y demuestra que tienes lo necesario para proteger la Tierra.',
+    html: 'IRON FIST pondrá a prueba tus reflejos mientras avanzas por niveles cada vez más desafiantes. Supera cada misión, desbloquea logros y demuestra que tienes lo necesario para proteger la Tierra.',
     icon: 'success',
-   confirmButtonText: 'COMENZAR MISIÓN',
+    confirmButtonText: 'COMENZAR MISIÓN',
+
+    customClass: {
+        popup: 'Modal_Mision',
+        title: 'Modal_Mision_Titulo',
+        htmlContainer: 'Modal_Mision_Texto',
+        confirmButton: 'Modal_Mision_Boton'
+    },
+
+    buttonsStyling: false,
+
     width: '50%',
     height: '80%',
     timer: 100000,
-    
-    
+
     timerProgressbar: true,
-    /*Funcion de cerrar la alerta*/
     allowOutsideClick: true,
     allowEscapeKey: false,
     allowEnterkey: false,
     stopKeydownPropagation: false,
-    });
+});
 
 
 
