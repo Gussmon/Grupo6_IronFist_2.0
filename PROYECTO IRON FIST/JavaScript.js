@@ -1,5 +1,3 @@
-<!--llamado al script js-->
-<script>
 // ================================================
 // IRON FIST - VERSION PROFESIONAL CON LUCES LED
 // Actualizado completo para LENINSHENKA
@@ -106,8 +104,8 @@ function JUEGO() {
             document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;27";
             Barra_Progreso.style.width = (Puntaje / 27 * 100) + "%";
 
-            tocarLED(1200, 120, 'sine', 0.6);
-            tocarLED(1600, 80, 'sawtooth', 0.4);
+            tocarLED(1200, 120, 'sine', 0.6);   // LED principal
+            tocarLED(1600, 80, 'sawtooth', 0.4); // LED secundario
 
             if (Puntaje === 27) {
                 clearInterval(intervaloPuntos);
@@ -272,6 +270,7 @@ function Reloj_Tiempo() {
         document.getElementById("Minutos").textContent = Minutos;
         document.getElementById("Segundos").textContent = Segundos;
 
+        // DÍA, MES, AÑO
         var semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
         var Mes_Actual = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
         document.getElementById("Dia_Semana").textContent = semana[Fecha.getDay()];
@@ -283,6 +282,3 @@ function Reloj_Tiempo() {
 }
 Reloj_Tiempo();
 setInterval(Reloj_Tiempo, 1000);
-</script>
-</body>
-</html>
