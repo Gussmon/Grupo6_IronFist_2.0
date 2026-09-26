@@ -1,5 +1,5 @@
 Swal.fire({
-    title : 'MISIÓN: DEFENDER LA TIERRA <br><br> <img src="IMG/planeta_tierra.png" width = "120px"><br>',
+    title : 'MISIÓN: DEFENDER LA TIERRA <br><br> <img src="IMG/logo_ironfist.png" alt="Logo Iron Fist"><br>',
     html: 'IRON FIST pondrá a prueba tus reflejos mientras avanzas por niveles cada vez más desafiantes. Supera cada misión, desbloquea logros y demuestra que tienes lo necesario para proteger la Tierra.',
     icon: 'success',
     confirmButtonText: 'COMENZAR MISIÓN',
