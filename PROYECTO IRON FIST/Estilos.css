@@ -325,7 +325,29 @@ animation: Pulso_Boton 2.2s ease-in-out infinite;
 
 /*Escena de fondo: planeta girando + asteroides acercándose*/
 .Escena_Espacio{ position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+.Escena_Espacio::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.8) 1px, transparent 2px),
+        radial-gradient(circle at 30% 70%, rgba(180,200,255,0.7) 1px, transparent 2px),
+        radial-gradient(circle at 60% 25%, rgba(255,255,255,0.7) 1px, transparent 2px),
+        radial-gradient(circle at 80% 65%, rgba(170,140,255,0.7) 1px, transparent 2px),
+        radial-gradient(circle at 45% 45%, rgba(255,255,255,0.5) 1px, transparent 2px);
+    background-size: 180px 180px;
+    opacity: 0.45;
+    animation: Brillo_Estrellas 4s ease-in-out infinite alternate;
+}
 
+@keyframes Brillo_Estrellas{
+    from{
+        opacity: 0.25;
+    }
+    to{
+        opacity: 0.65;
+    }
+}
 .Planeta_Decor{
     display: none;
     position: absolute;
