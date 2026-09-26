@@ -228,7 +228,16 @@ function JUEGOlvl3() {
             (document.getElementById("Meteorito3lvl3").offsetLeft > 630) ||
             (document.getElementById("Meteorito4lvl3").offsetLeft > 630)) {
 
-                alert("YA ES DEMASIADO TARDE LOS METIORITOS DESTRUYERON GRAN PARTE DEL CONTINENTE LO MEJOR ES ESPERAR LO PEOR")
+                                Swal.fire({
+                    title: 'GAME OVER',
+                    html: 'Un meteorito impactó la Tierra antes de tiempo. <br><br> Mantente más atento la próxima vez.',
+                    icon: 'error',
+                    confirmButtonText: 'REINTENTAR',
+                    background: '#1a1a2e',
+                    color: '#fff',
+                    confirmButtonColor: 'rgb(100, 21, 146)',
+                    width: '40%'
+                });
             document.getElementById("Perdiste_sound").play()
 
             document.getElementById("Meteoritolvl3").style.left = "-70%"
@@ -355,7 +364,16 @@ function DETENER_JUEGOlvl3() {
                 if (Tiempolvl3 == 0) {
                     Tiempolvl3 = 51
                     Puntajelvl3 = 0
-                    alert("Lo lamento perdiste")
+                                        Swal.fire({
+                        title: 'GAME OVER',
+                        html: 'Se acabó el tiempo y los meteoritos llegaron a la Tierra. <br><br> ¡Inténtalo de nuevo!',
+                        icon: 'error',
+                        confirmButtonText: 'REINTENTAR',
+                        background: '#1a1a2e',
+                        color: '#fff',
+                        confirmButtonColor: 'rgb(100, 21, 146)',
+                        width: '40%'
+                    });
                 }
             }
 
