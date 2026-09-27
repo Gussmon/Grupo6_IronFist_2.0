@@ -395,6 +395,10 @@ function Mover() {//TRANSICION DE LA PRIMERA SECCION A LA SEGUNDA
 function Mover_2(){
     var Reglas_Sacar = document.getElementById("Reglas") 
 
+    //Efecto de "activacion de mision" antes de pasar al juego (punto 14 - REGLAS)
+    var Transicion_Mision = document.getElementById("Transicion_Mision")
+    Transicion_Mision.classList.add("Activo")
+    setTimeout(function(){ Transicion_Mision.classList.remove("Activo") }, 1100)
 
     Reglas_Sacar.style.top = "-100%"
     Reglas_Sacar.style.transition = "1.4s"

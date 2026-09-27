@@ -638,26 +638,112 @@ animation: Pulso_Boton 2.2s ease-in-out infinite;
 
 /*SECCION REGLAS ------------------------------------------------------------------------------------------------------*/
 
+#Reglas{
+    position: relative; width: 100%; top: 120%; opacity: 0;
+    min-height: 100vh; overflow: hidden; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center;
+    padding: 4vw 2vw;
+}
 
+/* Fondo espacial propio de la sección (punto 9) */
+.Reglas_Fondo{ position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background: radial-gradient(circle at 20% 20%, rgba(157,78,221,0.18), transparent 55%),
+                radial-gradient(circle at 80% 80%, rgba(57,255,136,0.10), transparent 55%); }
+.Reglas_Fondo .Estrella{ position: absolute; width: 3px; height: 3px; background: white; border-radius: 50%;
+    opacity: 0.7; animation: Titilar 3s ease-in-out infinite; }
+.Reglas_Fondo .e1{ top: 8%; left: 12%; }
+.Reglas_Fondo .e2{ top: 22%; left: 80%; animation-delay: .4s; }
+.Reglas_Fondo .e3{ top: 60%; left: 6%; animation-delay: .8s; }
+.Reglas_Fondo .e4{ top: 75%; left: 90%; animation-delay: 1.2s; }
+.Reglas_Fondo .e5{ top: 40%; left: 45%; animation-delay: 1.6s; }
+.Reglas_Fondo .e6{ top: 88%; left: 35%; animation-delay: 2s; }
+@keyframes Titilar{ 0%,100%{ opacity: .2; } 50%{ opacity: 1; } }
 
-#Reglas{position: relative; width: 100%; top: 120%; opacity: 0;}
+.Reglas_Contenido{ position: relative; z-index: 1; width: 100%; max-width: 1100px;
+    display: flex; flex-direction: column; align-items: center; gap: 2vw; }
 
-.Titulo_Reglas{font-size: 2.4VW; position: relative; top: -20%; left: 2%; font-family: 'Press Start 2P', cursive;}
+/* Título (puntos 1 y 2) */
+.Titulo_Reglas{
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(1.1rem, 2.6vw, 2rem);
+    text-align: center; color: var(--if-texto, white); margin: 0;
+    text-shadow: 0 0 10px var(--if-accion, #9D4EDD), 0 2px 6px rgba(0,0,0,0.8);
+    letter-spacing: 1px;
+}
 
-.Img_reglas {margin-top: 1%; margin-left: 2%; width: 34%}
+.Reglas_Layout{ display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: center; gap: 2.5vw; width: 100%; }
 
-.Reglas_estilos {background: rgba(248, 248, 248, 0.521); color: black; border: 0.19vw solid black; 
-width: 40%; height: auto; position: absolute;   left: 58% ; font-size: 1.14vw;}
+/* Imagen (puntos 7 y 8) */
+.Reglas_ImagenWrap{ flex: 1 1 280px; max-width: 380px; text-align: center; }
+.Img_reglas{
+    width: 100%; border-radius: 12px;
+    border: 2px solid var(--if-accion, #9D4EDD);
+    box-shadow: 0 0 18px rgba(157,78,221,0.5), 0 6px 14px rgba(0,0,0,0.5);
+}
+.Reglas_ImagenCaption{ color: var(--if-texto, white); font-size: 0.85rem; opacity: 0.85; margin-top: 0.6em; }
 
-#R1 {top: -4%;}
-#R2 {top: 38%;}
-#R3_4 {top: 75%;}
-.Reglas_estilos h3  {margin-left: 3%; margin-right: 3%; text-align: center;} 
-.Reglas_estilos p  {margin-left: 3%; margin-right: 3%; text-align: center;} 
+/* Tarjetas de reglas (puntos 3, 4, 5, 6, 10, 11) */
+.Reglas_Tarjetas{ flex: 2 1 420px; display: flex; flex-direction: column; gap: 1vw; }
 
-.Listo {width: 34%; height: 8vh; background: rgb(100, 21, 146); display: flex; 
-align-items: center; justify-content: center; cursor: pointer; position: relative; left: 2%; top: 2vw; font-size: 1.5vw;
-font-family: 'Inconsolata', monospace;}
+.Regla_Card{
+    background: rgba(15, 12, 35, 0.65);
+    border: 1px solid rgba(157,78,221,0.5);
+    border-radius: 10px;
+    padding: 1.1vw 1.4vw;
+    color: var(--if-texto, white);
+    box-shadow: 0 0 12px rgba(157,78,221,0.15);
+    opacity: 0; transform: translateY(16px);
+    animation: Aparecer_Card 0.6s ease forwards;
+}
+#R1{ animation-delay: 0.1s; }
+#R2{ animation-delay: 0.3s; }
+#R3_4{ animation-delay: 0.5s; }
+@keyframes Aparecer_Card{ to{ opacity: 1; transform: translateY(0); } }
+
+.Regla_Card h3{ margin: 0 0 0.3em; font-family: 'Press Start 2P', cursive; font-size: 0.85rem; }
+.Regla_Card p{ margin: 0; font-family: 'Inconsolata', monospace; font-size: 0.95rem; line-height: 1.4; }
+.Regla_Icono{ font-size: 1.6rem; margin-bottom: 0.2em; }
+
+.Dato_Clave{ color: var(--if-exito, #39FF88); }
+.Dato_Peligro{ color: var(--if-peligro, #FF4D5E); }
+
+/* Botón de inicio (puntos 12 y 13) */
+.Listo{
+    background: var(--if-accion, #9D4EDD);
+    color: var(--if-texto, white);
+    border: none; cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: clamp(0.8rem, 1.3vw, 1.1rem);
+    padding: 1em 2em; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 0 var(--if-accion-dark, #6E2FA0), 0 10px 18px rgba(0,0,0,0.4);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.2s ease;
+}
+.Listo:hover{ transform: translateY(-2px) scale(1.03); filter: brightness(1.1); }
+.Listo:active{ transform: translateY(4px) scale(1.0); box-shadow: 0 2px 0 var(--if-accion-dark, #6E2FA0), 0 4px 8px rgba(0,0,0,0.4); }
+
+/* Responsive de la sección de reglas */
+@media (max-width: 800px){
+    .Reglas_Layout{ flex-direction: column; align-items: center; }
+    .Reglas_Tarjetas{ width: 100%; }
+    .Reglas_ImagenWrap{ max-width: 100%; }
+}
+
+/* Transicion "activacion de mision" al pasar de Reglas al Juego (punto 14) */
+.Transicion_Mision{
+    position: fixed; inset: 0; z-index: 99999;
+    background: radial-gradient(circle, rgba(157,78,221,0.9) 0%, rgba(11,14,31,0.98) 70%);
+    opacity: 0; pointer-events: none;
+}
+.Transicion_Mision.Activo{
+    animation: Activacion_Mision 1.1s ease-in-out forwards;
+}
+@keyframes Activacion_Mision{
+    0%   { opacity: 0; }
+    15%  { opacity: 1; }
+    85%  { opacity: 1; }
+    100% { opacity: 0; }
+}
 
 
 
