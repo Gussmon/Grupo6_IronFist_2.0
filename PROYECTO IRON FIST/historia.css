@@ -1,0 +1,110 @@
+/* =========================================================
+   IRON FIST — "Cuándo empezó" / Historia (Gustavo)
+   Mismo patrón que GRECIA-REGLAS-REPONSIVE y
+   erickmedina-bienvenida-responsive: tarjeta con sombra,
+   flexbox, y un @media (max-width: 900px) real para celular.
+   Se carga DESPUÉS de Estilos.css y estilos-base.css.
+   ========================================================= */
+
+#Seccion_2 {
+  position: relative;
+  top: 10%;
+  padding: 3vw 4vw;
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------
+   Layout en flexbox (imagen + tarjeta de texto lado a lado)
+   en vez de floats + posiciones absolutas en px fijos
+   --------------------------------------------------------- */
+.Historia_Contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3vw;
+  flex-wrap: wrap;
+}
+
+.Titulo_historia {
+  font-family: var(--if-font-titulo);
+  text-align: left;
+  font-size: clamp(1.4rem, 3.2vw, 2.5rem);
+  color: var(--if-texto);
+  width: 100%;
+  margin-bottom: 1vw;
+}
+
+.Imgane_metiorito {
+  width: min(600px, 34%);
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 18px rgba(255, 77, 94, 0.35));
+}
+
+.Contenedor_Historia {
+  width: min(480px, 40%);
+  background: rgba(20, 10, 30, 0.78);
+  color: var(--if-texto);
+  padding: 2.4vw;
+  border-radius: 0.6vw;
+  border: 1px solid var(--if-accion);
+  box-shadow: 0 0 24px rgba(157, 78, 221, 0.35);
+  font-family: var(--if-font-texto);
+  line-height: 1.5;
+}
+.Contenedor_Historia h3 {
+  color: var(--if-accion);
+}
+
+.Boton_preparado {
+  width: 70%;
+  height: 6vh;
+  background: var(--if-accion);
+  display: flex;
+  font-size: 1.2vw;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--if-texto);
+  font-family: var(--if-font-texto);
+  margin: 2vw auto 0 auto;
+  border-radius: 0.4vw;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.Boton_preparado:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 14px rgba(157, 78, 221, 0.6);
+}
+
+.Contenedor_narracion {
+  width: 9vh;
+  height: 9vh;
+  background: var(--if-accion);
+  color: var(--if-texto);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.Contenedor_narracion:hover { transform: scale(1.06); }
+
+/* ---------------------------------------------------------
+   RESPONSIVE — mismo breakpoint que usó Grecia en Reglas
+   --------------------------------------------------------- */
+@media (max-width: 900px) {
+  .Historia_Contenedor {
+    flex-direction: column;
+  }
+  .Imgane_metiorito {
+    width: 70%;
+  }
+  .Contenedor_Historia {
+    width: 100%;
+    font-size: 3.6vw;
+  }
+  .Boton_preparado {
+    width: 90%;
+    font-size: 4vw;
+  }
+}
