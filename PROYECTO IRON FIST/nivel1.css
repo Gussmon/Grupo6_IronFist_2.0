@@ -214,3 +214,71 @@
   box-shadow: -6px 0 12px rgba(255, 77, 94, 0.5);
   position: absolute; top: 0%; left: 70%;
 }
+
+/* ---------------------------------------------------------
+   RESPONSIVE — móvil y tablets
+   --------------------------------------------------------- */
+@media (max-width: 800px) {
+  .Cabezeralvl1 {
+    height: auto;
+    padding: 8px 4px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .Tiempolvl1, .Puntajelvl1, .Pauselvl1 {
+    min-width: 80px;
+  }
+
+  .Tiempolvl1 span, .Puntajelvl1 span {
+    font-size: 1rem;
+  }
+
+  .Contenedorlvl1 {
+    height: min(115vw, 560px);
+    border-radius: 0 0 10px 10px;
+  }
+
+  .Texolvl1 {
+    font-size: clamp(0.9rem, 4vw, 1.4rem);
+  }
+
+  .Tarjeta_dificultad {
+    flex-wrap: wrap;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .Tarjeta_dificultad img {
+    width: 15% !important;
+  }
+
+  .Playlvl1 {
+    width: 40%;
+    height: 12%;
+    font-size: 0.7rem;
+  }
+
+  .Meteoritolvl1 {
+    width: 44px !important;
+  }
+
+  .Limitelvl1 {
+    width: 30px;
+    left: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .Cabezeralvl1 {
+    justify-content: space-around;
+  }
+
+  .Tiempolvl1 h3, .Puntajelvl1 h3 {
+    font-size: 0.55rem;
+  }
+
+  .Playlvl1 {
+    width: 55%;
+  }
+}
