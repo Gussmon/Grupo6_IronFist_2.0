@@ -1,20 +1,28 @@
 Swal.fire({
-    title : '¿Preparado para salvar el mundo? <br><br> <img src="IMG/planeta_tierra.png" width = "120px"><br>',
-    html: 'IRON FIST, es un juego que mejorara tus reflejos a medida que pases de nivel, retandote cada vez mas a medida que avances y desbloqueando grandes logros al final de cada nivel, esperamos te diviertas y disfrutes de este gran juego   ',
-    icon: 'sucess',
-    confirmButtonText: 'ESTOY PREPARADO',
+    title : 'MISIÓN: DEFENDER LA TIERRA <br><br> <img src="IMG/logo_ironfist.png" alt="Logo Iron Fist"><br>',
+    html: 'IRON FIST pondrá a prueba tus reflejos mientras avanzas por niveles cada vez más desafiantes. Supera cada misión, desbloquea logros y demuestra que tienes lo necesario para proteger la Tierra.',
+    icon: 'success',
+    confirmButtonText: 'COMENZAR MISIÓN',
+
+    customClass: {
+        popup: 'Modal_Mision',
+        title: 'Modal_Mision_Titulo',
+        htmlContainer: 'Modal_Mision_Texto',
+        confirmButton: 'Modal_Mision_Boton'
+    },
+
+    buttonsStyling: false,
+
     width: '50%',
     height: '80%',
     timer: 100000,
-    
-    
+
     timerProgressbar: true,
-    /*Funcion de cerrar la alerta*/
     allowOutsideClick: true,
     allowEscapeKey: false,
     allowEnterkey: false,
     stopKeydownPropagation: false,
-    });
+});
 
 
 
