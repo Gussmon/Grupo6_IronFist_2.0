@@ -589,16 +589,12 @@ function Mover_3() {//TRANSICION DE LA SEGUNDA SECCION A LA TERCERA
         var Contenedor_juego = document.getElementById("Contenedor_Juego")
         var Cabezara = document.getElementById("Cabezera")
 
-        Seccion_Juego.style.left = "0%"
-        contenedor_2.style.display = "none"
-        juego.style.top = "0%"
-        juego.style.transition = "0s"
-        Titulo_jugar.style.left = "0%"
-        Titulo_jugar.style.transition = "0.8s"
-        Contenedor_juego.style.left = "0%"
-        Contenedor_juego.style.transition = "1.2s"
-        Cabezara.style.left = "0%"
-        Cabezara.style.transition = "1.2s"
+        if (Seccion_Juego) Seccion_Juego.style.left = "0%"
+        if (contenedor_2) contenedor_2.style.display = "none"
+        if (juego) { juego.style.top = "0%"; juego.style.transition = "0s" }
+        if (Titulo_jugar) { Titulo_jugar.style.left = "0%"; Titulo_jugar.style.transition = "0.8s" }
+        if (Contenedor_juego) { Contenedor_juego.style.left = "0%"; Contenedor_juego.style.transition = "1.2s" }
+        if (Cabezara) { Cabezara.style.left = "0%"; Cabezara.style.transition = "1.2s" }
 
     }
 

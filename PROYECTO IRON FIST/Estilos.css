@@ -1,4 +1,6 @@
 html body{margin: 0; padding: 0; font-family: sans-serif;}/*RESTABLESCO LA PAGINA, SI MARGEN EN LOS BORDES*/
+html{ overflow-x: hidden; }
+body{ overflow-x: hidden; max-width: 100vw; }
 
 /*Control de volumen de la musica de fondo, flotante y visible en todo el juego*/
 .Control_Volumen{
@@ -819,7 +821,8 @@ font-family: 'Press Start 2P', cursive; text-align: center;
 font-size: 60px;position: relative; top: 0%; left: -110%; padding-bottom: 2%;}
    
 
-.Tituloar_Juego_5 {font-family: 'Press Start 2P', cursive; text-align: center; font-size: 60px;}
+.Tituloar_Juego_5 {font-family: 'Press Start 2P', cursive; text-align: center;
+font-size: clamp(1.3rem, 5.5vw, 3.75rem); padding: 0 4vw; box-sizing: border-box;}
 
 .Contenedor_Mensaje_Star{height: 60%; width: 100%; left: 0%;  background: transparent;
 position: absolute; top: 20%; overflow: hidden; transition: 2.3s;}
@@ -841,29 +844,28 @@ position: absolute; top: 20%; overflow: hidden; transition: 2.3s;}
 }
     
    
-.NEXT {width: 15vw; height: 3vw; background: rgb(0, 132, 255); font-size: 0.9vw; display: flex; align-items: center; justify-content: center; cursor: pointer; float: right;
-margin-left: 12%; }
+.NEXT {width: min(210px, 60vw); height: auto; min-height: 40px; padding: 8px 12px; box-sizing: border-box; background: rgb(0, 132, 255); font-size: clamp(0.7rem, 1.8vw, 0.95rem); display: flex; align-items: center; justify-content: center; cursor: pointer; text-align: center; }
 
-.Contenedor_LVL{display: flex; justify-content: center; align-items: center; width: 100%; position: relative; top: 10%;}
-.Nada {width: 45vw; height: auto; background: rgba(191, 44, 228, 0.274); border: 2px solid purple; color: white; position: relative; left: 6%;  }
-.Nada h2 {padding-left: 3%; padding-right: 3%; font-size: 1.2vw;}
-.Nada p {padding-left: 3%; padding-right: 3%;}
+.Contenedor_LVL{display: flex; flex-wrap: wrap; justify-content: center; align-items: center; width: 100%; position: relative; top: 10%; box-sizing: border-box; padding: 0 4vw; gap: 16px;}
+.Nada {width: 90%; max-width: 640px; flex: 0 1 auto; margin: 0 auto; height: auto; background: rgba(191, 44, 228, 0.274); border: 2px solid purple; color: white; position: relative; box-sizing: border-box; }
+.Nada h2 {padding-left: 3%; padding-right: 3%; font-size: clamp(0.85rem, 1.6vw, 1.2rem);}
+.Nada p {padding-left: 3%; padding-right: 3%; font-size: clamp(0.8rem, 1.3vw, 1rem);}
 
 /*RELOJ*/
-.Fecha {display: flex; width: 280px; margin-bottom: 3%;
-    height: 50px; background: rgba(191, 44, 228, 0.274);
-    justify-content: center; align-items: center;
+.Fecha {display: flex; width: min(280px, 85vw); margin-bottom: 3%;
+    height: auto; min-height: 50px; background: rgba(191, 44, 228, 0.274);
+    justify-content: center; align-items: center; flex-wrap: wrap; box-sizing: border-box; padding: 4px;
     }
-    
-    .Fecha p {font-size: 23px; color: white; font-family: 'Inconsolata', monospace; }
-    
+
+    .Fecha p {font-size: clamp(0.85rem, 3.5vw, 1.4rem); color: white; font-family: 'Inconsolata', monospace; margin: 2px 0; }
+
     .Hora {
-        display: flex; width: 280px; height: 100px;
-        background: rgba(191, 44, 228, 0.274);
+        display: flex; width: min(280px, 85vw); height: auto; min-height: 100px;
+        background: rgba(191, 44, 228, 0.274); box-sizing: border-box;
         align-items: center; justify-content: center;
     }
-    
-    .Hora p {font-size: 50px; color: white; font-family: 'Inconsolata', monospace; }
+
+    .Hora p {font-size: clamp(1.6rem, 7vw, 3.1rem); color: white; font-family: 'Inconsolata', monospace; margin: 4px 0; }
     
     
     #Caja_ULT {height: 100%; width: 20%; display: flex;
