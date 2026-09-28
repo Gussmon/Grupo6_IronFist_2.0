@@ -681,10 +681,10 @@ setInterval(Reloj_Tiempo, 1000)
     // antes de aplicarse, asi el cambio SI se nota en todo el rango.
     function Convertir_A_Volumen_Real(valorSlider) {
         var v = valorSlider / 100
-        return Math.pow(v, 3)
+        return Math.pow(v, 2)
     }
 
-    var Slider_Inicial = 15
+    var Slider_Inicial = 35
     Slider_Volumen.value = Slider_Inicial
 
     function Actualizar_Icono(valorSlider) {
@@ -709,4 +709,17 @@ setInterval(Reloj_Tiempo, 1000)
     Slider_Volumen.addEventListener("input", function () {
         Aplicar_Volumen(Number(Slider_Volumen.value))
     })
+
+    // Respaldo: si el navegador bloquea el autoplay con sonido (muy comun
+    // en un dominio publico visitado por primera vez), forzamos que la
+    // musica arranque en el primer click/touch que haga el jugador.
+    if (Musica_Fondo.paused) {
+        var Intentar_Reanudar = function () {
+            Musica_Fondo.play().catch(function () { })
+            document.removeEventListener("click", Intentar_Reanudar)
+            document.removeEventListener("touchstart", Intentar_Reanudar)
+        }
+        document.addEventListener("click", Intentar_Reanudar)
+        document.addEventListener("touchstart", Intentar_Reanudar)
+    }
 })()
