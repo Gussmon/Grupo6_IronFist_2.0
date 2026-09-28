@@ -105,7 +105,7 @@ function JUEGO() {
     function Aumentar_Puntos() {
         Puntaje++;
         document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;27"
-        if (Puntaje == 3) {
+        if (Puntaje == 18) {
             Puntaje = 0
             Tiempo = 71
 

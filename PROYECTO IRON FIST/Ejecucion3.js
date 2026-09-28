@@ -30,7 +30,7 @@ function JUEGOlvl3() {
     function Aumentar_Puntoslvl3() {
         Puntajelvl3++;
         document.getElementById("Puntajelvl3").innerHTML = Puntajelvl3 + " / 4"
-        if (Puntajelvl3 == 1) {
+        if (Puntajelvl3 == 32) {
             Puntajelvl3 = 0
             Tiempolvl3 = 51
             function Contactos(){

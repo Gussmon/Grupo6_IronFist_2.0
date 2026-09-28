@@ -378,7 +378,7 @@ animation: Pulso_Boton 2.2s ease-in-out infinite;
     width: clamp(22px, 2vw, 42px);
     height: clamp(22px, 2vw, 42px);
 
-    background-image: url(IMG/Metiorito.png);
+    background-image: url(IMG/Meteorito.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -491,7 +491,7 @@ animation: Pulso_Boton 2.2s ease-in-out infinite;
         box-sizing: border-box;
     }
 
-    ..Nombre{
+    .Nombre{
     font-size: clamp(1.35rem, 7.5vw, 2.1rem);
     letter-spacing: 1.5px;
     line-height: 1.2;

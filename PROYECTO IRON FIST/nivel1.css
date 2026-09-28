@@ -1,15 +1,9 @@
 /* =========================================================
-   IRON FIST — Nivel 1 (Florcita)
+   IRON FIST — Nivel 1
    Se carga DESPUÉS de Estilos.css y estilos-base.css.
-   Todas las clases de este archivo terminan en "lvl1" y son
-   exclusivas del Nivel 1: no hace falta ningún :not() ni
-   !important, porque ya no comparten nombre con nada más.
    ========================================================= */
 
-/* ---------------------------------------------------------
-   TABLERO Y CABECERA — sin bordes entrecortados, más grandes
-   y responsivos (antes 900x500px fijos)
-   --------------------------------------------------------- */
+/* ---------- TABLERO Y CABECERA ---------- */
 .Contenedorlvl1 {
   width: min(92vw, 1100px);
   height: min(56vw, 560px);
@@ -20,9 +14,7 @@
   position: relative;
   top: 4%;
   overflow: hidden;
-  box-shadow:
-    0 0 0 2px var(--if-accion),
-    0 0 28px rgba(157, 78, 221, 0.45);
+  box-shadow: 0 0 0 2px var(--if-accion), 0 0 28px rgba(157, 78, 221, 0.45);
   margin: 0 auto;
 }
 
@@ -41,10 +33,7 @@
   box-shadow: 0 0 0 2px var(--if-accion);
 }
 
-/* ---------------------------------------------------------
-   HUD (TIEMPO / PUNTAJE) — tipografía nueva y más aire entre
-   la etiqueta y el número
-   --------------------------------------------------------- */
+/* ---------- HUD (TIEMPO / PUNTAJE) ---------- */
 .Tiempolvl1,
 .Puntajelvl1 {
   display: flex;
@@ -74,9 +63,7 @@
   color: var(--if-texto);
 }
 
-/* ---------------------------------------------------------
-   BOTÓN DE PAUSE
-   --------------------------------------------------------- */
+/* ---------- BOTÓN DE PAUSE ---------- */
 .Pauselvl1 {
   width: auto;
   min-width: 100px;
@@ -97,9 +84,7 @@
   box-shadow: 0 0 14px rgba(157, 78, 221, 0.6);
 }
 
-/* ---------------------------------------------------------
-   PANTALLA START
-   --------------------------------------------------------- */
+/* ---------- PANTALLA START ---------- */
 .Start {
   width: 100%; height: 100%; background: rgba(0, 0, 0, 0.582);
   position: absolute; top: 0%; z-index: 100000000000;
@@ -108,11 +93,18 @@
   color: white; text-align: center;
 }
 
-/* El título ya no queda pegado a la Pantalla de pausa: si
-   crece, este contenedor puede mostrarlo completo */
+/* Todo el contenido en columna: título, tarjeta y botón JUGAR siempre caben */
 #Contenedor_Mensaje_Star {
   overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 2vh, 18px);
+  height: 100%;
+  top: 0;
 }
+#Contenedor_Mensaje_Star br { display: none; }
 
 .Texolvl1 {
   font-size: clamp(1.1rem, 2.6vw, 2.2rem);
@@ -121,22 +113,52 @@
   transition: 2s;
   font-family: var(--if-font-titulo);
   color: var(--if-texto);
-  margin-top: 0%;
+  margin: 0;
 }
 
-/* Tarjeta de dificultad (antes: texto suelto con &nbsp;&nbsp;) */
+/* ---------- TARJETA DE DIFICULTAD (tema espacial) ---------- */
 .Tarjeta_dificultad {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  background: rgba(157, 78, 221, 0.12);
-  border: 1px solid var(--if-accion);
-  border-radius: 12px;
-  padding: 10px 18px;
-  width: fit-content;
-  margin: 0 auto;
   position: relative;
+  overflow: hidden;
+  width: min(88%, 640px);
+  margin: 0 auto;
+  gap: clamp(10px, 2vw, 24px);
+  padding: 10px 20px;
+  border-radius: 14px;
+  border: 1px solid var(--if-accion);
+  background:
+    radial-gradient(1.5px 1.5px at 12% 25%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 30% 75%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 62% 20%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 84% 70%, #fff 50%, transparent 51%),
+    linear-gradient(135deg, rgba(11, 14, 31, 0.85), rgba(60, 25, 100, 0.55));
+  box-shadow: 0 0 22px rgba(157, 78, 221, 0.4), inset 0 0 18px rgba(157, 78, 221, 0.15);
+}
+
+/* Tamaño fijo del gif: evita que el astronauta salga gigante */
+.Tarjeta_dificultad img {
+  height: clamp(60px, 11vh, 100px);
+  width: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.Dificultad_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+.Dificultad_etiqueta {
+  font-family: var(--if-font-titulo);
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  color: var(--if-accion-light);
 }
 
 .Pollolvl1 {
@@ -146,26 +168,58 @@
   margin: 0;
 }
 
+/* Medidor de amenaza: 3 meteoritos, 1 encendido */
+.Medidor_meteoritos { display: flex; gap: 10px; }
+.Medidor_meteoritos i {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ff9a6b, #e0452b 60%, #7a1f14);
+  box-shadow: 0 0 10px rgba(255, 77, 94, 0.7);
+}
+.Medidor_meteoritos i:not(.on) { filter: grayscale(1); opacity: 0.25; box-shadow: none; }
+
+/* Estela de meteorito que cruza la tarjeta */
+.Tarjeta_dificultad::before {
+  content: "";
+  position: absolute;
+  top: 10%; left: -30%;
+  width: 90px; height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #ffb38a, #fff);
+  transform: rotate(18deg);
+  opacity: 0;
+  animation: Estela_meteorito 4.5s ease-in infinite;
+  pointer-events: none;
+}
+@keyframes Estela_meteorito {
+  0%   { left: -30%; top: 5%;  opacity: 0; }
+  10%  { opacity: 1; }
+  45%  { left: 110%; top: 70%; opacity: 0; }
+  100% { left: 110%; top: 70%; opacity: 0; }
+}
+
+/* ---------- BOTÓN JUGAR ---------- */
 .Playlvl1 {
   background: var(--if-accion);
   color: var(--if-texto);
-  width: 18%; height: 15%;
   display: flex; align-items: center;
   justify-content: center; cursor: pointer;
-  position: relative; transition: transform 0.15s ease, box-shadow 0.15s ease;
-  top: 18%;
+  position: relative;
+  top: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+  min-width: 150px;
+  padding: 14px 28px;
   border-radius: 8px;
   font-family: var(--if-font-titulo);
-  margin: auto;
+  box-shadow: 0 5px 0 var(--if-accion-dark), 0 8px 14px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.Playlvl1:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 14px rgba(157, 78, 221, 0.6);
-}
+.Playlvl1:hover { transform: scale(1.04); }
+.Playlvl1:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--if-accion-dark); }
 
-/* ---------------------------------------------------------
-   PANTALLAS DE PAUSA / VICTORIA
-   --------------------------------------------------------- */
+/* ---------- PANTALLAS DE PAUSA / VICTORIA ---------- */
 .Pausa_Pantallalvl1 {
   position: absolute; top: 0%; width: 100%;
   height: 100%; background: rgba(0, 0, 0, 0.541);
@@ -193,9 +247,7 @@
   font-family: var(--if-font-titulo);
 }
 
-/* ---------------------------------------------------------
-   METEORITOS, PLANETA Y LÍMITE
-   --------------------------------------------------------- */
+/* ---------- METEORITOS, PLANETA Y LÍMITE ---------- */
 .Meteoritolvl1 { cursor: pointer; display: table; position: absolute; z-index: 1000; }
 #Meteorito  { position: absolute; top: 0px; left: -10%; transition: 2.4s; }
 #Meteorito2 { position: absolute; top: 0px; left: -10%; transition: 2.4s; }
@@ -213,72 +265,4 @@
   border-left: 4px solid var(--if-peligro);
   box-shadow: -6px 0 12px rgba(255, 77, 94, 0.5);
   position: absolute; top: 0%; left: 70%;
-}
-
-/* ---------------------------------------------------------
-   RESPONSIVE — móvil y tablets
-   --------------------------------------------------------- */
-@media (max-width: 800px) {
-  .Cabezeralvl1 {
-    height: auto;
-    padding: 8px 4px;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .Tiempolvl1, .Puntajelvl1, .Pauselvl1 {
-    min-width: 80px;
-  }
-
-  .Tiempolvl1 span, .Puntajelvl1 span {
-    font-size: 1rem;
-  }
-
-  .Contenedorlvl1 {
-    height: min(115vw, 560px);
-    border-radius: 0 0 10px 10px;
-  }
-
-  .Texolvl1 {
-    font-size: clamp(0.9rem, 4vw, 1.4rem);
-  }
-
-  .Tarjeta_dificultad {
-    flex-wrap: wrap;
-    padding: 8px 12px;
-    gap: 8px;
-  }
-
-  .Tarjeta_dificultad img {
-    width: 15% !important;
-  }
-
-  .Playlvl1 {
-    width: 40%;
-    height: 12%;
-    font-size: 0.7rem;
-  }
-
-  .Meteoritolvl1 {
-    width: 44px !important;
-  }
-
-  .Limitelvl1 {
-    width: 30px;
-    left: 60%;
-  }
-}
-
-@media (max-width: 480px) {
-  .Cabezeralvl1 {
-    justify-content: space-around;
-  }
-
-  .Tiempolvl1 h3, .Puntajelvl1 h3 {
-    font-size: 0.55rem;
-  }
-
-  .Playlvl1 {
-    width: 55%;
-  }
 }
