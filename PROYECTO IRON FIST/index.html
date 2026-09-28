@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="Estilos.css" >
     <link rel="stylesheet" href="estilos-base.css">
     <link rel="stylesheet" href="nivel1.css">
+    <link rel="stylesheet" href="nivel1-mejoras.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!--iMPORTE UN TIPO DE LETA-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <title>Juegos</title>
 </head>
 <body id="Fondo" >
@@ -21,9 +21,6 @@
 
 <section id="Seccion_suprema"  class="Contenedor_Supremo"> 
 
-
-
-
 <!--SECCION - 1 ------------------------------------------------------------------------------------------------------->
 
 <section class="Seccion_01" id="Seccion_01"  >
@@ -31,6 +28,7 @@
 <h1 class="Nombre">IRON FIST</h1><h1 class="Texto_Principal">¿LISTO PARA DEFENDER<br> EL PLANETA?</h1>
 <button class="Boton" id="Juego" onclick="Mover()">JUGAR</button>
 </section>
+
 <!--SECCION - 3 ------------------------------------------------------------------------------------------------------->
 
 <section  id="Reglas">
@@ -45,7 +43,6 @@
         </p>
     </div>
 
-
     <div class="Reglas_estilos" id="R2">
         <h3>REGLA : 2</h3>
         <p>El tiempo que se señala es el límite máximo que puede aguantar la defensa, siendo unos 60 segundos, en los que
@@ -53,7 +50,6 @@
             puntos.
         </p>
     </div>
-
 
     <div class="Reglas_estilos" id="R3_4">
         <h3>REGLA : 3 y 4</h3>
@@ -65,10 +61,7 @@
 
 <div class="Listo" onclick="Mover_2()">¿Estas listo?</div>
 
-
 </section>
-
-
 
 <!--SECCION - 4 ------------------------------------------------------------------------------------------------------->
 
@@ -97,14 +90,13 @@ preparando con la ayuda del resto de gobiernos, la iniciativa "IRON FIST", que c
         <div id="NIVEL_01">
             <!--Contenedor-Cabezera-->
             <div class="Cabezeralvl1">
-            <div class="Tiempolvl1"><h3>TIEMPO</h3><span id="Tiempo">70</span></div><!--Tiempo con su span para la el final del minuto--> 
-            <div class="Puntajelvl1"><h3>PUNTAJE</h3><span id="Puntaje">0&nbsp;/&nbsp;27</span></div><!--Puntaje con su span que indica el puntaje-->
-            <div class="Pauselvl1" id="Pause"><h3>PAUSE / REANUDA</h3></div><!--Boton de pause-->
-        
+            <div class="Tiempolvl1"><h3>TIEMPO</h3><span id="Tiempo">70</span></div>
+            <div class="Puntajelvl1"><h3>PUNTAJE</h3><span id="Puntaje">0&nbsp;/&nbsp;27</span></div>
+            <div class="Pauselvl1" id="Pause"><h3>PAUSE / REANUDA</h3></div>
             </div>
-    
+
             <!--CCMIENZO DEL JUEGO------------------------------------------------------>
-    
+
             <!--Contenedor general del juego-->
             <div class="Contenedorlvl1"> 
             <!--EFECTOS DE SONIDO-->
@@ -124,31 +116,34 @@ preparando con la ayuda del resto de gobiernos, la iniciativa "IRON FIST", que c
             <img src="IMG/planeta_tierra.png" width="400px" class="Planetalvl1">
             <!--Limite dentro del tablero del juego-->
             <div class="Limitelvl1"></div>
-    
+
             <!--ELEMENTOS DE START---------------------------------------------------------->
-    
+
             <!--Pantalla principal al ingresar al juego START-->
             <div class="Start" id="Start">
             <div class="Contenedor_Mensaje_Star" id="Contenedor_Mensaje_Star">
-            <h1 class="Texolvl1" id="Texo">¿Listo para salvar<br> el mundo? -&gt; Nivel 1</h1> <!--Titulo de la seccion start-->
-            
+            <h1 class="Texolvl1" id="Texo">¿Listo para salvar<br> el mundo? -&gt; Nivel 1</h1>
 
             <div class="Tarjeta_dificultad">
-            <img src="IMG/Pez_Globo.gif" width="18%" id="chems1">
-            <h1 class="Pollolvl1">Dificultad: Pez globo</h1>
-            <img src="IMG/Pez_Globo.gif" width="18%" id="chems2">
+              <img src="IMG/astronauta_01.gif" id="chems1">
+              <div class="Dificultad_info">
+                <span class="Dificultad_etiqueta">AMENAZA</span>
+                <h1 class="Pollolvl1">Dificultad: Astronauta</h1>
+                <div class="Medidor_meteoritos"><i class="on"></i><i></i><i></i></div>
+              </div>
+              <img src="IMG/astronauta_01.gif" id="chems2">
             </div>
 
-            <br> <div class="Playlvl1" id="Play">JUGAR</div><!--Boton de jugar-->
+            <div class="Playlvl1" id="Play">JUGAR</div><!--Boton de jugar-->
             </div>
             <div id="Contenedor_contador"><span id="RGB"></span></div><!--Span que contiene el conteo-->
             </div>
-    
+
             <!--PANTALLA AL PRECIONAR PAUSE---------------------------------------------->
             <div class="Pausa_Pantallalvl1" id="Pausa_Pantalla">
-            <h1 class="Mensaje_Pauselvl1">El juego está<br> en pausa</h1><!--Mensaje del juego al estar en pausa-->
+            <h1 class="Mensaje_Pauselvl1">El juego está<br> en pausa</h1>
             </div>
-    
+
             <!--CONTENEDOR DE AL GANAR EL JUEGO-->
 
             <div class="GANASTE_PANTALLAlvl1" id="GANASTE_PANTALLA">
@@ -158,21 +153,21 @@ preparando con la ayuda del resto de gobiernos, la iniciativa "IRON FIST", que c
                 Esperemos que sigas así — ahora ve por el siguiente nivel, no te
                 olvides que tienes la opción de "Siguiente nivel" debajo del juego.</h3>
                 </div>
-            </div>
+            </div><!--FIN DEL TABLERO-->
+        </div><!--FIN NIVEL_01-->
 
 <section id="NIVEL_02"><!--SEGUNDO LVL------------------------------------------------------------------------>
 
-
         <!--Contenedor-Cabezera-->
         <div class="Cabezeralvl2 Contenedorlvl2">
-            <div class="Tiempolvl2"><h3>TIEMPO</h3><span id="Tiempolvl2">60</span></div><!--Tiempo con su span para la el final del minuto--> 
-            <div class="Puntajelvl2"><h3>PUNTAJE</h3><span id="Puntajelvl2">0 / 34</span></div><!--Puntaje con su span que indica el puntaje-->
-            <div class="Pauselvl2" id="Pauselvl2"><h3>PAUSE / REANUDA</h3></div><!--Boton de pause-->
+            <div class="Tiempolvl2"><h3>TIEMPO</h3><span id="Tiempolvl2">60</span></div>
+            <div class="Puntajelvl2"><h3>PUNTAJE</h3><span id="Puntajelvl2">0 / 34</span></div>
+            <div class="Pauselvl2" id="Pauselvl2"><h3>PAUSE / REANUDA</h3></div>
         
             </div>
-    
+
             <!--CCMIENZO DEL JUEGO------------------------------------------------------>
-    
+
             <!--Contenedor general del juego-->
             <div class="Contenedorlvl2"> 
             <!--IMAGENES DEBTRO DE JUEGO-->
@@ -182,9 +177,9 @@ preparando con la ayuda del resto de gobiernos, la iniciativa "IRON FIST", que c
             <img src="IMG/planeta_tierra.png" width="400px" class="Planetalvl2">
             <!--Limite dentro del tablero del juego-->
             <div class="Limitelvl2"></div>
-    
+
             <!--ELEMENTOS DE START---------------------------------------------------------->
-    
+
             <!--Pantalla principal al ingresar al juego START-->
             <div class="Startlvl2" id="Startlvl2">
             <h1 class="Texolvl2" id="Texolvl2">¿LISTO PARA SALVAR<br> EL MUNDO? -> LVL: 2 </h1>
@@ -197,11 +192,10 @@ preparando con la ayuda del resto de gobiernos, la iniciativa "IRON FIST", que c
             <br> <div class=Playlvl2 id="Playlvl2">JUGAR</div><!--Boton de jugar-->
             <div id="Contenedor_contadorlvl2"><span id="RGBlvl2"></span></div><!--Span que contiene el conteo-->
             </div>
-    
-    
+
             <!--PANTALLA AL PRECIONAR PAUSE---------------------------------------------->
             <div class="Pausa_Pantallalvl2" id="Pausa_Pantallalvl2">
-            <h1 class="Mensaje_Pauselvl2">EL JUEGO ESTA<br> EN PAUSE</h1><!--Mensaje del juego al estar en pausa-->
+            <h1 class="Mensaje_Pauselvl2">EL JUEGO ESTA<br> EN PAUSE</h1>
             </div>
 
             <div class="GanastePantallaLvL2" id="GanastePantallaLvL2">
@@ -212,12 +206,10 @@ preparando con la ayuda del resto de gobiernos, la iniciativa "IRON FIST", que c
                     AUMENTA EXPONENCIALMENTE 
                 </h3>
                 <div style="display: flex; width: auto;">
-                
 
-            
             <script src="Ejecucion2.js"></script>
         </div>
-    
+
          </div><!--FIN DEL JUEGO-->
     </section>
 
@@ -226,54 +218,40 @@ preparando con la ayuda del resto de gobiernos, la iniciativa "IRON FIST", que c
 
                 <!--Contenedor-Cabezera-->
                 <div class="Cabezeralvl3 Contenedorlvl3">
-                    <!--Tiempo con su span para la el final del minuto-->
                     <div class="Tiempolvl3"><h3>TIEMPO</h3><span id="Tiempolvl3">50</span></div>
-                    <!--Puntaje con su span que indica el puntaje-->
                     <div class="Puntajelvl3">
                         <h3>PUNTAJE</h3>
                         <span id="Puntajelvl3">0 / 40</span>
                     </div>
-                    <!--Boton de pause-->
                     <div class="Pauselvl3" id="Pauselvl3">
                         <h3>PAUSE / REANUDAR</h3>
                     </div>
                 </div>
-        
-                <!--CCMIENZO DEL JUEGO------------------------------------------------------>
-        
+
                 <!--Contenedor general del juego-->
                 <div class="Contenedorlvl3">
-                    <!--IMAGENES DEBTRO DE JUEGO-->
                     <img src="IMG/Metiorito.png" width="70px" class="Meteoritolvl3" id="Meteoritolvl3">
                     <img src="IMG/Metiorito.png" width="70px" class="Meteoritolvl3" id="Meteorito2lvl3">
                     <img src="IMG/Metiorito.png" width="70px" class="Meteoritolvl3" id="Meteorito3lvl3">
                     <img src="IMG/Metiorito.png" width="70px" class="Meteoritolvl3" id="Meteorito4lvl3">
                     <img src="IMG/planeta_tierra.png" width="400px" class="Planetalvl3">
-        
-                    <!--Limite dentro del tablero del juego-->
+
                     <div class="Limitelvl3"></div>
-        
-                    <!--ELEMENTOS DE START---------------------------------------------------------->
-        
+
                     <!--Pantalla principal al ingresar al juego START-->
                     <div class="Startlvl3" id="Startlvl3">
-                        <!--Titulo de la seccion start-->
                         <h1 class="Textolvl3" id="Textolvl3">¿LISTO PARA SALVAR<br> EL MUNDO? -> LVL: 3</h1> <br>
-                        <!--Boton de jugar-->
                         <div class=Playlvl3 id="Playlvl3">JUGAR</div>
-                        <!--Dificultad-->
                         <div class="Dificultadlvl3" id="Dificultadlvl3">
                         <img src="IMG/Megalodon.gif" width="16%">
                         &nbsp;<h1 style="font-size: 27px; font-family: 'Press Start 2P', cursive;">
                         Dificultad: Megalodon</h1>&nbsp;
                         <img src="IMG/Megalodon.gif" width="16%">
                         </div>
-                        <!--Span que contiene el conteo-->
                         <div id="Contenedor_contadorlvl3"><span id="RGBlvl3"></span></div>
                     </div>
-        
+
                     <!--Pantalla de sorpresa-->
-                    
                     <div class="Pantalla_navelvl3" id="Pantalla_Ovnislvl3">
                         <img src="IMG/nave.gif" class="Ovnislvl3" id="Navelvl3">
                         <img src="IMG/nave.gif" class="Ovnislvl3" id="Nave2lvl3">
@@ -285,7 +263,7 @@ preparando con la ayuda del resto de gobiernos, la iniciativa "IRON FIST", que c
                         <img src="IMG/nave.gif" class="Ovnislvl3" id="Nave3lvl3">
                         <img src="IMG/nave.gif" class="Ovnislvl3" id="Nave4lvl3">
                     </div>
-        
+
                     <!--Pantalla de créditos-->
                     <div id="Pantalla_creditoslvl3"></div>
                     <div id="Creditoslvl3">
@@ -299,16 +277,13 @@ preparando con la ayuda del resto de gobiernos, la iniciativa "IRON FIST", que c
                         <h4>Próximamente:</h4>
                         <h4>Iron Fist 2</h4>
                     </div>
-        
-                    <!--PANTALLA AL PRESIONAR PAUSE---------------------------------------------->
+
                     <div class="Pausa_Pantallalvl3" id="Pausa_Pantallalvl3">
-                        <!--Mensaje del juego al estar en pausa-->
                         <h1 class="Mensaje_Pauselvl3">EL JUEGO ESTA<br>EN PAUSE</h1>
                     </div>
                 </div>
                 <script src="Ejecucion3.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 
         </section>
 
@@ -341,14 +316,12 @@ preparando con la ayuda del resto de gobiernos, la iniciativa "IRON FIST", que c
 <div class="NEXT" id="NEXT"><h2>SIGUIENTE NIVEL <i class="fas fa-arrow-right"></i></h2></div>
 </div>
 
-
     </section>
 
 </section>
 
 <!--llamado al script js-->
 <script src="JavaScript.js"></script>
-
 
 </body>
 </html>
