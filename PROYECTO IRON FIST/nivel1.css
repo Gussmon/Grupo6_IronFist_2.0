@@ -228,12 +228,13 @@
 
 .GANASTE_PANTALLAlvl1 {
   position: absolute; width: 100%; height: 100%;
-  background: rgba(57, 255, 136, 0.25);
+  background: rgba(20, 8, 35, 0.92);
   z-index: 900; top: 0%; display: none;
   justify-content: center; align-items: center; flex-direction: column;
+  box-shadow: inset 0 0 90px rgba(157, 78, 221, 0.5);
 }
 .GANASTE_PANTALLAlvl1 h1 {
-  font-family: var(--if-font-titulo); color: var(--if-exito);
+  font-family: var(--if-font-titulo); color: var(--if-accion-light);
   text-align: center; font-size: 2rem;
 }
 .GANASTE_PANTALLAlvl1 h3 {
@@ -249,8 +250,11 @@
 
 /* ---------- METEORITOS, PLANETA Y LÍMITE ---------- */
 .Meteoritolvl1 { cursor: pointer; display: table; position: absolute; z-index: 1000; }
-#Meteorito  { position: absolute; top: 0px; left: -10%; transition: 2.4s; }
-#Meteorito2 { position: absolute; top: 0px; left: -10%; transition: 2.4s; }
+/* Antes los 2 meteoritos arrancaban en el mismo top:0px, así que al
+   inicio se veían como uno solo amontonado hasta que el JS los movía.
+   Con alturas distintas desde el principio se ven separados desde ya. */
+#Meteorito  { position: absolute; top: 30px;  left: -10%; transition: 2.4s; }
+#Meteorito2 { position: absolute; top: 280px; left: -10%; transition: 2.4s; }
 
 .Planetalvl1 {
   position: absolute; top: 12%; left: 80%;
@@ -259,10 +263,30 @@
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
+/* Faltaba este @keyframes: sin él, "animation-name: rotation" no hace nada
+   y el planeta se queda quieto. */
+@keyframes rotation {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 .Limitelvl1 {
   height: 100%; width: 50px;
   border-left: 4px solid var(--if-peligro);
   box-shadow: -6px 0 12px rgba(255, 77, 94, 0.5);
   position: absolute; top: 0%; left: 70%;
+}
+
+/* ---------- CUENTA REGRESIVA ---------- */
+/* Antes no tenía nada de estilo: salía con el tamaño de letra por
+   defecto del navegador, chiquito. Le damos el mismo tratamiento
+   grande/llamativo que ya tienen Nivel 2 y 3. */
+#Contenedor_contador { height: auto; display: table; position: relative; }
+#RGB {
+  font-size: clamp(3rem, 10vw, 8rem);
+  position: relative;
+  font-family: var(--if-font-titulo);
+  color: var(--if-accion-light);
+  display: table-cell;
+  vertical-align: middle;
 }

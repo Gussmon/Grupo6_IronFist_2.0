@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Estilos.css">
     <link rel="stylesheet" href="estilos-base.css">
+    <link rel="stylesheet" href="historia.css">
     <link rel="stylesheet" href="nivel1.css">
     <link rel="stylesheet" href="nivel2.css">
     <link rel="stylesheet" href="nivel3.css">
@@ -101,26 +102,26 @@
         <!--SECCION - 4 ------------------------------------------------------------------------------------------------------->
 
         <section id="Seccion_2">
-            <h1 class="Titulo_historia" id="Titulo_historia">Todo empezo cuando...</h1>
-            <div class="Contenedor_Historia" id="Mensaje">
-                <h3 style="margin-top: -1%;">CAPÍTULO I: NUESTRA SALVACIÓN</h3>
-                En cierto día, las noticias de todo el mundo anunciaron que muy pronto se acercarían meteoritos de gran
-                tamaño a la tierra y que solo era cuestión de horas para que comenzaran a llegar; el resultado de esto
-                fue inmediato ya que
-                miles de personas comenzaron a alertarse y a hacer disturbios, en centros comerciales y areas publicas,
-                para que el gobierno les
-                diera alguna respuesta; pero el gobierno ya tenía un plan de contingencia, ya que ellos se habían
-                enterado de la llegada de estos con días de antelación
-                preparando con la ayuda del resto de gobiernos, la iniciativa "IRON FIST", que consistía en los
-                proyectiles más letales de la tierra y nuestra única salvación
-                <div class="BOTONES_2">
-                    <div class="Boton_preparado" onclick="Mover_3()">¿Estas preparado? </div>
-                    <div class="Contenedor_narracion" id="Contenedor_narracion">
-                        <i class="fas fa-play" id="VOLUMEN"></i><i class="fas fa-pause" id="PAUSE"></i>
+            <h1 class="Titulo_historia" id="Titulo_historia">Todo empezó cuando...</h1>
+            <div class="Historia_Contenedor">
+                <img src="IMG/Metioritos_Callendo.jpg" class="Imgane_metiorito" id="Imagen">
+                <div class="Contenedor_Historia" id="Mensaje">
+                    <h3 style="margin-top: -1%;">CAPÍTULO I: NUESTRA SALVACIÓN</h3>
+                    <p>En cierto día, las noticias de todo el mundo anunciaron que muy pronto se acercarían meteoritos
+                        de gran tamaño a la Tierra, y que solo era cuestión de horas para que comenzaran a llegar.</p>
+                    <p>El resultado fue inmediato: miles de personas comenzaron a alertarse y a generar disturbios en
+                        centros comerciales y áreas públicas, exigiendo una respuesta del gobierno.</p>
+                    <p>Pero el gobierno ya tenía un plan de contingencia. Se había enterado de la llegada de los
+                        meteoritos con días de antelación y, con ayuda del resto de gobiernos del mundo, preparó la
+                        iniciativa "IRON FIST": los proyectiles más letales de la Tierra, y nuestra única salvación.</p>
+                    <div class="BOTONES_2">
+                        <div class="Boton_preparado" onclick="Mover_3()">¿Estás preparado?</div>
+                        <div class="Contenedor_narracion" id="Contenedor_narracion">
+                            <i class="fas fa-play" id="VOLUMEN"></i><i class="fas fa-pause" id="PAUSE"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-            <img src="IMG/Metioritos_Callendo.jpg" class="Imgane_metiorito" id="Imagen">
         </section>
 
         <!--SECCION - 5 ------------------------------------------------------------------------------------------------------->
@@ -131,18 +132,17 @@
             <h1 class="Tituloar_Juego_5">¡ES HORA DE JUGAR!</h1>
 
             <!--CABEZERA DEL JUEGO------------------------------------------------------->
-            <!--CABEZERA DEL JUEGO------------------------------------------------------->
             <div id="NIVEL_01">
                 <!--Contenedor-Cabezera-->
                 <div class="Cabezeralvl1">
                     <div class="Tiempolvl1">
-                        <h3>TIEMPO</h3><span id="Tiempo">70</span>
+                        <h3>TIEMPO</h3><span id="Tiempo">50</span>
                     </div><!--Tiempo con su span para la el final del minuto-->
                     <div class="Puntajelvl1">
-                        <h3>PUNTAJE</h3><span id="Puntaje">0&nbsp;/&nbsp;27</span>
+                        <h3>PUNTAJE</h3><span id="Puntaje">0&nbsp;/&nbsp;12</span>
                     </div><!--Puntaje con su span que indica el puntaje-->
                     <div class="Pauselvl1" id="Pause">
-                        <h3>PAUSE / REANUDA</h3>
+                        <h3>PAUSAR / REANUDAR</h3>
                     </div><!--Boton de pause-->
                 </div>
 
@@ -215,15 +215,15 @@
 
 
                 <!--Contenedor-Cabezera-->
-                <div class="Cabezeralvl2 Contenedorlvl2">
+                <div class="Cabezeralvl2">
                     <div class="Tiempolvl2">
                         <h3>TIEMPO</h3><span id="Tiempolvl2">60</span>
                     </div><!--Tiempo con su span para la el final del minuto-->
                     <div class="Puntajelvl2">
-                        <h3>PUNTAJE</h3><span id="Puntajelvl2">0 / 34</span>
+                        <h3>PUNTAJE</h3><span id="Puntajelvl2">0 / 18</span>
                     </div><!--Puntaje con su span que indica el puntaje-->
                     <div class="Pauselvl2" id="Pauselvl2">
-                        <h3>PAUSE / REANUDA</h3>
+                        <h3>PAUSAR / REANUDAR</h3>
                     </div><!--Boton de pause-->
 
                 </div>
@@ -245,14 +245,16 @@
                     <!--Pantalla principal al ingresar al juego START-->
                     <div class="Startlvl2" id="Startlvl2">
                         <h1 class="Texolvl2" id="Texolvl2">¿Listo para salvar<br> el mundo? -&gt; Nivel: 2</h1>
-                        <div id="Dificultad">
-                            <img src="IMG/ceres.png" width="12%">
-                            <h1 style="font-size: 27px; font-family: 'Press Start 2P', cursive;">&nbsp;Dificultad :
-                                Tiburon&nbsp;</h1>
-                            <img src="IMG/ceres.png" width="12%">
-                        </div>
                         <!--Titulo de la seccion start-->
-                        <br>
+                        <div class="Tarjeta_dificultadlvl2" id="Dificultad">
+                            <img src="IMG/ceres.png">
+                            <div class="Dificultad_info">
+                                <span class="Dificultad_etiqueta">AMENAZA</span>
+                                <h1>Dificultad: Ceres</h1>
+                                <div class="Medidor_meteoritos"><i class="on"></i><i class="on"></i><i></i></div>
+                            </div>
+                            <img src="IMG/ceres.png">
+                        </div>
                         <div class=Playlvl2 id="Playlvl2">JUGAR</div><!--Boton de jugar-->
                         <div id="Contenedor_contadorlvl2"><span id="RGBlvl2"></span></div>
                         <!--Span que contiene el conteo-->
@@ -266,41 +268,34 @@
                     </div>
 
                     <div class="GanastePantallaLvL2" id="GanastePantallaLvL2">
-
                         <h1>LOGRO DESBLOQUEADO:<br> AGILIDAD EXTREMA</h1>
-                        <h3>AHORA ESTAS MÁS CERCA DE COMPLETAR ESTE JUEGO, ASÍ QUE PREPARATE PARA LO PEOR, RECUERDA QUE
-                            LOS
-                            METEORITOS NO SON ALGO PARA TOMÁRSELO A LA LIGERA Y MÁS AUN EN EL SIGUIENTE NIVEL, EN DONDE
-                            LA DIFICULTAD
-                            AUMENTA EXPONENCIALMENTE
+                        <h3>Ahora estás más cerca de completar este juego, así que prepárate para lo peor. Recuerda que
+                            los meteoritos no son algo para tomárselo a la ligera, y más aún en el siguiente nivel,
+                            donde la dificultad aumenta exponencialmente.
                         </h3>
-                        <div style="display: flex; width: auto;">
-
-
-
-                            <script src="Ejecucion2.js"></script>
-                        </div>
-
                     </div><!--FIN DEL JUEGO-->
+                </div><!--cierra Contenedorlvl2-->
+                <script src="Ejecucion2.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             </section>
 
             <!--TERCER NIVEL ----------------------------------------------------------------------------->
             <section id="NIVEL3">
 
                 <!--Contenedor-Cabezera-->
-                <div class="Cabezeralvl3 Contenedorlvl3">
+                <div class="Cabezeralvl3">
                     <!--Tiempo con su span para la el final del minuto-->
                     <div class="Tiempolvl3">
-                        <h3>TIEMPO</h3><span id="Tiempolvl3">50</span>
+                        <h3>TIEMPO</h3><span id="Tiempolvl3">70</span>
                     </div>
                     <!--Puntaje con su span que indica el puntaje-->
                     <div class="Puntajelvl3">
                         <h3>PUNTAJE</h3>
-                        <span id="Puntajelvl3">0 / 40</span>
+                        <span id="Puntajelvl3">0 / 24</span>
                     </div>
                     <!--Boton de pause-->
                     <div class="Pauselvl3" id="Pauselvl3">
-                        <h3>PAUSE / REANUDAR</h3>
+                        <h3>PAUSAR / REANUDAR</h3>
                     </div>
                 </div>
 
@@ -327,11 +322,14 @@
                         <!--Boton de jugar-->
                         <div class=Playlvl3 id="Playlvl3">JUGAR</div>
                         <!--Dificultad-->
-                        <div class="Dificultadlvl3" id="Dificultadlvl3">
-                            <img src="IMG/Megalodon.gif" width="16%">
-                            &nbsp;<h1 style="font-size: 27px; font-family: 'Press Start 2P', cursive;">
-                                Dificultad: Megalodon</h1>&nbsp;
-                            <img src="IMG/Megalodon.gif" width="16%">
+                        <div class="Tarjeta_dificultadlvl3" id="Dificultadlvl3">
+                            <img src="IMG/Tyrone.gif" width="16%" alt="Tyrone" onerror="this.style.display='none'">
+                            <div class="Dificultad_info">
+                                <span class="Dificultad_etiqueta">AMENAZA</span>
+                                <h1>Dificultad: Megalodón</h1>
+                                <div class="Medidor_meteoritos"><i class="on"></i><i class="on"></i><i class="on"></i></div>
+                            </div>
+                            <img src="IMG/Tyrone.gif" width="16%" alt="Tyrone" onerror="this.style.display='none'">
                         </div>
                         <!--Span que contiene el conteo-->
                         <div id="Contenedor_contadorlvl3"><span id="RGBlvl3"></span></div>
@@ -355,10 +353,12 @@
                     <div id="Pantalla_creditoslvl3"></div>
                     <div id="Creditoslvl3">
                         <h3>Desarrollado por:</h3><br>
-                        <p>Fredy Palomino</p>
-                        <p>David Chambilla</p>
-                        <p>Renzo Blas</p>
-                        <p>Brandon Montiveros</p>
+                        <p>Erick</p>
+                        <p>Edy</p>
+                        <p>Grecia</p>
+                        <p>Gustavo</p>
+                        <p>Florcita</p>
+                        <p>Geordi</p>
                     </div>
                     <div id="Proximolvl3">
                         <h4>Próximamente:</h4>

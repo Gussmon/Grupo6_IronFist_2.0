@@ -21,8 +21,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3vw;
+  gap: 5vw;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .Titulo_historia {
@@ -32,16 +35,28 @@
   color: var(--if-texto);
   width: 100%;
   margin-bottom: 1vw;
+  /* Reset de Estilos.css: ahí queda "position:absolute; left:-100%" */
+  position: static;
+  left: auto;
+  top: auto;
+  right: auto;
+  float: none;
 }
 
 .Imgane_metiorito {
-  width: min(600px, 34%);
+  width: min(460px, 36%);
   flex-shrink: 0;
   filter: drop-shadow(0 0 18px rgba(255, 77, 94, 0.35));
+  /* Reset de Estilos.css: ahí queda "position:absolute; top:210px; left:-100%" */
+  position: static;
+  left: auto;
+  top: auto;
+  right: auto;
+  float: none;
 }
 
 .Contenedor_Historia {
-  width: min(480px, 40%);
+  width: min(460px, 36%);
   background: rgba(20, 10, 30, 0.78);
   color: var(--if-texto);
   padding: 2.4vw;
@@ -50,6 +65,12 @@
   box-shadow: 0 0 24px rgba(157, 78, 221, 0.35);
   font-family: var(--if-font-texto);
   line-height: 1.5;
+  /* Reset de Estilos.css: ahí queda "float:right; position:relative; right:100%; top:194px" */
+  position: static;
+  left: auto;
+  top: auto;
+  right: auto;
+  float: none;
 }
 .Contenedor_Historia h3 {
   color: var(--if-accion);

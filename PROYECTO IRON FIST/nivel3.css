@@ -1,15 +1,11 @@
 /* =========================================================
-   IRON FIST — Nivel 3 (Gustavo)
+   IRON FIST — Nivel 3 (Gustavo) · nivel final = ALERTA ROJA
    Se carga DESPUÉS de Estilos.css y estilos-base.css.
-   Mismo principio que nivel1.css: cada clase termina en
-   "lvl3" y no se comparte entre la cabecera y el tablero.
+   Requiere que la cabecera del HTML tenga SOLO class="Cabezeralvl3"
+   (sin "Contenedorlvl3"), si no las esquinas se duplican.
    ========================================================= */
 
-/* ---------------------------------------------------------
-   TABLERO — borde tipo HUD con esquinas marcadas (en vez de
-   la caja redondeada con resplandor morado del Nivel 1) y
-   fondo con tinte rojo de "alerta máxima"
-   --------------------------------------------------------- */
+/* ---------- TABLERO: esquinas HUD + tinte rojo + brillo interior ---------- */
 .Contenedorlvl3 {
   width: min(92vw, 1100px);
   height: min(56vw, 560px);
@@ -22,25 +18,19 @@
     linear-gradient(rgba(120, 10, 20, 0.35), rgba(120, 10, 20, 0.35)),
     url(IMG/Fondo.jpg) no-repeat 50% 50%;
   background-size: cover;
+  box-shadow: inset 0 0 90px rgba(255, 77, 94, 0.25);
 }
-
-/* Esquinas HUD: 4 marcas en las puntas en vez de un borde
-   continuo — se siente más "nivel final / alerta" */
 .Contenedorlvl3::before,
 .Contenedorlvl3::after,
 .Cabezeralvl3::before,
 .Cabezeralvl3::after {
-  content: "";
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  border: 3px solid var(--if-peligro);
-  z-index: 5;
+  content: ""; position: absolute; width: 28px; height: 28px;
+  border: 3px solid var(--if-peligro); z-index: 5; pointer-events: none;
 }
-.Cabezeralvl3::before   { top: 0;    left: 0;   border-right: none; border-bottom: none; }
-.Cabezeralvl3::after    { top: 0;    right: 0;  border-left: none;  border-bottom: none; }
-.Contenedorlvl3::before { bottom: 0; left: 0;   border-right: none; border-top: none; }
-.Contenedorlvl3::after  { bottom: 0; right: 0;  border-left: none;  border-top: none; }
+.Cabezeralvl3::before   { top: 0;    left: 0;  border-right: none; border-bottom: none; }
+.Cabezeralvl3::after    { top: 0;    right: 0; border-left: none;  border-bottom: none; }
+.Contenedorlvl3::before { bottom: 0; left: 0;  border-right: none; border-top: none; }
+.Contenedorlvl3::after  { bottom: 0; right: 0; border-left: none;  border-top: none; }
 
 .Cabezeralvl3 {
   height: 70px;
@@ -48,186 +38,229 @@
   margin: 0 auto;
   border: none;
   background: rgba(20, 5, 8, 0.75);
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  display: flex; align-items: center; justify-content: space-evenly;
   position: relative;
   box-shadow: 0 0 20px rgba(255, 77, 94, 0.35);
 }
 
-/* ---------------------------------------------------------
-   HUD (TIEMPO / PUNTAJE / PAUSE)
-   --------------------------------------------------------- */
-.Tiempolvl3,
-.Puntajelvl3 {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  width: auto;
-  min-width: 100px;
-  height: 70%;
-  gap: 6px;
-  color: initial;
+/* ---------- HUD ---------- */
+.Tiempolvl3, .Puntajelvl3 {
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; width: auto; min-width: 100px;
+  height: 70%; gap: 6px; color: initial;
 }
-.Tiempolvl3 h3,
-.Puntajelvl3 h3 {
+.Tiempolvl3 h3, .Puntajelvl3 h3 {
   font-family: var(--if-font-hud, var(--if-font-titulo));
-  font-size: 0.7rem;
-  letter-spacing: 1px;
-  color: var(--if-peligro);
-  margin: 0;
+  font-size: 0.7rem; letter-spacing: 1px;
+  color: var(--if-peligro); margin: 0;
 }
-.Tiempolvl3 span,
-.Puntajelvl3 span {
+.Tiempolvl3 span, .Puntajelvl3 span {
   font-family: var(--if-font-hud, var(--if-font-titulo));
-  font-size: clamp(1rem, 1.6vw, 1.4rem);
-  font-weight: 700;
+  font-size: clamp(1rem, 1.6vw, 1.4rem); font-weight: 700;
   color: var(--if-texto);
 }
-
 .Pauselvl3 {
-  width: auto;
-  min-width: 100px;
-  height: 70%;
-  background: var(--if-peligro);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--if-texto);
-  cursor: pointer;
-  border-radius: 6px;
-  padding: 0 14px;
-  font-size: 14px;
+  width: auto; min-width: 100px; height: 70%;
+  background: var(--if-peligro) !important;   /* estilos-base.css fuerza morado */
+  display: flex; align-items: center; justify-content: center;
+  color: var(--if-texto); cursor: pointer;
+  border-radius: 6px; padding: 0 14px; font-size: 14px;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.Pauselvl3:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 14px rgba(255, 77, 94, 0.6);
-}
+.Pauselvl3:hover { transform: scale(1.04); box-shadow: 0 0 14px rgba(255, 77, 94, 0.6); }
 
-/* ---------------------------------------------------------
-   PANTALLA START
-   --------------------------------------------------------- */
+/* ---------- PANTALLA START (ordenada con flex, sin top/left sueltos) ---------- */
 .Startlvl3 {
   width: 100%; height: 100%; background: rgba(0, 0, 0, 0.65);
-  position: absolute; top: 0%; z-index: 100000000000;
-  display: flex; align-items: center;
-  justify-content: center; flex-direction: column;
+  position: absolute; top: 0; z-index: 100000000000;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 18px;
   color: white; text-align: center;
 }
-
 .Textolvl3 {
-  font-size: clamp(1.1rem, 2.6vw, 2.2rem);
-  line-height: 1.5;
-  position: relative;
-  left: 0px; top: -7%;
-  transition: 2s;
-  font-family: var(--if-font-titulo);
-  color: var(--if-texto);
+  order: 1; margin: 0;
+  font-size: clamp(1.1rem, 2.6vw, 2.2rem); line-height: 1.5;
+  position: relative; left: 0; transition: 2s;
+  font-family: var(--if-font-titulo); color: var(--if-texto);
 }
+.Tarjeta_dificultadlvl3 { order: 2; }
+.Playlvl3               { order: 3; }
+#Contenedor_contadorlvl3 { order: 4; }
 
-.Playlvl3 {
-  background: var(--if-peligro);
-  color: var(--if-texto);
-  width: 18%; height: 15%;
-  display: flex; align-items: center;
-  justify-content: center; cursor: pointer;
-  position: relative; transition: transform 0.15s ease, box-shadow 0.15s ease;
-  border-radius: 6px;
-  font-family: var(--if-font-titulo);
-}
-.Playlvl3:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 14px rgba(255, 77, 94, 0.6);
-}
-
-/* Tarjeta de dificultad (antes: &nbsp; sueltos + h1 con estilo
-   inline) */
+/* Tarjeta de dificultad: misma estructura que Nivel 1/2, en rojo */
 .Tarjeta_dificultadlvl3 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: rgba(255, 77, 94, 0.12);
-  border: 1px solid var(--if-peligro);
-  border-radius: 12px;
-  padding: 10px 18px;
-  width: fit-content;
-  margin: 0 auto;
-  position: relative;
-  top: 49%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  width: min(88%, 640px); margin: 0 auto;
+  gap: clamp(10px, 2vw, 24px); padding: 10px 20px;
+  border-radius: 14px; border: 1px solid var(--if-peligro);
+  background:
+    radial-gradient(1.5px 1.5px at 12% 25%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 30% 75%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 62% 20%, #fff 50%, transparent 51%),
+    linear-gradient(135deg, rgba(30, 5, 10, 0.88), rgba(120, 15, 30, 0.55));
+  box-shadow: 0 0 22px rgba(255,77,94,.4), inset 0 0 18px rgba(255,77,94,.15);
+}
+.Tarjeta_dificultadlvl3 img { width: auto !important; height: clamp(44px, 7vw, 80px); }
+.Tarjeta_dificultadlvl3 .Dificultad_info {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.Tarjeta_dificultadlvl3 .Dificultad_etiqueta {
+  font-family: var(--if-font-titulo); font-size: 0.6rem;
+  letter-spacing: 3px; color: var(--if-peligro);
 }
 .Tarjeta_dificultadlvl3 h1 {
   font-family: var(--if-font-titulo);
-  font-size: clamp(0.7rem, 1.3vw, 1rem);
-  color: var(--if-texto);
-  margin: 0;
+  font-size: clamp(0.7rem, 1.3vw, 1rem); color: var(--if-texto); margin: 0;
+}
+/* Medidor de amenaza: 3 meteoritos, los 3 encendidos (máxima dificultad) */
+.Tarjeta_dificultadlvl3 .Medidor_meteoritos { display: flex; gap: 10px; }
+.Tarjeta_dificultadlvl3 .Medidor_meteoritos i {
+  width: 18px; height: 18px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ff9a9f, var(--if-peligro) 60%, #7a1017);
+  box-shadow: 0 0 10px rgba(255, 77, 94, 0.7);
+}
+.Tarjeta_dificultadlvl3 .Medidor_meteoritos i:not(.on) { filter: grayscale(1); opacity: 0.25; box-shadow: none; }
+/* Créditos del equipo, chiquito y discreto debajo del medidor */
+.Tarjeta_dificultadlvl3 .Credito_Testers {
+  font-family: var(--if-font-titulo); font-size: 0.45rem;
+  letter-spacing: 1px; color: var(--if-texto); opacity: 0.6; margin: 4px 0 0;
 }
 
-/* ---------------------------------------------------------
-   PANTALLA DE PAUSA
-   --------------------------------------------------------- */
+.Playlvl3 {
+  background: var(--if-peligro); color: var(--if-texto);
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  position: relative; width: auto; height: auto; min-width: 150px;
+  padding: 14px 28px; border-radius: 8px;
+  font-family: var(--if-font-titulo);
+  box-shadow: 0 5px 0 #a01f2e, 0 8px 14px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.Playlvl3:hover  { transform: scale(1.04); }
+.Playlvl3:active { transform: translateY(3px); box-shadow: 0 2px 0 #a01f2e; }
+
+/* ---------- COTEO REGRESIVO ---------- */
+/* Mismo caso que Nivel 2: el título/tarjeta/botón siguen ocupando su
+   espacio en la columna flex (son position:relative aunque se muevan
+   con left:-900px), así que el contador queda empujado hacia abajo.
+   Lo centramos como overlay independiente. */
+#Contenedor_contadorlvl3 {
+  order: 4;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  display: table;
+}
+#RGBlvl3 {
+  font-size: clamp(3rem, 10vw, 8rem); position: relative;
+  font-family: var(--if-font-titulo); color: var(--if-peligro);
+  display: table-cell; vertical-align: middle;
+}
+
+/* ---------- PAUSA ---------- */
 .Pausa_Pantallalvl3 {
-  position: absolute; top: 0%; width: 100%;
-  height: 100%; background: rgba(0, 0, 0, 0.6);
-  text-align: center; z-index: 1000000000; display: none;
+  position: absolute; top: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6); text-align: center;
+  z-index: 1000000000; display: none;
 }
 .Mensaje_Pauselvl3 {
-  font-size: 50px; color: white;
+  font-size: clamp(1.4rem, 4vw, 3rem); color: white;
   display: table-cell; vertical-align: middle;
   font-family: var(--if-font-titulo);
 }
 
-/* ---------------------------------------------------------
-   METEORITOS, PLANETA Y LÍMITE
-   --------------------------------------------------------- */
-.Meteoritolvl3 { cursor: pointer; display: table; position: absolute; top: 0%; z-index: 1000; }
-
+/* ---------- METEORITOS, PLANETA Y LÍMITE (con pulso de alerta) ---------- */
+.Meteoritolvl3 {
+  cursor: pointer; display: table; position: absolute; top: 0; z-index: 1000;
+  width: 70px !important; height: auto !important;
+}
+/* Los 4 no tenían "left" propio ni alturas distintas, así que arrancaban
+   apilados exactamente en el mismo punto hasta que el JS los separaba
+   (recién a partir de ~2.2s). Ahora cada uno arranca ya fuera de
+   pantalla y a una altura distinta. */
+#Meteoritolvl3  { left: -15%; top: 10px;  }
+#Meteorito2lvl3 { left: -25%; top: 160px; }
+#Meteorito3lvl3 { left: -15%; top: 310px; }
+#Meteorito4lvl3 { left: -25%; top: 460px; }
 .Planetalvl3 {
   position: absolute; top: 12%; left: 80%;
-  animation-name: rotation;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  width: 400px !important; height: auto !important;
+  animation: rotationlvl3 10s linear infinite;
 }
-
+@keyframes rotationlvl3 {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 .Limitelvl3 {
   height: 100%; width: 50px;
   border-left: 4px solid var(--if-peligro);
-  box-shadow: -6px 0 12px rgba(255, 77, 94, 0.6);
-  position: absolute; top: 0%; left: 70%;
+  position: absolute; top: 0; left: 70%;
+  animation: Pulso_limitelvl3 1.6s ease-in-out infinite;
+}
+@keyframes Pulso_limitelvl3 {
+  0%, 100% { box-shadow: -6px 0 10px rgba(255, 77, 94, 0.35); }
+  50%      { box-shadow: -10px 0 24px rgba(255, 77, 94, 0.9); }
 }
 
-/* ---------------------------------------------------------
-   SORPRESA (naves/nodriza) — sin cambios de fondo, solo se
-   asegura que queden por encima del nuevo overlay rojo
-   --------------------------------------------------------- */
-.Pantalla_navelvl3,
-.Pantalla_Nodrizalvl3,
-.Pantalla_nave2lvl3 {
+/* ---------- SORPRESA (naves) + CRÉDITOS FINALES ---------- */
+/* Los meteoritos avanzan de izquierda a derecha hacia la Tierra (que
+   está a la derecha, junto al límite en left:70%). Las naves ahora
+   "salen" de la Tierra (reposan fuera del tablero por la derecha) y
+   van hacia donde vienen los meteoritos, girando para apuntar a la
+   izquierda (de donde viene la amenaza) en vez de quedarse mirando
+   hacia arriba como en el sprite original. */
+.Pantalla_navelvl3, .Pantalla_Nodrizalvl3, .Pantalla_nave2lvl3 {
+  position: absolute;
+  left: 130%; /* reposan fuera del tablero, del lado de la Tierra */
   z-index: 10;
+  transition: 6s;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 2vw, 20px);
+}
+.Pantalla_navelvl3    { top: 12%; }
+.Pantalla_Nodrizalvl3 { top: 38%; }
+.Pantalla_nave2lvl3   { top: 64%; }
+
+.Ovnislvl3 {
+  width: clamp(60px, 9vw, 120px) !important;
+  height: auto !important;
+  filter: drop-shadow(0 0 12px rgba(255, 77, 94, 0.5));
+  transform: rotate(-90deg); /* mirando hacia la izquierda, de donde vienen los meteoritos */
+}
+#Nodrizalvl3 {
+  width: clamp(100px, 13vw, 180px) !important;
 }
 
-/* ---------------------------------------------------------
-   CRÉDITOS Y "PRÓXIMAMENTE"
-   --------------------------------------------------------- */
 #Creditoslvl3 {
-  height: 100%; width: 100%;
+  height: 100%; width: 100%; position: absolute; top: -100%; left: 0;
   display: flex; align-items: center; justify-content: center;
-  flex-direction: column;
-  position: absolute; top: -100%;
-  font-family: var(--if-font-titulo);
-  color: var(--if-texto);
-  line-height: 1.8;
-  gap: 4px;
+  flex-direction: column; gap: 4px; line-height: 1.8;
+  font-family: var(--if-font-titulo); color: var(--if-texto);
+  z-index: 20;
 }
 #Proximolvl3 {
-  height: 100%; width: 100%;
+  height: 100%; width: 100%; position: absolute; bottom: -100%; left: 0;
   display: flex; align-items: center; justify-content: center;
-  flex-direction: column;
-  position: absolute; bottom: -100%;
-  font-family: var(--if-font-titulo);
-  color: var(--if-exito);
-  line-height: 1.6;
+  flex-direction: column; line-height: 1.6;
+  font-family: var(--if-font-titulo); color: var(--if-exito);
+  z-index: 20;
+}
+#Pantalla_creditoslvl3 {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 15; transition: 2s;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 800px) {
+  .Cabezeralvl3 { height: auto; padding: 8px 4px; flex-wrap: wrap; gap: 6px; }
+  .Tiempolvl3, .Puntajelvl3, .Pauselvl3 { min-width: 80px; }
+  .Contenedorlvl3 { height: min(115vw, 560px); }
+  .Textolvl3 { font-size: clamp(0.9rem, 4vw, 1.4rem); }
+  .Tarjeta_dificultadlvl3 { flex-wrap: wrap; padding: 8px 12px; gap: 8px; }
+  .Playlvl3 { min-width: 120px; padding: 12px 18px; font-size: 0.7rem; }
+  .Meteoritolvl3 { width: 44px !important; }
+  .Planetalvl3 { width: 260px; }
+  .Limitelvl3 { width: 30px; left: 60%; }
 }
