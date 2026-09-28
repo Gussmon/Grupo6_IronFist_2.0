@@ -44,7 +44,7 @@
 }
 
 .Imgane_metiorito {
-  width: min(460px, 36%);
+  width: min(560px, 42%);
   flex-shrink: 0;
   filter: drop-shadow(0 0 18px rgba(255, 77, 94, 0.35));
   /* Reset de Estilos.css: ahí queda "position:absolute; top:210px; left:-100%" */
@@ -99,6 +99,7 @@
 .Contenedor_narracion {
   width: 9vh;
   height: 9vh;
+  flex-shrink: 0;
   background: var(--if-accion);
   color: var(--if-texto);
   border-radius: 0.5rem;
@@ -109,6 +110,22 @@
   transition: transform 0.15s ease;
 }
 .Contenedor_narracion:hover { transform: scale(1.06); }
+
+/* La regla vieja de Estilos.css deja este contenedor a width:50% y
+   overflow:hidden, por eso el boton "Estas preparado?" se veia
+   apretado/cortado junto al icono de narracion. Lo corregimos aqui,
+   que se carga despues y tiene prioridad. */
+.BOTONES_2 {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  gap: 1rem;
+  margin: 2vw auto 0 auto;
+}
+.BOTONES_2 .Boton_preparado {
+  margin: 0;
+  flex: 1 1 auto;
+}
 
 /* ---------------------------------------------------------
    RESPONSIVE — mismo breakpoint que usó Grecia en Reglas

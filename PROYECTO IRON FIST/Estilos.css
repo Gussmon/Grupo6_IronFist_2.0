@@ -1,5 +1,39 @@
 html body{margin: 0; padding: 0; font-family: sans-serif;}/*RESTABLESCO LA PAGINA, SI MARGEN EN LOS BORDES*/
 
+/*Control de volumen de la musica de fondo, flotante y visible en todo el juego*/
+.Control_Volumen{
+    position: fixed;
+    top: 3%;
+    left: 3%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(10, 8, 20, 0.55);
+    border: 1px solid rgba(180, 160, 255, 0.45);
+    padding: 6px 12px;
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow:
+        0 0 18px rgba(140, 100, 255, 0.25),
+        0 4px 14px rgba(0, 0, 0, 0.35);
+}
+.Icono_Volumen{
+    font-size: 1.1rem;
+    line-height: 1;
+    user-select: none;
+}
+.Slider_Volumen{
+    width: 90px;
+    accent-color: #9D4EDD;
+    cursor: pointer;
+}
+@media (max-width: 600px){
+    .Control_Volumen{ top: 3%; left: 3%; padding: 4px 10px; gap: 6px; }
+    .Slider_Volumen{ width: 60px; }
+}
+
 #Fondo{ position: relative; color: white; }
 #Fondo::before, #Fondo::after{
     content: "";
