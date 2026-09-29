@@ -5,7 +5,7 @@
    sin tener que reescribir todo el CSS existente.
    ========================================================= */
 
-:root {
+:root {--if-font-hud: 'Orbitron', sans-serif;
   /* Colores */
   --if-fondo:      #0B0E1F; /* azul-espacio oscuro, único fondo del juego */
   --if-accion:     #9D4EDD; /* morado eléctrico: botones, elementos interactivos */
