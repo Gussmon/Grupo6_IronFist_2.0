@@ -38,8 +38,8 @@ function JUEGOlvl3() {
             Tiempolvl3 = 71
             function Contactos(){
             Swal.fire({
-                title : 'Felicitaciones por parte del <br> Grupo Omega<br><br><img src="IMG/Logo_Omega.png" width = "120px">',
-                html: 'Sabía que lo lograrías, nos salvaste de la destrucción, pero ahora nos espera otra lucha. Esperemos volverte a ver jugando IRON FIST 2 en un futuro. <br><br> <b>CONTACTOS:</b><br><br> 71727432@certus.edu.pe <br><br> 71663265@certus.edu.pe <br><br> 70845813@certus.edu.pe',
+                title : 'Felicitaciones por parte del <br> Grupo 6',
+                html: 'Sabía que lo lograrías, nos salvaste de la destrucción, pero ahora nos espera otra lucha. Esperemos volverte a ver jugando IRON FIST 2 en un futuro. <br><br> <b>EQUIPO:</b><br><br> Ivon: 74245717@certus.edu.pe <br><br> Gustavo: 75397016@certus.edu.pe <br><br> Geordi: 47613272@certus.edu.pe <br><br> Erick <br><br> Edy <br><br> Grecia <br><br> Florcita',
                 icon: 'success',
                 confirmButtonText: '<span id="Pausear_musica">De acuerdo</span>',
                 width: '50%',
