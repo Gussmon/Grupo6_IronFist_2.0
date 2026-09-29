@@ -48,6 +48,11 @@ body{ overflow-x: hidden; max-width: 100vw; }
 
     transition: opacity 1s ease;
     z-index: -1;
+    animation: Respirar_Fondo 26s ease-in-out infinite;
+}
+@keyframes Respirar_Fondo{
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.045); }
 }
 
 #Fondo::before{
@@ -263,55 +268,124 @@ body{ overflow-x: hidden; max-width: 100vw; }
     filter: drop-shadow(0 0 10px rgba(120, 100, 255, 0.65));
 }
 
+/*Titulo grande y minimalista (estilo "logo de videojuego"), tono morado espacial acorde al fondo*/
+#Seccion_01 .Nombre{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: clamp(3rem, 10vw, 7.5rem);
+    letter-spacing: 6px;
+    line-height: 0.95;
+
+    background: linear-gradient(180deg, #e6d9ff 0%, #b083f0 40%, #6e2fa0 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    -webkit-text-stroke: 1.5px rgba(20, 8, 40, 0.85);
+
+    text-shadow:
+        0 4px 0 rgba(20,8,40,0.55),
+        0 0 30px rgba(157, 78, 221, 0.65),
+        0 0 60px rgba(110, 80, 255, 0.35);
+}
+
+/*Meteoritos cruzando el cielo hacia el planeta (capa decorativa, no interactiva)*/
+.Escena_Meteoros{ position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+.Estrella_Fugaz{
+    position: absolute;
+    width: 110px; height: 2px;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.95) 70%, #ffffff 100%);
+    border-radius: 2px;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.85));
+    opacity: 0;
+}
+.e1{ top: -6%;  left: 8%;  transform: rotate(35deg); animation: Fugaz 6s linear infinite 0s;   }
+.e2{ top: 4%;   left: 22%; transform: rotate(32deg); animation: Fugaz 8s linear infinite 2.5s; }
+.e3{ top: -8%;  left: 42%; transform: rotate(38deg); animation: Fugaz 7s linear infinite 4.5s; }
+.e4{ top: 2%;   left: 58%; transform: rotate(30deg); animation: Fugaz 9s linear infinite 1s;   }
+.e5{ top: -4%;  left: 30%; transform: rotate(34deg); animation: Fugaz 7.5s linear infinite 6s; }
+
+@keyframes Fugaz{
+    0%   { opacity: 0; transform: translate(0,0) rotate(35deg); }
+    8%   { opacity: 1; }
+    55%  { opacity: 1; }
+    65%  { opacity: 0; }
+    100% { opacity: 0; transform: translate(58vw, 42vh) rotate(35deg); }
+}
+
 .Boton_Wrap{
     display: flex; flex-direction: column; align-items: center; gap: 0.7vw;
     position: relative; z-index: 1;
     animation: fadeInUp 0.8s ease 0.4s both;
 }
 
-/*Botón tipo ícono/logo: minimalista, circular, con acabado "glossy" de juego*/
+/*Botón "JUGAR" estilo glossy tipo videojuego (más compacto), tono morado espacial*/
 .Boton {
-    width: clamp(220px, 24vw, 320px);
-    height: clamp(54px, 6vw, 72px);
+    width: clamp(150px, 15vw, 210px);
+    height: clamp(44px, 4.6vw, 58px);
 
-    border-radius: 12px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
 
     cursor: pointer;
-    border: 1px solid rgba(200,170,255,0.65);
+    border: none;
     padding: 0;
-
-    background: linear-gradient(
-        135deg,
-        var(--if-accion-dark, #6e2fa0),
-        var(--if-accion, #9856d1),
-        var(--if-accion-light, #c792f2)
-    );
+    position: relative;
+    overflow: hidden;
 
     box-shadow:
-        0 0 20px rgba(160,100,255,0.45),
-        0 8px 25px rgba(0,0,0,0.5),
-        inset 0 1px 2px rgba(255,255,255,0.35);
+        0 5px 0 var(--if-accion-dark, #6e2fa0),
+        0 8px 14px rgba(0,0,0,0.45),
+        inset 0 2px 3px rgba(255,255,255,0.35);
 
     transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    filter 0.2s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
 
-animation: Pulso_Boton 2.2s ease-in-out infinite;
+    animation: Pulso_Boton 2.2s ease-in-out infinite;
 }
+
+/*brillo superior tipo "glossy"*/
+.Boton::before{
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0; height: 55%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
+    pointer-events: none;
+}
+/*marca decorativa tipo "brillo/rayón", como en botones de juego*/
+.Boton::after{
+    content: "";
+    position: absolute; top: 12%; left: 10%;
+    width: 12px; height: 55%;
+    background: rgba(255,255,255,0.35);
+    transform: skewX(-20deg);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.Boton_Texto{
+    position: relative; z-index: 1;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    font-size: clamp(1.05rem, 2vw, 1.4rem);
+    letter-spacing: 1px;
+    color: #ffffff;
+    -webkit-text-stroke: 1.4px var(--if-accion-dark, #6e2fa0);
+    text-shadow:
+        0 3px 0 var(--if-accion-dark, #6e2fa0),
+        0 5px 8px rgba(0,0,0,0.4);
+}
+
 .Boton:hover{
-    transform: translateY(-3px) scale(1.03);
+    transform: translateY(-2px) scale(1.03);
     filter: brightness(1.1);
     box-shadow:
-        0 0 32px rgba(175,120,255,0.75),
-        0 10px 30px rgba(0,0,0,0.55);
+        0 5px 0 var(--if-accion-dark, #6e2fa0),
+        0 10px 20px rgba(0,0,0,0.5),
+        inset 0 2px 3px rgba(255,255,255,0.4);
 }
 .Boton:active{
-    transform: translateY(2px) scale(0.98);
+    transform: translateY(3px) scale(0.98);
     box-shadow:
         0 2px 0 var(--if-accion-dark, #6e2fa0),
         0 4px 8px rgba(0,0,0,0.5),
@@ -321,25 +395,23 @@ animation: Pulso_Boton 2.2s ease-in-out infinite;
     0% {
         transform: scale(1);
         box-shadow:
-            0 0 20px rgba(160,100,255,0.45),
-            0 8px 25px rgba(0,0,0,0.5),
-            inset 0 1px 2px rgba(255,255,255,0.35);
+            0 5px 0 var(--if-accion-dark, #6e2fa0),
+            0 8px 14px rgba(0,0,0,0.45),
+            inset 0 2px 3px rgba(255,255,255,0.35);
     }
-
     50% {
-        transform: scale(1.04);
+        transform: scale(1.035);
         box-shadow:
-            0 0 30px rgba(185,120,255,0.75),
-            0 10px 30px rgba(0,0,0,0.55),
-            inset 0 1px 3px rgba(255,255,255,0.42);
+            0 5px 0 var(--if-accion-dark, #6e2fa0),
+            0 10px 18px rgba(0,0,0,0.5),
+            inset 0 2px 4px rgba(255,255,255,0.42);
     }
-
     100% {
         transform: scale(1);
         box-shadow:
-            0 0 20px rgba(160,100,255,0.45),
-            0 8px 25px rgba(0,0,0,0.5),
-            inset 0 1px 2px rgba(255,255,255,0.35);
+            0 5px 0 var(--if-accion-dark, #6e2fa0),
+            0 8px 14px rgba(0,0,0,0.45),
+            inset 0 2px 3px rgba(255,255,255,0.35);
     }
 }
 .Boton_Icono{
@@ -763,17 +835,6 @@ animation: Pulso_Boton 2.2s ease-in-out infinite;
     .Reglas_Layout{ flex-direction: column; align-items: center; }
     .Reglas_Tarjetas{ width: 100%; }
     .Reglas_ImagenWrap{ max-width: 100%; }
-
-    /* Mismo problema que en Historia: el contenedor general fija todo
-       a una sola pantalla (100vh, overflow:hidden), y con 3 tarjetas +
-       imagen apiladas esta seccion no cabe en una pantalla de celular.
-       Scroll interno solo aqui, sin tocar el contenedor general. */
-    #Reglas{
-        top: 0;
-        max-height: 100vh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
 }
 
 /* Transicion "activacion de mision" al pasar de Reglas al Juego (punto 14) */

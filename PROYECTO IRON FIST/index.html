@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="nivel2.css">
     <link rel="stylesheet" href="nivel3.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!--iMPORTE UN TIPO DE LETA-->
@@ -43,12 +44,19 @@
         <!--SECCION - 1 ------------------------------------------------------------------------------------------------------->
 
         <section class="Seccion_01" id="Seccion_01">
+            <div class="Escena_Meteoros" aria-hidden="true">
+                <span class="Estrella_Fugaz e1"></span>
+                <span class="Estrella_Fugaz e2"></span>
+                <span class="Estrella_Fugaz e3"></span>
+                <span class="Estrella_Fugaz e4"></span>
+                <span class="Estrella_Fugaz e5"></span>
+            </div>
             <div class="Contenedor_RC" id="Contenedor_RC" onclick="Graficos_fondo()">
                 <div class="Recursos" id="Recursos"></div>
             </div>
-            <h1 class="Nombre">IRON FIST</h1>
+            <h1 class="Nombre">IRON<br>FIST</h1>
             <h1 class="Texto_Principal">¿LISTO PARA DEFENDER<br> EL PLANETA?</h1>
-            <button class="Boton" id="Juego" onclick="Mover()">JUGAR</button>
+            <button class="Boton" id="Juego" onclick="Mover()"><span class="Boton_Texto">JUGAR</span></button>
         </section>
         <!--SECCION - 3 ------------------------------------------------------------------------------------------------------->
 
@@ -123,7 +131,7 @@
                     <div class="BOTONES_2">
                         <div class="Boton_preparado" onclick="Mover_3()">¿Estás preparado?</div>
                         <div class="Contenedor_narracion" id="Contenedor_narracion">
-                            <i class="fas fa-volume-up" id="VOLUMEN"></i><i class="fas fa-pause" id="PAUSE"></i>
+                            <i class="fas fa-play" id="VOLUMEN"></i><i class="fas fa-pause" id="PAUSE"></i>
                         </div>
                     </div>
                 </div>
