@@ -1,17 +1,13 @@
 /* =========================================================
-   IRON FIST — Portada con profundidad 3D (Evidencia 4)
+   IRON FIST — Portada con profundidad 3D (Evidencia 4)  [version optimizada]
    Archivo NUEVO: no modifica ninguna regla existente.
    Capas (de atras hacia adelante):
      fondo (#Fondo) -> rocas lejanas -> astronauta -> vineta -> asteroides cercanos -> texto
-   Cada capa reacciona distinto al mouse (parallax) y tiene su propio movimiento.
-   Las variables --px / --py (-1 a 1) las actualiza Portada3D.js.
+   RENDIMIENTO: solo se animan "transform" y "opacity" (las unicas propiedades que el
+   navegador mueve sin repintar). Sombras, desenfoques y bordes difuminados NO se calculan
+   en vivo: ya vienen incluidos en las imagenes (WebP / PNG).
+   Las variables --px / --py (-1 a 1) las actualiza Portada3D.js solo sobre la escena y el logo.
    ========================================================= */
-
-/* ---------- Parallax suave del fondo (sin tocar sus animaciones) ---------- */
-#Fondo::before, #Fondo::after{
-    inset: -3%;                                   /* margen extra para que no se vea el borde al moverse */
-    translate: calc(var(--px, 0) * -14px) calc(var(--py, 0) * -9px);
-}
 
 /* ---------- Fondo sin el astronauta original (evita verlo "doble") ----------
    Misma imagen de siempre, con el astronauta pequeno retirado; mismos degradados que Estilos.css */
@@ -28,6 +24,7 @@
     z-index: 0; pointer-events: none; overflow: hidden;
     perspective: 1100px;
     perspective-origin: 50% 45%;
+    contain: layout paint;
 }
 .Escena_3D > div{ position: absolute; inset: 0; transform-style: preserve-3d; }
 
@@ -52,7 +49,7 @@
     transform: translate3d(calc(var(--px, 0) * 34px), calc(var(--py, 0) * 22px), 0);
 }
 
-/* ---------- Astronauta (una sola figura: capa, brazos y energia con movimiento propio) ---------- */
+/* ---------- Astronauta (una sola figura: capa y brazos con movimiento propio) ---------- */
 .Escena_3D .Capa_Astronauta{
     inset: auto; right: -2vw; bottom: -7vh;
     height: 110vh; width: calc(110vh * 0.5714);   /* proporcion de la imagen 768x1344 */
@@ -66,49 +63,34 @@
 .Astronauta_Flota{
     position: relative; width: 100%; height: 100%;
     animation: Astronauta_Flota 9s ease-in-out infinite;
-    /* borde en forma de elipse: la imagen se funde con el fondo sin cortes rectos */
-    -webkit-mask-image: radial-gradient(ellipse 50% 57% at 50% 54%, #000 64%, transparent 100%);
-    mask-image: radial-gradient(ellipse 50% 57% at 50% 54%, #000 64%, transparent 100%);
-}
-.Astronauta_Flota > img{
-    display: block; width: 100%; height: 100%; object-fit: cover;
-    filter: brightness(0.82) contrast(1.06) saturate(0.95);
     transition: filter 1s ease;
 }
-#Fondo.Modo_Oscuro .Astronauta_Flota > img{ filter: brightness(0.62) contrast(1.08) saturate(0.85); }
+/* modo oscuro: un solo ajuste de brillo sobre toda la figura (la imagen base ya viene oscurecida) */
+#Fondo.Modo_Oscuro .Astronauta_Flota{ filter: brightness(0.76); }
+.Astronauta_Flota > img{ display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* Copias recortadas de la misma imagen: solo se mueven la capa y los brazos (el cuerpo queda firme) */
 .Clon_Astro{
     position: absolute; left: 0; width: 100%;
-    background-image: url(IMG/astronauta_3d.jpg); background-repeat: no-repeat;
-    filter: brightness(0.82) contrast(1.06) saturate(0.95);
-    pointer-events: none;
+    background-image: url(IMG/astronauta_3d.webp); background-repeat: no-repeat;
+    pointer-events: none; will-change: transform;
 }
-#Fondo.Modo_Oscuro .Clon_Astro{ filter: brightness(0.62) contrast(1.08) saturate(0.85); }
-
-/* Capa: ondea con un desplazamiento suave (filtro SVG animado) */
 .Clon_Capa{
     top: 44%; height: 30%;
     background-size: 100% 333.33%; background-position: 0 62.857%;
-    filter: url(#Ondeo_Capa) brightness(0.82) contrast(1.06) saturate(0.95);
     -webkit-mask-image:
         radial-gradient(ellipse 27% 44% at 15% 52%, #000 38%, transparent 100%),
         radial-gradient(ellipse 25% 44% at 85% 52%, #000 38%, transparent 100%);
     mask-image:
         radial-gradient(ellipse 27% 44% at 15% 52%, #000 38%, transparent 100%),
         radial-gradient(ellipse 25% 44% at 85% 52%, #000 38%, transparent 100%);
-    animation: Capa_Vaiven 6s ease-in-out infinite;
     transform-origin: 50% 0%;
+    animation: Capa_Vaiven 6s ease-in-out infinite;
 }
-#Fondo.Modo_Oscuro .Clon_Capa{ filter: url(#Ondeo_Capa) brightness(0.62) contrast(1.08) saturate(0.85); }
-
-/* Brazos: balanceo muy leve desde el hombro + ondeo pequeno */
 .Clon_Brazo{
     top: 22%; height: 20%;
     background-size: 100% 500%; background-position: 0 27.5%;
-    filter: url(#Ondeo_Brazo) brightness(0.82) contrast(1.06) saturate(0.95);
 }
-#Fondo.Modo_Oscuro .Clon_Brazo{ filter: url(#Ondeo_Brazo) brightness(0.62) contrast(1.08) saturate(0.85); }
 .Brazo_Izq{
     -webkit-mask-image: radial-gradient(ellipse 25% 36% at 22% 52%, #000 40%, transparent 100%);
     mask-image: radial-gradient(ellipse 25% 36% at 22% 52%, #000 40%, transparent 100%);
@@ -120,17 +102,18 @@
     transform-origin: 61% 42%; animation: Brazo_Der 5.8s ease-in-out infinite;
 }
 
-/* Luz que se mueve con el mouse sobre la armadura (efecto de relieve) */
+/* Luz que se mueve con el mouse sobre la armadura (se mueve con transform: no repinta) */
 .Astronauta_Brillo{
-    position: absolute; inset: 0; mix-blend-mode: soft-light;
-    background: radial-gradient(circle at calc(50% + var(--px, 0) * 38%) calc(34% + var(--py, 0) * 24%),
-                rgba(170, 205, 255, 0.55), transparent 46%);
+    position: absolute; left: 10%; top: 6%; width: 80%; height: 50%; border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(170, 205, 255, 0.26), transparent 62%);
+    transform: translate(calc(var(--px, 0) * 30%), calc(var(--py, 0) * 22%));
+    will-change: transform;
 }
 /* Energia azul: pulso del reactor del pecho y chispas en las manos */
 .Astronauta_Reactor, .Astronauta_Mano{
-    position: absolute; aspect-ratio: 1; translate: -50% -50%;
-    border-radius: 50%; mix-blend-mode: screen;
-    background: radial-gradient(circle, rgba(90, 170, 255, 0.8) 0%, rgba(60, 120, 255, 0.28) 45%, transparent 70%);
+    position: absolute; aspect-ratio: 1; translate: -50% -50%; border-radius: 50%;
+    background: radial-gradient(circle, rgba(110, 185, 255, 0.85) 0%, rgba(60, 120, 255, 0.28) 45%, transparent 70%);
+    will-change: transform, opacity;
 }
 .Astronauta_Reactor{ left: 55%; top: 31.6%; width: 15%; animation: Reactor_Pulso 3.6s ease-in-out infinite; }
 .Astronauta_Mano{ width: 13%; animation: Mano_Chispa 1.9s ease-in-out infinite; }
@@ -142,8 +125,8 @@
     50%      { transform: translateY(-16px) rotateZ(-0.7deg); }
 }
 @keyframes Capa_Vaiven{
-    0%, 100% { transform: skewX(-1.6deg) translateX(-2px); }
-    50%      { transform: skewX(1.6deg)  translateX(3px); }
+    0%, 100% { transform: skewX(-1.8deg) translateX(-3px); }
+    50%      { transform: skewX(1.8deg)  translateX(4px); }
 }
 @keyframes Brazo_Izq{
     0%, 100% { transform: rotate(-1.3deg); }
@@ -166,22 +149,21 @@
 
 /* ---------- Asteroides con fuego: viajan HACIA LA TIERRA y se alejan de la camara (z baja, se achican) ----------
    La Tierra queda aprox. en (70vw, 52vh). Cada asteroide sale de un borde y termina en su orilla,
-   con el sprite girado para que la cola quede detras de la direccion de avance.            */
+   con el sprite girado para que la cola quede detras de la direccion de avance.
+   Solo se animan transform y opacity.                                                              */
 .Asteroide_3D{
     position: absolute; left: 0; top: 0;
     width: var(--w, 200px); height: auto;
-    opacity: 0; will-change: transform, opacity, filter;
+    opacity: 0; will-change: transform, opacity;
     animation: Asteroide_Cae var(--dur, 10s) cubic-bezier(0.3, 0.1, 0.7, 1) var(--delay, 0s) infinite;
 }
 @keyframes Asteroide_Cae{
     0%   { opacity: 0;
-           filter: saturate(0.88) contrast(1.05) brightness(1) drop-shadow(0 0 14px rgba(255, 130, 40, 0.55));
            transform: translate3d(calc(var(--x0) - var(--w) / 2), calc(var(--y0) - var(--w) / 2), var(--z0))
                       rotateZ(var(--rz, 0deg)) rotateY(-9deg) rotateX(7deg) scale(calc(var(--flip, 1) * 1), 1); }
     12%  { opacity: 1; }
     80%  { opacity: 1; }
     100% { opacity: 0;
-           filter: saturate(0.88) contrast(1.05) brightness(1.5) drop-shadow(0 0 22px rgba(255, 150, 60, 0.9));
            transform: translate3d(calc(var(--x1) - var(--w) / 2), calc(var(--y1) - var(--w) / 2), var(--z1))
                       rotateZ(var(--rz, 0deg)) rotateY(9deg) rotateX(-7deg) scale(calc(var(--flip, 1) * 0.5), 0.5); }
 }
@@ -198,7 +180,7 @@
 .Roca{
     position: absolute; left: 0; top: 0;
     width: var(--w, 60px); height: auto;
-    opacity: 0; will-change: transform;
+    opacity: 0; will-change: transform, opacity;
     animation: Roca_Deriva var(--dur, 30s) linear var(--delay, 0s) infinite;
 }
 @keyframes Roca_Deriva{
@@ -212,9 +194,9 @@
 .r2{ --w: 38px; --dur: 44s; --delay: 9s;   --x0: 22vw; --y0: 6vh;  --z0: -900px; --x1: 62vw; --y1: 40vh; --z1: -1000px; --giro: -280deg; --ejey: -1; --op: .7; }
 .r3{ --w: 54px; --dur: 40s; --delay: 18s;  --x0: -4vw; --y0: 50vh; --z0: -700px; --x1: 58vw; --y1: 50vh; --z1: -900px; --giro: 320deg; --op: .8; }
 .r4{ --w: 34px; --dur: 47s; --delay: 26s;  --x0: 40vw; --y0: -6vh; --z0: -950px; --x1: 66vw; --y1: 36vh; --z1: -1000px; --giro: -200deg; --op: .65; }
-/* cercanas: grandes y desenfocadas (profundidad de campo), tambien avanzan hacia la Tierra */
-.r5{ --w: 120px; --dur: 22s; --delay: 3s;  --x0: -8vw; --y0: 86vh; --z0: 200px; --x1: 30vw; --y1: 66vh; --z1: -100px; --giro: 200deg; --op: .95; filter: blur(2.5px) brightness(.9); }
-.r6{ --w: 150px; --dur: 26s; --delay: 12s; --x0: -4vw; --y0: 98vh; --z0: 260px; --x1: 22vw; --y1: 84vh; --z1: 0px;    --giro: -160deg; --ejey: -1; --op: .95; filter: blur(3.5px) brightness(.85); }
+/* cercanas: grandes y desenfocadas (el desenfoque ya viene dentro de la imagen) */
+.r5{ --w: 137px; --dur: 22s; --delay: 3s;  --x0: -8vw; --y0: 86vh; --z0: 200px; --x1: 30vw; --y1: 66vh; --z1: -100px; --giro: 200deg; --op: .95; }
+.r6{ --w: 171px; --dur: 26s; --delay: 12s; --x0: -4vw; --y0: 98vh; --z0: 260px; --x1: 22vw; --y1: 84vh; --z1: 0px;    --giro: -160deg; --ejey: -1; --op: .95; }
 
 /* ---------- Pantallas pequenas: el astronauta pasa a ser ambiente, no compite con el texto ---------- */
 @media (max-width: 700px){
@@ -222,15 +204,6 @@
     .r2, .r4, .r6, .f4{ display: none; }
     .Asteroide_3D{ --w: 120px; }
 }
-
-/* ---------- Accesibilidad: sin movimiento si el usuario lo desactivo ---------- */
-@media (prefers-reduced-motion: reduce){
-    .Escena_3D *{ animation: none !important; }
-    .Asteroide_3D, .Roca, .Clon_Astro, .Astronauta_Mano{ display: none; }
-    .Escena_3D .Capa_Astronauta{ transform: none; }
-    #Fondo::before, #Fondo::after{ translate: none; }
-}
-
 
 /* =========================================================
    EVIDENCIA 4 — Mejoras de interfaz de la portada
@@ -299,39 +272,49 @@
 }
 
 /* ---------- Titulo IRON FIST: logo fusionado de las dos referencias ----------
-   (letras biseladas violeta + gema + chispas electricas + rayos naranjas)       */
+   (letras biseladas violeta + gema + chispas electricas + rayos naranjas).
+   El resplandor violeta ya viene dentro de la imagen; el "latido" es un halo que solo cambia opacity. */
 #Seccion_01 .Nombre.Nombre_Logo{
     background: none; -webkit-background-clip: border-box; background-clip: border-box;
     color: #ffffff; -webkit-text-stroke: 0; text-shadow: none;
     font-size: 0; line-height: 0; letter-spacing: 0; margin: 0;
     display: flex; justify-content: center; align-items: center;
 }
+.Nombre_Logo::before{
+    content: ""; position: absolute; left: 50%; top: 40%; width: 80%; height: 58%;
+    translate: -50% -50%; border-radius: 50%; z-index: -1; pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(160, 90, 255, 0.45), transparent 68%);
+    animation: Logo_Halo 4.5s ease-in-out infinite;
+}
 .Texto_Oculto{
     position: absolute; width: 1px; height: 1px; overflow: hidden;
     clip: rect(0 0 0 0); white-space: nowrap;
 }
 .Logo_Titulo{
-    display: block; height: min(51vh, 45vw); width: auto; max-width: 92vw;
-    margin-bottom: -8vh;                       /* acerca la pregunta a la gema */
-    user-select: none;
+    display: block; height: min(55.4vh, 48.8vw); width: auto; max-width: 96vw;
+    margin-bottom: -10vh;                      /* acerca la pregunta a la gema */
+    user-select: none; will-change: transform;
     /* inclinacion 3D con el mouse (usa --px / --py de Portada3D.js) */
     transform: perspective(900px) rotateY(calc(var(--px, 0) * 9deg)) rotateX(calc(var(--py, 0) * -7deg));
-    filter: drop-shadow(0 0 14px rgba(150, 80, 255, 0.55)) drop-shadow(0 6px 10px rgba(0, 0, 0, 0.6));
-    animation: Logo_Brillo 4.5s ease-in-out infinite, Logo_Flota 7s ease-in-out infinite;
+    animation: Logo_Flota 7s ease-in-out infinite;
 }
-@keyframes Logo_Brillo{
-    0%, 100% { filter: drop-shadow(0 0 10px rgba(150, 80, 255, 0.45)) drop-shadow(0 6px 10px rgba(0, 0, 0, 0.6)); }
-    50%      { filter: drop-shadow(0 0 28px rgba(175, 105, 255, 0.95)) drop-shadow(0 6px 10px rgba(0, 0, 0, 0.6)); }
+@keyframes Logo_Halo{
+    0%, 100% { opacity: 0.35; scale: 0.9; }
+    50%      { opacity: 1;    scale: 1.08; }
 }
 @keyframes Logo_Flota{
     0%, 100% { translate: 0 0; }
     50%      { translate: 0 -7px; }
 }
 @media (max-width: 700px){
-    .Logo_Titulo{ height: min(36vh, 74vw); }
+    .Logo_Titulo{ height: min(39vh, 80vw); }
     .Boton_Silencio{ width: 28px; height: 28px; }
 }
+
+/* ---------- Accesibilidad: sin movimiento si el usuario lo desactivo ---------- */
 @media (prefers-reduced-motion: reduce){
-    .Logo_Titulo{ animation: none; transform: none; }
+    .Escena_3D *, .Logo_Titulo, .Nombre_Logo::before{ animation: none !important; }
+    .Asteroide_3D, .Roca, .Clon_Astro, .Astronauta_Mano{ display: none; }
+    .Escena_3D .Capa_Astronauta, .Logo_Titulo{ transform: none; }
     .Sol_Rayos, .Luna_Estrella{ animation: none !important; }
 }
