@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Estilos.css">
     <link rel="stylesheet" href="estilos-base.css">
+    <link rel="stylesheet" href="Portada3D.css">
     <link rel="stylesheet" href="historia.css">
     <link rel="stylesheet" href="nivel1.css">
     <link rel="stylesheet" href="nivel2.css">
@@ -27,6 +28,14 @@
 
     <!--Control de volumen de la musica de fondo (visible en todo el juego)-->
     <div class="Control_Volumen" id="Control_Volumen">
+        <button type="button" class="Boton_Silencio" id="Boton_Silencio" data-estado="alto" aria-pressed="false" aria-label="Silenciar todo el audio" title="Silenciar / activar sonido">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M3.5 9.4v5.2h3.7l5.3 4.4V5L7.2 9.4H3.5z" fill="currentColor"/>
+                <path class="Onda1" d="M15.4 9.3a4 4 0 0 1 0 5.4"/>
+                <path class="Onda2" d="M18 6.7a7.6 7.6 0 0 1 0 10.6"/>
+                <path class="Tachado" d="M4.5 4.5l15 15"/>
+            </svg>
+        </button>
         <span class="Icono_Volumen" id="Icono_Volumen">🔊</span>
         <input type="range" id="Slider_Volumen" class="Slider_Volumen" min="0" max="100" value="40" aria-label="Volumen de la musica">
     </div>
@@ -44,6 +53,50 @@
         <!--SECCION - 1 ------------------------------------------------------------------------------------------------------->
 
         <section class="Seccion_01" id="Seccion_01">
+            <!--Escena 3D: capas con profundidad (rocas lejanas, astronauta, asteroides hacia la Tierra)-->
+            <div class="Escena_3D" id="Escena_3D" aria-hidden="true">
+                <!--Filtros del ondeo de la capa y de los brazos (desplazamiento animado)-->
+                <svg width="0" height="0" style="position:absolute" focusable="false">
+                    <filter id="Ondeo_Capa" x="-10%" y="-10%" width="120%" height="120%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.006 0.014" numOctaves="2" seed="3" result="ruido">
+                            <animate attributeName="baseFrequency" dur="7s" values="0.006 0.014;0.010 0.020;0.006 0.014" repeatCount="indefinite"/>
+                        </feTurbulence>
+                        <feDisplacementMap in="SourceGraphic" in2="ruido" scale="18" xChannelSelector="R" yChannelSelector="G"/>
+                    </filter>
+                    <filter id="Ondeo_Brazo" x="-10%" y="-10%" width="120%" height="120%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.01 0.018" numOctaves="1" seed="8" result="ruido">
+                            <animate attributeName="baseFrequency" dur="5s" values="0.01 0.018;0.015 0.024;0.01 0.018" repeatCount="indefinite"/>
+                        </feTurbulence>
+                        <feDisplacementMap in="SourceGraphic" in2="ruido" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+                    </filter>
+                </svg>
+                <div class="Capa_Lejos">
+                    <img class="Roca r1" src="IMG/roca_1.png" alt="">
+                    <img class="Roca r2" src="IMG/roca_2.png" alt="">
+                    <img class="Roca r3" src="IMG/roca_3.png" alt="">
+                    <img class="Roca r4" src="IMG/roca_1.png" alt="">
+                    <img class="Asteroide_3D f3" src="IMG/asteroide_fuego.png" alt="">
+                    <img class="Asteroide_3D f4" src="IMG/asteroide_fuego.png" alt="">
+                </div>
+                <div class="Capa_Astronauta" id="Capa_Astronauta">
+                    <div class="Astronauta_Flota">
+                        <img src="IMG/astronauta_3d.jpg" alt="">
+                        <div class="Clon_Astro Clon_Capa"></div>
+                        <div class="Clon_Astro Clon_Brazo Brazo_Izq"></div>
+                        <div class="Clon_Astro Clon_Brazo Brazo_Der"></div>
+                        <div class="Astronauta_Brillo"></div>
+                        <div class="Astronauta_Reactor"></div>
+                        <div class="Astronauta_Mano Mano_Izq"></div>
+                        <div class="Astronauta_Mano Mano_Der"></div>
+                    </div>
+                </div>
+                <div class="Capa_Cerca">
+                    <img class="Asteroide_3D f1" src="IMG/asteroide_fuego.png" alt="">
+                    <img class="Asteroide_3D f2" src="IMG/asteroide_fuego.png" alt="">
+                    <img class="Roca r5" src="IMG/roca_2.png" alt="">
+                    <img class="Roca r6" src="IMG/roca_3.png" alt="">
+                </div>
+            </div>
             <div class="Escena_Meteoros" aria-hidden="true">
                 <span class="Estrella_Fugaz e1"></span>
                 <span class="Estrella_Fugaz e2"></span>
@@ -51,10 +104,21 @@
                 <span class="Estrella_Fugaz e4"></span>
                 <span class="Estrella_Fugaz e5"></span>
             </div>
-            <div class="Contenedor_RC" id="Contenedor_RC" onclick="Graficos_fondo()">
-                <div class="Recursos" id="Recursos"></div>
+            <div class="Contenedor_RC" id="Contenedor_RC" onclick="Graficos_fondo()" role="switch" aria-checked="false" aria-label="Modo oscuro" tabindex="0" title="Cambiar a modo claro/oscuro">
+                <div class="Recursos" id="Recursos">
+                    <!--Sol: modo oscuro desactivado | Luna: modo oscuro activado-->
+                    <svg class="Icono_Modo Icono_Sol" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <g class="Sol_Rayos" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2.4v2.6M12 19v2.6M2.4 12H5M19 12h2.6M5.2 5.2l1.8 1.8M17 17l1.8 1.8M5.2 18.8L7 17M17 7l1.8-1.8"/></g>
+                        <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+                    </svg>
+                    <svg class="Icono_Modo Icono_Luna" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M20.6 14.5A8.7 8.7 0 0 1 9.5 3.4a8.7 8.7 0 1 0 11.1 11.1z" fill="currentColor"/>
+                        <circle class="Luna_Estrella" cx="17.6" cy="5.4" r="1.15" fill="currentColor"/>
+                        <circle class="Luna_Estrella Estrella_2" cx="20.4" cy="9.2" r="0.8" fill="currentColor"/>
+                    </svg>
+                </div>
             </div>
-            <h1 class="Nombre">IRON<br>FIST</h1>
+            <h1 class="Nombre Nombre_Logo"><span class="Texto_Oculto">IRON FIST</span><img class="Logo_Titulo" src="IMG/titulo_ironfist.png" alt="" draggable="false"></h1>
             <h1 class="Texto_Principal">¿LISTO PARA DEFENDER<br> EL PLANETA?</h1>
             <button class="Boton" id="Juego" onclick="Mover()"><span class="Boton_Texto">JUGAR</span></button>
         </section>
@@ -131,7 +195,7 @@
                     <div class="BOTONES_2">
                         <div class="Boton_preparado" onclick="Mover_3()">¿Estás preparado?</div>
                         <div class="Contenedor_narracion" id="Contenedor_narracion">
-                            <i class="fas fa-play" id="VOLUMEN"></i><i class="fas fa-pause" id="PAUSE"></i>
+                            <i class="fas fa-volume-up" id="VOLUMEN"></i><i class="fas fa-pause" id="PAUSE"></i>
                         </div>
                     </div>
                 </div>
@@ -433,6 +497,8 @@
 
     <!--llamado al script js-->
     <script src="JavaScript.js"></script>
+    <script src="Portada3D.js"></script>
+    <script src="Controles.js"></script>
 
 
 </body>

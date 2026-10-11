@@ -145,4 +145,18 @@
     width: 90%;
     font-size: 4vw;
   }
+
+  /* El contenedor general (.Contenedor_Supremo) fija la altura de toda
+     la pagina a una sola pantalla (100vh) con overflow:hidden, para que
+     los niveles del juego no se salgan de su tablero. Pero esta seccion
+     de Historia, con imagen + 3 parrafos + boton, es mas alta que una
+     pantalla de celular, y quedaba atrapada sin poder verse completa ni
+     alcanzar el boton "Estas preparado?". Le damos scroll interno solo
+     a esta seccion, sin tocar el contenedor general. */
+  #Seccion_2 {
+    top: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
