@@ -1,0 +1,46 @@
+/* ===== PULIDO VISUAL (Evidencia 4) =====
+   Se carga DESPUES de Ajuste_Pantalla.css. Solo cambia espacios y colores, no la logica del juego.
+
+   1) Choque del tablero con el reloj y el cuadro "Una vez completes este nivel...":
+      los tableros tenian top:4% (position:relative), que los bajaba visualmente unos 25px SIN
+      reservar ese espacio, y por eso se montaban sobre la fila de abajo. Se deja top:0 y se
+      separa la fila de abajo con un margen. */
+.Contenedorlvl1, .Contenedorlvl2, .Contenedorlvl3 { top: 0 !important; }
+.Contenedor_LVL { margin-top: 20px !important; gap: 18px 28px; }
+
+/* 2) Fecha: que quepa en una sola linea */
+.Fecha { width: min(310px, 85vw); }
+.Fecha p { font-size: clamp(0.8rem, 1.3vw, 1.1rem) !important; white-space: nowrap; }
+
+/* 3) Colores: el celeste "SIGUIENTE NIVEL" no combinaba con la paleta morado/espacio.
+      Ahora usa el morado electrico del juego con brillo neon, y el reloj y el aviso
+      comparten el mismo estilo de "cristal oscuro" con borde morado. */
+.NEXT {
+  background: linear-gradient(135deg, var(--if-accion, #9D4EDD) 0%, #E040FB 100%) !important;
+  color: var(--if-texto, #F2F0EA);
+  font-family: var(--if-font-titulo, 'Press Start 2P', cursive);
+  border: 2px solid var(--if-accion-light, #C792F2);
+  border-radius: 10px;
+  box-shadow: 0 0 14px rgba(224, 64, 251, 0.55), inset 0 0 10px rgba(255, 255, 255, 0.18);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  animation: IF_pulso_next 1.8s ease-in-out infinite;
+}
+.NEXT h2 { margin: 0; font-size: inherit; letter-spacing: .5px; text-shadow: 0 0 8px rgba(0, 0, 0, 0.45); }
+.NEXT:hover { transform: translateY(-2px) scale(1.04); filter: brightness(1.12);
+  box-shadow: 0 0 24px rgba(57, 255, 136, 0.55), 0 0 14px rgba(224, 64, 251, 0.7); }
+@keyframes IF_pulso_next {
+  0%, 100% { box-shadow: 0 0 10px rgba(224, 64, 251, 0.45), inset 0 0 10px rgba(255, 255, 255, 0.15); }
+  50%      { box-shadow: 0 0 22px rgba(224, 64, 251, 0.85), inset 0 0 12px rgba(255, 255, 255, 0.25); }
+}
+
+.Nada, .Fecha, .Hora {
+  background: rgba(11, 14, 31, 0.62) !important;
+  border: 2px solid var(--if-accion, #9D4EDD);
+  border-radius: 10px;
+  box-shadow: 0 0 14px rgba(157, 78, 221, 0.35);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+.Nada h2 { color: var(--if-exito, #39FF88); }
+.Hora p, #Segundos, #AMPM { text-shadow: 0 0 10px rgba(199, 146, 242, 0.75); }
+
+@media (prefers-reduced-motion: reduce) { .NEXT { animation: none; } }
