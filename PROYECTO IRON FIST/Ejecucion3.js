@@ -32,8 +32,9 @@ function JUEGOlvl3() {
     //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
     function Aumentar_Puntoslvl3() {
         Puntajelvl3++;
-        document.getElementById("Puntajelvl3").innerHTML = Puntajelvl3 + " / 24"
+        document.getElementById("Puntajelvl3").innerHTML = Puntajelvl3 + " / 5"
         if (Puntajelvl3 == 5) {
+            Vida_Reiniciar(3)
             Puntajelvl3 = 0
             Tiempolvl3 = 71
             function Contactos() {
@@ -232,6 +233,7 @@ function JUEGOlvl3() {
             (document.getElementById("Meteorito3lvl3").offsetLeft > Limitelvl3) ||
             (document.getElementById("Meteorito4lvl3").offsetLeft > Limitelvl3)) {
 
+            if (Vida_Golpe(3, ["Meteoritolvl3","Meteorito2lvl3","Meteorito3lvl3","Meteorito4lvl3"])) { return }
             Mostrar_Derrotalvl3("Los meteoritos llegaron a destino antes de tiempo: destruyeron gran parte del continente.")
         }
         else {
@@ -256,6 +258,7 @@ function JUEGOlvl3() {
 //a la pantalla de inicio: le das "JUGAR" otra vez cuando estés listo.
 Juego_Terminado_lvl3 = false
 function Mostrar_Derrotalvl3(mensaje) {
+    Vida_Reiniciar(3)
     if (Juego_Terminado_lvl3) return
     Juego_Terminado_lvl3 = true
 
@@ -287,7 +290,7 @@ function Mostrar_Derrotalvl3(mensaje) {
     Puntajelvl3 = 0
     Conteolvl3 = 4
     document.getElementById("Tiempolvl3").innerHTML = 70
-    document.getElementById("Puntajelvl3").innerHTML = 0 + " / 24"
+    document.getElementById("Puntajelvl3").innerHTML = 0 + " / 5"
 
     //OJO: a propósito NO volvemos a mostrar el título/dificultad ni la pantalla
     //Startlvl3 (se queda oculta). Así, al cerrar el aviso, los meteoritos caen
@@ -520,4 +523,4 @@ function DETENER_JUEGOlvl3() {
             Activolvl3 = 1
         }
     }
-} //CAMBIAMOS EL VALOR DE NUEVO A 1 PARA QUE AL SIGUIENTE CLICK SE EJECUTE EL PAUSE  S
+} //CAMBIAMOS EL VALOR DE NUEVO A 1 PARA QUE AL SIGUIENTE CLICK SE EJECUTE EL PAUSE  S

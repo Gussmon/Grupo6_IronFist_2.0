@@ -108,8 +108,9 @@ function JUEGO() {
     //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
     function Aumentar_Puntos() {
         Puntaje++;
-        document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;12"
+        document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;5"
         if (Puntaje == 5) {
+            Vida_Reiniciar(1)
             Puntaje = 0
             Tiempo = 51
 
@@ -120,7 +121,7 @@ function JUEGO() {
                 document.getElementById("NIVEL_02").style.display = "block"
             }
             document.getElementById("Tiempo").innerHTML = 50
-            document.getElementById("Puntaje").innerHTML = 0 + "&nbsp;/&nbsp;" + 12
+            document.getElementById("Puntaje").innerHTML = 0 + "&nbsp;/&nbsp;" + 5
             document.getElementById("Triunfo").play()
             document.getElementById("Fondo_Ciberpunk").pause()
             document.getElementById("Puntos_sound").pause()
@@ -247,6 +248,7 @@ function JUEGO() {
         if ((document.getElementById("Meteorito").offsetLeft > limite) ||
             (document.getElementById("Meteorito2").offsetLeft > limite)) {
 
+            if (Vida_Golpe(1, ["Meteorito","Meteorito2"])) { return }
             Mostrar_Derrota("Los meteoritos llegaron a destino antes de tiempo: destruyeron gran parte del continente.")
         }
 
@@ -269,6 +271,7 @@ function JUEGO() {
 //apuro.
 Juego_Terminado_lvl1 = false
 function Mostrar_Derrota(mensaje) {
+    Vida_Reiniciar(1)
     if (Juego_Terminado_lvl1) return
     Juego_Terminado_lvl1 = true
 
@@ -295,7 +298,7 @@ function Mostrar_Derrota(mensaje) {
     Puntaje = 0
     Conteo = 4
     document.getElementById("Tiempo").innerHTML = 50
-    document.getElementById("Puntaje").innerHTML = 0 + "&nbsp;/&nbsp;" + 12
+    document.getElementById("Puntaje").innerHTML = 0 + "&nbsp;/&nbsp;" + 5
 
     //OJO: a propósito NO volvemos a mostrar el título/dificultad ni la pantalla
     //Start (se queda oculta, tal como la dejó DETENER_JUEGO() la primera vez).

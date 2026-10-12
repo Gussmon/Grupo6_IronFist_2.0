@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="Estilos.css">
     <link rel="stylesheet" href="estilos-base.css">
     <link rel="stylesheet" href="Portada3D.css">
+    <link rel="stylesheet" href="Vida.css">
+    <link rel="stylesheet" href="Ajuste_Pantalla.css">
     <link rel="stylesheet" href="historia.css">
     <link rel="stylesheet" href="nivel1.css">
     <link rel="stylesheet" href="nivel2.css">
@@ -203,7 +205,7 @@
                         <h3>TIEMPO</h3><span id="Tiempo">50</span>
                     </div><!--Tiempo con su span para la el final del minuto-->
                     <div class="Puntajelvl1">
-                        <h3>PUNTAJE</h3><span id="Puntaje">0&nbsp;/&nbsp;12</span>
+                        <h3>PUNTAJE</h3><span id="Puntaje">0&nbsp;/&nbsp;5</span>
                     </div><!--Puntaje con su span que indica el puntaje-->
                     <div class="Pauselvl1" id="Pause">
                         <h3>PAUSAR / REANUDAR</h3>
@@ -216,7 +218,7 @@
                 <div class="Contenedorlvl1">
                     <!--EFECTOS DE SONIDO-->
                     <audio id="Perdiste_sound" src="Perdiste.mp3" preload="auto"></audio>
-                    <audio id="Fondo_Ciberpunk" src="BreakThem.mp3" preload="auto" autoplay loop></audio>
+                    <audio id="Fondo_Ciberpunk" src="Galactica.mp3" preload="auto" autoplay loop></audio>
                     <audio id="Puntos_sound" src="Puntos.mp3" preload="auto"></audio>
                     <audio id="Punto2" src="Punto2.mp3" preload="auto"></audio>
                     <audio id="Punto3" src="Punto3.mp3" preload="auto"></audio>
@@ -284,7 +286,7 @@
                         <h3>TIEMPO</h3><span id="Tiempolvl2">60</span>
                     </div><!--Tiempo con su span para la el final del minuto-->
                     <div class="Puntajelvl2">
-                        <h3>PUNTAJE</h3><span id="Puntajelvl2">0 / 18</span>
+                        <h3>PUNTAJE</h3><span id="Puntajelvl2">0 / 5</span>
                     </div><!--Puntaje con su span que indica el puntaje-->
                     <div class="Pauselvl2" id="Pauselvl2">
                         <h3>PAUSAR / REANUDAR</h3>
@@ -339,7 +341,8 @@
                         </h3>
                     </div><!--FIN DEL JUEGO-->
                 </div><!--cierra Contenedorlvl2-->
-                <script src="Ejecucion2.js"></script>
+                <script src="Vida.js"></script>
+            <script src="Ejecucion2.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             </section>
 
@@ -355,7 +358,7 @@
                     <!--Puntaje con su span que indica el puntaje-->
                     <div class="Puntajelvl3">
                         <h3>PUNTAJE</h3>
-                        <span id="Puntajelvl3">0 / 24</span>
+                        <span id="Puntajelvl3">0 / 5</span>
                     </div>
                     <!--Boton de pause-->
                     <div class="Pauselvl3" id="Pauselvl3">
@@ -465,7 +468,7 @@
                 </div>
 
                 <div class="Nada" id="Nada">
-                    <h2>Una vez completes este nivel, se habilitará la opcion "SIGUIENTE".</h2>
+                    <h2>Una vez completes este nivel, se habilitará la opción "SIGUIENTE".</h2>
                     <p>Recuerda que los niveles son progresivos
                         y mejorarán tu nivel de reacción ante estímulos y mucho más importante, te dará una gran
                         sorpresa al final, así que recuerda
@@ -486,8 +489,9 @@
     <script src="JavaScript.js"></script>
     <script src="Portada3D.js"></script>
     <script src="Controles.js"></script>
+    <script src="Ajuste_Pantalla.js"></script>
 
 
 </body>
 
-</html>
+</html>

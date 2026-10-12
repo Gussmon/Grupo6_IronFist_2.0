@@ -1,0 +1,10 @@
+/* ===== AJUSTE DE PANTALLA (sin scroll, mismo juego en celular y laptop) =====
+   Causa del problema: .Seccion_Juego medía 160vh (mas alto que la ventana) y el tablero
+   tiene medidas fijas en px, por eso en laptops con ventana baja se cortaba y habia que
+   hacer scroll. Ahora la seccion mide 100vh y Ajuste_Pantalla.js reduce (zoom) el contenido
+   justo lo necesario para que todo quepa. */
+.Seccion_Juego{ height:100vh !important; height:100dvh !important; top:0 !important; justify-content:center; }
+.Contenedor_LVL{ top:0 !important; margin-top:12px; }
+#Escenario_Juego{ width:100%; flex:none; display:flex; flex-direction:column; align-items:center; justify-content:center; transform-origin:center center; }
+html, body{ overflow:hidden; height:100%; }
+@media (max-width:600px){ #Escenario_Juego{ padding-top:46px; box-sizing:border-box; } }
