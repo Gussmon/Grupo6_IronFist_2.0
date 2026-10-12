@@ -35,13 +35,14 @@ function JUEGOlvl2() {
     //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
     function Aumentar_Puntoslvl2() {
         Puntajelvl2++;
-        document.getElementById("Puntajelvl2").innerHTML = Puntajelvl2 + " / 18"
-        if (Puntajelvl2 == 18) {
+        document.getElementById("Puntajelvl2").innerHTML = Puntajelvl2 + " / 5"
+        if (Puntajelvl2 == 5) {
+            Vida_Reiniciar(2)
             Puntajelvl2 = 0
             Tiempolvl2 = 61
 
             document.getElementById("Tiempolvl2").innerHTML = 60
-            document.getElementById("Puntajelvl2").innerHTML = 0 + "&nbsp;/&nbsp;" + 18
+            document.getElementById("Puntajelvl2").innerHTML = 0 + "&nbsp;/&nbsp;" + 5
             document.getElementById("Fondo_Ciberpunk").pause()
             document.getElementById("Triunfo").play()
             document.getElementById("NEXT").addEventListener('click', Habilitar_Siguienten_LVL)
@@ -189,6 +190,7 @@ function JUEGOlvl2() {
         if ((document.getElementById("Meteioritolvl2").offsetLeft > Limitelvl2) ||
             (document.getElementById("Meteiorito2lvl2").offsetLeft > Limitelvl2) ||
             (document.getElementById("Meteiorito3lvl2").offsetLeft > Limitelvl2)) {
+            if (Vida_Golpe(2, ["Meteioritolvl2","Meteiorito2lvl2","Meteiorito3lvl2"])) { return }
             Mostrar_Derrotalvl2("Los meteoritos llegaron a destino antes de tiempo: destruyeron gran parte del continente.")
         }
 
@@ -211,6 +213,7 @@ function JUEGOlvl2() {
 //a la pantalla de inicio: le das "JUGAR" otra vez cuando estés listo.
 Juego_Terminado_lvl2 = false
 function Mostrar_Derrotalvl2(mensaje) {
+    Vida_Reiniciar(2)
     if (Juego_Terminado_lvl2) return
     Juego_Terminado_lvl2 = true
 
@@ -242,7 +245,7 @@ function Mostrar_Derrotalvl2(mensaje) {
     Puntajelvl2 = 0
     Conteolvl2 = 4
     document.getElementById("Tiempolvl2").innerHTML = 60
-    document.getElementById("Puntajelvl2").innerHTML = 0 + "&nbsp;/&nbsp;" + 18
+    document.getElementById("Puntajelvl2").innerHTML = 0 + "&nbsp;/&nbsp;" + 5
 
     //OJO: a propósito NO volvemos a mostrar el título/dificultad ni la pantalla
     //Startlvl2 (se queda oculta). Así, al cerrar el aviso, los meteoritos caen

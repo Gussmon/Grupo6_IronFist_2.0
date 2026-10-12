@@ -32,52 +32,54 @@ function JUEGOlvl3() {
     //FUNCION QUE UNICAMENTE AUMENTA PUNTOS Y RESETEA LAS VARIABLES AL LLEGAR A CIERTO LIMITE
     function Aumentar_Puntoslvl3() {
         Puntajelvl3++;
-        document.getElementById("Puntajelvl3").innerHTML = Puntajelvl3 + " / 24"
-        if (Puntajelvl3 == 24) {
+        document.getElementById("Puntajelvl3").innerHTML = Puntajelvl3 + " / 5"
+        if (Puntajelvl3 == 5) {
+            Vida_Reiniciar(3)
             Puntajelvl3 = 0
             Tiempolvl3 = 71
-            function Contactos(){
-            Swal.fire({
-                title : 'Felicitaciones por parte del <br> Grupo 6<br><br><img src="IMG/logo_ironfist.png" width = "120px">',
-                html: 'Sabía que lo lograrías, nos salvaste de la destrucción, pero ahora nos espera otra lucha. Esperemos volverte a ver jugando IRON FIST 2 en un futuro. <br><br> <b>EQUIPO:</b><br><br> Gustavo: 75397016@certus.edu.pe <br><br> Ivon: 74245717@certus.edu.pe <br><br> Geordi: 47613272@certus.edu.pe <br><br> Erick: 43065388@certus.edu.pe <br><br> Grecia: 72567857@certus.edu.pe <br><br> Edy: 75863011@certus.edu.pe',
-                icon: 'success',
-                confirmButtonText: '<span id="Pausear_musica">De acuerdo</span>',
-                width: '50%',
-                height: '80%',
-                timer: 100000,
-                timerProgressbar: true,
-                customClass: {
-                    popup: 'Modal_Mision',
-                    title: 'Modal_Mision_Titulo',
-                    htmlContainer: 'Modal_Mision_Texto',
-                    confirmButton: 'Modal_Mision_Boton'
-                },
-                buttonsStyling: false,
-                /*Funcion de cerrar la alerta*/
-                allowOutsideClick: true,
-                allowEscapeKey: false,
-                allowEnterkey: false,
-                stopKeydownPropagation: false,
+            function Contactos() {
+                Swal.fire({
+                    title: 'Felicitaciones por parte del <br> Grupo 6<br><br><img src="IMG/logo_ironfist.png" width = "120px">',
+                    html: 'Sabía que lo lograrías, nos salvaste de la destrucción, pero ahora nos espera otra lucha. Esperemos volverte a ver jugando IRON FIST 2 en un futuro. <br><br> <b>EQUIPO:</b><br><br> Gustavo: 75397016@certus.edu.pe <br><br> Ivon: 74245717@certus.edu.pe <br><br> Geordi: 47613272@certus.edu.pe <br><br> Erick: 43065388@certus.edu.pe <br><br> Grecia: 72567857@certus.edu.pe <br><br> Edy: 75863011@certus.edu.pe',
+                    icon: 'success',
+                    confirmButtonText: '<span id="Pausear_musica">De acuerdo</span>',
+                    width: '50%',
+                    height: '80%',
+                    timer: 100000,
+                    timerProgressbar: true,
+                    customClass: {
+                        popup: 'Modal_Mision',
+                        title: 'Modal_Mision_Titulo',
+                        htmlContainer: 'Modal_Mision_Texto',
+                        confirmButton: 'Modal_Mision_Boton'
+                    },
+                    buttonsStyling: false,
+                    /*Funcion de cerrar la alerta*/
+                    allowOutsideClick: true,
+                    allowEscapeKey: false,
+                    allowEnterkey: false,
+                    stopKeydownPropagation: false,
                 });
             }
             setTimeout(Contactos, 15000)
 
-            
+
             document.getElementById("Fondo_Ciberpunk").pause()
             document.getElementById("Triunfo").play()
 
-            function Ganaste_Pantallalvl3(){
-            document.getElementById("Meteoritolvl3").style.left = "-70%"
-            document.getElementById("Meteoritolvl3").style.transition = "0s"
+            function Ganaste_Pantallalvl3() {
+                document.getElementById("Meteoritolvl3").style.left = "-70%"
+                document.getElementById("Meteoritolvl3").style.transition = "0s"
 
-            document.getElementById("Meteorito2lvl3").style.left = "-70%"
-            document.getElementById("Meteorito2lvl3").style.transition = "0s"
-            
-            document.getElementById("Meteorito3lvl3").style.left = "-70%"
-            document.getElementById("Meteorito3lvl3").style.transition = "0s"
-            
-            document.getElementById("Meteorito4lvl3").style.left = "-70%"
-            document.getElementById("Meteorito4lvl3").style.transition = "0s"}
+                document.getElementById("Meteorito2lvl3").style.left = "-70%"
+                document.getElementById("Meteorito2lvl3").style.transition = "0s"
+
+                document.getElementById("Meteorito3lvl3").style.left = "-70%"
+                document.getElementById("Meteorito3lvl3").style.transition = "0s"
+
+                document.getElementById("Meteorito4lvl3").style.left = "-70%"
+                document.getElementById("Meteorito4lvl3").style.transition = "0s"
+            }
 
             setInterval(Ganaste_Pantallalvl3, 1)
 
@@ -231,6 +233,7 @@ function JUEGOlvl3() {
             (document.getElementById("Meteorito3lvl3").offsetLeft > Limitelvl3) ||
             (document.getElementById("Meteorito4lvl3").offsetLeft > Limitelvl3)) {
 
+            if (Vida_Golpe(3, ["Meteoritolvl3","Meteorito2lvl3","Meteorito3lvl3","Meteorito4lvl3"])) { return }
             Mostrar_Derrotalvl3("Los meteoritos llegaron a destino antes de tiempo: destruyeron gran parte del continente.")
         }
         else {
@@ -255,6 +258,7 @@ function JUEGOlvl3() {
 //a la pantalla de inicio: le das "JUGAR" otra vez cuando estés listo.
 Juego_Terminado_lvl3 = false
 function Mostrar_Derrotalvl3(mensaje) {
+    Vida_Reiniciar(3)
     if (Juego_Terminado_lvl3) return
     Juego_Terminado_lvl3 = true
 
@@ -286,7 +290,7 @@ function Mostrar_Derrotalvl3(mensaje) {
     Puntajelvl3 = 0
     Conteolvl3 = 4
     document.getElementById("Tiempolvl3").innerHTML = 70
-    document.getElementById("Puntajelvl3").innerHTML = 0 + " / 24"
+    document.getElementById("Puntajelvl3").innerHTML = 0 + " / 5"
 
     //OJO: a propósito NO volvemos a mostrar el título/dificultad ni la pantalla
     //Startlvl3 (se queda oculta). Así, al cerrar el aviso, los meteoritos caen
@@ -352,10 +356,11 @@ function Reintentarlvl3() {
     Conteolvl3 = 4
 
     document.getElementById("Fondo_Ciberpunk").play()
-    function ARRACARlvl3(){
-        JUEGOlvl3()}
+    function ARRACARlvl3() {
+        JUEGOlvl3()
+    }
     //INVOCA AL JUEGO UNA VEZ PASEN 4 SEGUNDO - OSEA UNA VEZ TERMINE EL CONTADOR
-    tiempo_de_arranquelvl3 =  setTimeout(ARRACARlvl3, 4100)
+    tiempo_de_arranquelvl3 = setTimeout(ARRACARlvl3, 4100)
     //ESTA FUNCION EJECUTA LA CUENTA REGRESIVA Y RETIRA LA PANTALLA START
     function ESPERARlvl3() {
         function Cuenta_rglvl3() {
@@ -451,15 +456,15 @@ function DETENER_JUEGOlvl3() {
             document.getElementById("Meteorito2lvl3").style.top = Altura2lvl3 + "px"
             document.getElementById("Meteorito2lvl3").style.transition = "2.7s"
 
-            
+
             document.getElementById("Meteorito3lvl3").style.left = Distancia3lvl3 + "%"
             document.getElementById("Meteorito3lvl3").style.top = Altura3lvl3 + "px"
             document.getElementById("Meteorito3lvl3").style.transition = "2.7s"
-            
+
             document.getElementById("Meteorito4lvl3").style.left = Distancia4lvl3 + "%"
             document.getElementById("Meteorito4lvl3").style.top = Altura4lvl3 + "px"
             document.getElementById("Meteorito4lvl3").style.transition = "2.7s"
-            
+
             //ESTA FUNCION DIRIGE AL METEORITO 1 A LA TIERRA
             //(mismas franjas que en JUEGOlvl3, para que no se amontonen al reanudar)
             function Meteorito_Direccionlvl3() {
@@ -509,13 +514,13 @@ function DETENER_JUEGOlvl3() {
                 document.getElementById("Meteorito4lvl3").style.top = Altura4lvl3 + "px"
                 document.getElementById("Meteoritolvl3").style.transition = "1.9s"
             }
-        
+
             setTimeout(Meteorito_Direccion4lvl3, 2000)
             Intervalo_Dir4lvl3 = setInterval(Meteorito_Direccion4lvl3, 2150)
-            
+
             //BORRAMOS LA FUNCION, PARA QUE EL REANUDAR PUEDA EJECUTARSE DE NUEVO
 
             Activolvl3 = 1
         }
     }
-} //CAMBIAMOS EL VALOR DE NUEVO A 1 PARA QUE AL SIGUIENTE CLICK SE EJECUTE EL PAUSE  S
+} //CAMBIAMOS EL VALOR DE NUEVO A 1 PARA QUE AL SIGUIENTE CLICK SE EJECUTE EL PAUSE  S
