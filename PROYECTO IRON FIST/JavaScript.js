@@ -109,7 +109,7 @@ function JUEGO() {
     function Aumentar_Puntos() {
         Puntaje++;
         document.getElementById("Puntaje").innerHTML = Puntaje + "&nbsp;/&nbsp;12"
-        if (Puntaje == 12) {
+        if (Puntaje == 5) {
             Puntaje = 0
             Tiempo = 51
 
@@ -664,58 +664,58 @@ Reloj_Tiempo()
 setInterval(Reloj_Tiempo, 1000)
 
 
-// ================== CONTROL DE VOLUMEN DE LA MUSICA DE FONDO ==================
-;(function () {
-    var Musica_Fondo = document.getElementById("Fondo_Ciberpunk")
-    var Slider_Volumen = document.getElementById("Slider_Volumen")
-    var Icono_Volumen = document.getElementById("Icono_Volumen")
+    // ================== CONTROL DE VOLUMEN DE LA MUSICA DE FONDO ==================
+    ; (function () {
+        var Musica_Fondo = document.getElementById("Fondo_Ciberpunk")
+        var Slider_Volumen = document.getElementById("Slider_Volumen")
+        var Icono_Volumen = document.getElementById("Icono_Volumen")
 
-    if (!Musica_Fondo || !Slider_Volumen) return
+        if (!Musica_Fondo || !Slider_Volumen) return
 
-    // El oido humano percibe el volumen de forma logaritmica, no lineal.
-    // Por eso el valor del slider (0-100) se transforma con una curva
-    // antes de aplicarse, asi el cambio SI se nota en todo el rango.
-    function Convertir_A_Volumen_Real(valorSlider) {
-        var v = valorSlider / 100
-        return Math.pow(v, 2)
-    }
-
-    var Slider_Inicial = 35
-    Slider_Volumen.value = Slider_Inicial
-
-    function Actualizar_Icono(valorSlider) {
-        if (!Icono_Volumen) return
-        if (valorSlider == 0) { Icono_Volumen.textContent = "🔇" }
-        else if (valorSlider < 50) { Icono_Volumen.textContent = "🔉" }
-        else { Icono_Volumen.textContent = "🔊" }
-    }
-
-    function Aplicar_Volumen(valorSlider) {
-        var vol = Convertir_A_Volumen_Real(valorSlider)
-        Musica_Fondo.volume = vol
-        Musica_Fondo.muted = (valorSlider == 0)
-        Actualizar_Icono(valorSlider)
-    }
-
-    Aplicar_Volumen(Slider_Inicial)
-    // Se vuelve a aplicar un instante despues, por si el navegador
-    // reinicia el volumen al arrancar el autoplay de la musica.
-    setTimeout(function () { Aplicar_Volumen(Slider_Volumen.value) }, 500)
-
-    Slider_Volumen.addEventListener("input", function () {
-        Aplicar_Volumen(Number(Slider_Volumen.value))
-    })
-
-    // Respaldo: si el navegador bloquea el autoplay con sonido (muy comun
-    // en un dominio publico visitado por primera vez), forzamos que la
-    // musica arranque en el primer click/touch que haga el jugador.
-    if (Musica_Fondo.paused) {
-        var Intentar_Reanudar = function () {
-            Musica_Fondo.play().catch(function () { })
-            document.removeEventListener("click", Intentar_Reanudar)
-            document.removeEventListener("touchstart", Intentar_Reanudar)
+        // El oido humano percibe el volumen de forma logaritmica, no lineal.
+        // Por eso el valor del slider (0-100) se transforma con una curva
+        // antes de aplicarse, asi el cambio SI se nota en todo el rango.
+        function Convertir_A_Volumen_Real(valorSlider) {
+            var v = valorSlider / 100
+            return Math.pow(v, 2)
         }
-        document.addEventListener("click", Intentar_Reanudar)
-        document.addEventListener("touchstart", Intentar_Reanudar)
-    }
-})()
+
+        var Slider_Inicial = 35
+        Slider_Volumen.value = Slider_Inicial
+
+        function Actualizar_Icono(valorSlider) {
+            if (!Icono_Volumen) return
+            if (valorSlider == 0) { Icono_Volumen.textContent = "🔇" }
+            else if (valorSlider < 50) { Icono_Volumen.textContent = "🔉" }
+            else { Icono_Volumen.textContent = "🔊" }
+        }
+
+        function Aplicar_Volumen(valorSlider) {
+            var vol = Convertir_A_Volumen_Real(valorSlider)
+            Musica_Fondo.volume = vol
+            Musica_Fondo.muted = (valorSlider == 0)
+            Actualizar_Icono(valorSlider)
+        }
+
+        Aplicar_Volumen(Slider_Inicial)
+        // Se vuelve a aplicar un instante despues, por si el navegador
+        // reinicia el volumen al arrancar el autoplay de la musica.
+        setTimeout(function () { Aplicar_Volumen(Slider_Volumen.value) }, 500)
+
+        Slider_Volumen.addEventListener("input", function () {
+            Aplicar_Volumen(Number(Slider_Volumen.value))
+        })
+
+        // Respaldo: si el navegador bloquea el autoplay con sonido (muy comun
+        // en un dominio publico visitado por primera vez), forzamos que la
+        // musica arranque en el primer click/touch que haga el jugador.
+        if (Musica_Fondo.paused) {
+            var Intentar_Reanudar = function () {
+                Musica_Fondo.play().catch(function () { })
+                document.removeEventListener("click", Intentar_Reanudar)
+                document.removeEventListener("touchstart", Intentar_Reanudar)
+            }
+            document.addEventListener("click", Intentar_Reanudar)
+            document.addEventListener("touchstart", Intentar_Reanudar)
+        }
+    })()
