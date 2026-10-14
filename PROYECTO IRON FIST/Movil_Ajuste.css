@@ -1,0 +1,105 @@
+/* ===== AJUSTE PARA CELULAR (Evidencia 4) =====
+   Se carga al final. Solo aplica en pantallas angostas; la version de laptop no cambia.
+   1) Tarjeta de dificultad de los 3 niveles: las imagenes (astronauta, Ceres, Tyrone) salian
+      grandes y se partian en varias filas. Ahora van en una sola fila y mas pequenas.
+   2) Reglas: en celular el boton INICIAR MISION quedaba fuera de la pantalla (100vh incluye
+      la barra del navegador). Se usa 100dvh, se compacta el contenido y el boton queda fijo
+      abajo para que siempre se vea. */
+@media (max-width: 600px) {
+  .Tarjeta_dificultad,
+  .Tarjeta_dificultadlvl2,
+  .Tarjeta_dificultadlvl3 {
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    padding: 6px 8px !important;
+    width: 94% !important;
+  }
+  .Tarjeta_dificultad img,
+  .Tarjeta_dificultadlvl2 img,
+  .Tarjeta_dificultadlvl3 img {
+    flex: 0 0 auto;
+    height: 38px !important;
+    width: auto !important;
+    max-width: 24%;
+    object-fit: contain;
+  }
+  .Tarjeta_dificultad .Dificultad_info,
+  .Tarjeta_dificultadlvl2 .Dificultad_info,
+  .Tarjeta_dificultadlvl3 .Dificultad_info {
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 4px;
+    text-align: center;
+  }
+  .Dificultad_info h1 { font-size: 0.55rem !important; line-height: 1.3; }
+  .Dificultad_etiqueta { font-size: 0.5rem !important; letter-spacing: 2px !important; }
+  .Medidor_meteoritos { gap: 6px !important; }
+  .Medidor_meteoritos i { width: 12px !important; height: 12px !important; }
+
+  /* Reglas */
+  #Reglas {
+    top: 0 !important;
+    min-height: 100vh; min-height: 100dvh;
+    max-height: 100vh; max-height: 100dvh;
+    padding: 10px 10px 0 !important;
+    align-items: flex-start !important;
+  }
+  .Reglas_Contenido { gap: 10px !important; margin: 0 auto; min-height: 100%; }
+  .Titulo_Reglas { font-size: 0.85rem !important; }
+  .Reglas_Layout { gap: 10px !important; }
+  .Reglas_ImagenWrap { max-width: 72% !important; flex: none; }
+  .Reglas_ImagenCaption { display: none; }
+  .Reglas_Tarjetas { gap: 8px !important; }
+  .Regla_Card { padding: 8px 10px !important; }
+  .Regla_Card p { font-size: 0.78rem !important; line-height: 1.3 !important; }
+  .Regla_Card h3 { font-size: 0.7rem !important; }
+  .Regla_Icono { font-size: 1.1rem !important; margin-bottom: 0 !important; }
+  .Listo {
+    position: sticky; bottom: 0;
+    z-index: 5;
+    margin-top: auto;
+    margin-bottom: 10px;
+    flex: none;
+    font-size: 0.8rem !important;
+    padding: 0.9em 1.6em !important;
+  }
+}
+
+/* ===== CREDITOS DEL FINAL (nivel 3) =====
+   La lista salia con "Testeado por:" repetido y con mucho espacio entre nombres, por lo que en
+   pantallas pequeñas se pasaba del tablero y se montaba sobre "Proximamente". Ahora es compacta
+   y cabe siempre dentro del tablero, sin desbordes ni scroll. */
+#Creditoslvl3 { overflow: hidden; gap: 0 !important; line-height: 1.35 !important; }
+#Creditoslvl3 br,
+#Creditoslvl3 p:first-of-type { display: none; }
+#Creditoslvl3 h3 { margin: 0 0 6px; font-size: clamp(0.7rem, 1.6vw, 1rem); }
+#Creditoslvl3 p { margin: 0; font-size: clamp(0.6rem, 1.4vw, 0.9rem); }
+#Proximolvl3 { overflow: hidden; }
+#Proximolvl3 h4 { margin: 0; font-size: clamp(0.6rem, 1.5vw, 0.95rem); }
+@media (max-width: 600px) {
+  #Creditoslvl3 h3 { font-size: 0.65rem; margin-bottom: 4px; }
+  #Creditoslvl3 p { font-size: 0.6rem; }
+  #Proximolvl3 h4 { font-size: 0.55rem; }
+}
+
+/* ===== VENTANA FINAL "Felicitaciones" (correos del equipo) =====
+   Era mas alta que la pantalla y mostraba barra de scroll. Se compacta para que quepa.
+   Solo afecta a esa ventana (la que lista el EQUIPO), no a las demas. */
+.Modal_Mision:has(.Modal_Mision_Texto b) { max-height: 96vh; max-height: 96dvh; padding: 0.6em 1em !important; box-sizing: border-box; }
+.Modal_Mision:has(.Modal_Mision_Texto b) .swal2-icon { transform: scale(0.65); margin: -0.9em auto -0.6em !important; }
+.Modal_Mision:has(.Modal_Mision_Texto b) .Modal_Mision_Titulo { font-size: clamp(0.8rem, 1.6vw, 1.3rem) !important; line-height: 1.3 !important; padding: 0.2em 0 !important; }
+.Modal_Mision:has(.Modal_Mision_Texto b) .Modal_Mision_Titulo img { width: 80px !important; }
+.Modal_Mision:has(.Modal_Mision_Texto b) .Modal_Mision_Texto { font-size: clamp(0.7rem, 1.1vw, 0.9rem) !important; line-height: 1.2 !important; margin: 0.4em 0 !important; }
+
+/* ===== VENTANA INICIAL "MISION: DEFENDER LA TIERRA" =====
+   Mas grande y con fondo casi opaco para que no se vea la portada borrosa detras. */
+.swal2-container:has(.Modal_Mision img[alt="Logo Iron Fist"]) { background: rgba(4, 6, 20, 0.96) !important; }
+.Modal_Mision:has(img[alt="Logo Iron Fist"]) {
+  width: min(94vw, 820px) !important;
+  min-height: min(70vh, 560px);
+  padding: clamp(24px, 4vw, 48px) !important;
+  display: flex !important; flex-direction: column; justify-content: center;
+}
+.Modal_Mision:has(img[alt="Logo Iron Fist"]) .Modal_Mision_Titulo { font-size: clamp(0.95rem, 2.6vw, 1.7rem) !important; }
+.Modal_Mision:has(img[alt="Logo Iron Fist"]) .Modal_Mision_Titulo img { width: clamp(90px, 14vw, 140px) !important; }
+.Modal_Mision:has(img[alt="Logo Iron Fist"]) .Modal_Mision_Texto { font-size: clamp(0.95rem, 1.8vw, 1.2rem) !important; max-width: 640px; }
